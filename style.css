@@ -119,11 +119,12 @@
   }
 }
 .image-container {
-  max-width: 420px;   /* largeur du bloc */
+  flex: 0 0 auto;       
+  max-width: 420px;
 }
+
 .image-zoom-final {
-  width: 100%;       
+  width: 100%;
   height: auto;
-  border-radius: 15px;
 }
 
