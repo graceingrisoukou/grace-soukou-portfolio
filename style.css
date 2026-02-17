@@ -118,8 +118,12 @@
     font-size: 1rem;
   }
 }
+.image-container {
+  max-width: 420px;   /* largeur du bloc */
+}
 .image-zoom-final {
   width: 100%;       
   height: auto;
   border-radius: 15px;
 }
+
