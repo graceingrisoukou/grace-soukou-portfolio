@@ -118,13 +118,9 @@
     font-size: 1rem;
   }
 }
+
+
 .image-container {
-  flex: 0 0 auto;       
-  max-width: 420px;
+  flex: 0 0 auto !important;
+  max-width: 420px !important;
 }
-
-.image-zoom-final {
-  width: 100%;
-  height: auto;
-}
-
