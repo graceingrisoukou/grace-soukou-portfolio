@@ -8,35 +8,53 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <style>
-    /* ===== RESET & BASE ===== */
+    /* ===== RESET & BASE LUMINEUSE ===== */
     *, *::before, *::after { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: #060613;
-      color: #e8e8f0;
+      background: #0b0a1f; /* Un fond plus riche, bleuté et moins sombre */
+      color: #f1f1f7;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Custom Scrollbar */
+    /* Lumières animées en arrière-plan (Glow Orbs) pour casser le côté sombre */
+    .bg-glow-1 {
+      position: fixed; top: 15%; left: -10%; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(106,17,203,0.12) 0%, transparent 70%);
+      pointer-events: none; z-index: -1; animation: floatGlow 12s ease-in-out infinite alternate;
+    }
+    .bg-glow-2 {
+      position: fixed; bottom: 10%; right: -10%; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(37,117,252,0.1) 0%, transparent 70%);
+      pointer-events: none; z-index: -1; animation: floatGlow 16s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 40px) scale(1.15); }
+    }
+
+    /* Custom Scrollbar moderne */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #060613; }
-    ::-webkit-scrollbar-thumb { background: #251b4f; border-radius: 4px; }
+    ::-webkit-scrollbar-track { background: #0b0a1f; }
+    ::-webkit-scrollbar-thumb { background: #1e1b4b; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #ffd54f; }
 
-    /* ===== HERO ===== */
+    /* ===== HERO ANIMÉ ===== */
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 60px 20px 80px;
-      background: linear-gradient(160deg, #07031a 0%, #0f052b 40%, #050b1e 100%);
+      padding: 60px 20px;
+      background: linear-gradient(145deg, #090424 0%, #0f0a3c 50%, #070d24 100%);
       overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
     }
 
     #stars-canvas {
@@ -54,32 +72,33 @@
       text-transform: uppercase;
       letter-spacing: 3px;
       color: #ffd54f;
-      background: rgba(255,213,79,0.08);
-      padding: 8px 20px;
+      background: rgba(255,213,79,0.12);
+      padding: 8px 22px;
       border-radius: 30px;
-      border: 1px solid rgba(255,213,79,0.25);
+      border: 1px solid rgba(255,213,79,0.3);
       margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(255,213,79,0.05);
       animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .hero-title {
-      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-size: clamp(2.5rem, 6.5vw, 4.8rem);
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1.15;
       color: #ffffff;
       margin-bottom: 20px;
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
       animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
     }
     .hero-title .gold { 
       color: #ffd54f; 
-      text-shadow: 0 0 30px rgba(255, 213, 79, 0.2);
+      text-shadow: 0 0 40px rgba(255, 213, 79, 0.35);
     }
 
     .hero-subtitle {
       font-size: 1.2rem;
-      color: rgba(232, 232, 240, 0.65);
-      max-width: 580px;
+      color: rgba(241, 241, 247, 0.75);
+      max-width: 600px;
       margin: 0 auto 40px;
       line-height: 1.6;
       animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
@@ -87,14 +106,14 @@
 
     .hero-scroll-hint {
       position: absolute;
-      bottom: 35px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.5);
       font-size: 0.75rem;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -102,7 +121,7 @@
     }
     .scroll-dot {
       width: 6px; height: 12px;
-      border: 1px solid rgba(255, 213, 79, 0.6);
+      border: 1px solid rgba(255, 213, 79, 0.7);
       border-radius: 4px;
       position: relative;
     }
@@ -117,20 +136,19 @@
       animation: scrollBounce 1.6s ease-in-out infinite;
     }
     @keyframes scrollBounce {
-      0%, 100% { transform: translate(-50__, 0); opacity: 0; }
+      0%, 100% { transform: translate(-50%, 0); opacity: 0; }
       50%       { transform: translate(-50%, 4px); opacity: 1; }
     }
 
-    /* ===== NAVIGATION STICKY ===== */
+    /* ===== NAVIGATION GLASSMORPHISM ===== */
     .bilan-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(6, 6, 19, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding: 0;
+      background: rgba(11, 10, 31, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .bilan-nav ul {
       list-style: none;
@@ -140,28 +158,28 @@
     }
     .bilan-nav ul li a {
       display: block;
-      padding: 20px 24px;
-      color: rgba(255,255,255,0.45);
+      padding: 18px 24px;
+      color: rgba(255,255,255,0.5);
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      transition: color 0.3s, border-color 0.3s;
+      transition: color 0.3s, border-color 0.3s, transform 0.2s;
       border-bottom: 2px solid transparent;
-      white-space: nowrap;
     }
     .bilan-nav ul li a:hover,
     .bilan-nav ul li a.active {
       color: #ffd54f;
       border-bottom-color: #ffd54f;
+      transform: translateY(-1px);
     }
 
-    /* ===== LAYOUT SECTIONS ===== */
+    /* ===== FORMAT DES SECTIONS ===== */
     .bilan-section {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 100px 24px;
+      padding: 90px 24px;
     }
 
     .section-label {
@@ -187,12 +205,11 @@
     .section-label.visible { opacity: 1; transform: translateY(0); }
 
     .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 800;
       color: #ffffff;
       line-height: 1.2;
-      margin-bottom: 40px;
-      letter-spacing: -0.5px;
+      margin-bottom: 35px;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
@@ -202,7 +219,7 @@
     .bilan-text {
       font-size: 1.05rem;
       line-height: 1.85;
-      color: rgba(232,232,240,0.8);
+      color: rgba(241,241,247,0.85);
       text-align: justify;
       opacity: 0;
       transform: translateY(15px);
@@ -211,15 +228,14 @@
     .bilan-text.visible { opacity: 1; transform: translateY(0); }
     .bilan-text + .bilan-text { margin-top: 20px; }
 
-    /* Séparateur */
     .section-divider {
       border: none;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,213,79,0.12), transparent);
+      background: linear-gradient(to right, transparent, rgba(255,213,79,0.15), transparent);
       margin: 0;
     }
 
-    /* ===== COMPÉTENCES : TIMELINE VERTICALE ===== */
+    /* ===== COMPÉTENCES : TIMELINE PROGRESSIVE ===== */
     .competences-grid {
       display: flex;
       flex-direction: column;
@@ -231,7 +247,7 @@
       position: absolute;
       left: 11px; top: 30px; bottom: 30px;
       width: 1px;
-      background: linear-gradient(to bottom, rgba(106,17,203,0.4), rgba(255,213,79,0.4), rgba(37,117,252,0.4));
+      background: linear-gradient(to bottom, #6a11cb, #ffd54f, #2575fc);
     }
 
     .comp-item {
@@ -245,28 +261,26 @@
 
     .comp-dot {
       position: absolute;
-      left: -40px;
-      top: 28px;
+      left: -40px; top: 28px;
       width: 24px; height: 24px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #060613;
-      box-shadow: 0 0 0 6px #060613;
+      font-size: 0.75rem; font-weight: 700;
+      color: #0b0a1f;
+      box-shadow: 0 0 0 6px #0b0a1f, 0 0 15px currentColor;
     }
 
     .comp-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
       padding: 32px;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       transition: background 0.4s, border-color 0.4s, transform 0.4s, box-shadow 0.4s;
     }
     .comp-card:hover {
-      background: rgba(255,255,255,0.04);
-      transform: translateY(-2px);
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-3px);
     }
 
     .comp-number {
@@ -277,7 +291,7 @@
       margin-bottom: 8px;
     }
     .comp-title {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 18px;
@@ -285,118 +299,96 @@
     .comp-body p {
       font-size: 0.98rem;
       line-height: 1.8;
-      color: rgba(232,232,240,0.75);
+      color: rgba(241,241,247,0.8);
       margin-bottom: 16px;
     }
     .comp-body p:last-child { margin-bottom: 0; }
 
-    /* Barre de progression */
     .comp-progress-wrap { margin-top: 24px; }
     .comp-progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 8px;
+      display: flex; justify-content: space-between;
+      font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 8px;
     }
-    .comp-bar-bg {
-      height: 4px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .comp-bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      width: 0;
-      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-    }
+    .comp-bar-bg { height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+    .comp-bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s; }
     .comp-item.visible .comp-bar-fill { width: var(--fill); }
 
-    /* Theme Couleurs Custom Épuré */
-    .c1 { color: #5dca8a; } .c1 .comp-dot { background: #5dca8a; } .c1 .comp-bar-fill { background: #5dca8a; } .c1 .comp-card:hover { border-color: rgba(93,202,138,0.3); box-shadow: 0 10px 30px rgba(93,202,138,0.04); }
-    .c2 { color: #928bf3; } .c2 .comp-dot { background: #928bf3; } .c2 .comp-bar-fill { background: #928bf3; } .c2 .comp-card:hover { border-color: rgba(146,139,243,0.3); box-shadow: 0 10px 30px rgba(146,139,243,0.04); }
-    .c3 { color: #f9b268; } .c3 .comp-dot { background: #f9b268; } .c3 .comp-bar-fill { background: #f9b268; } .c3 .comp-card:hover { border-color: rgba(249,178,104,0.3); box-shadow: 0 10px 30px rgba(249,178,104,0.04); }
-    .c4 { color: #61d5f2; } .c4 .comp-dot { background: #61d5f2; } .c4 .comp-bar-fill { background: #61d5f2; } .c4 .comp-card:hover { border-color: rgba(97,213,242,0.3); box-shadow: 0 10px 30px rgba(97,213,242,0.04); }
+    /* Couleurs vibrantes & Néons au survol */
+    .c1 { color: #5dca8a; } .c1 .comp-dot { background: #5dca8a; } .c1 .comp-bar-fill { background: #5dca8a; } .c1 .comp-card:hover { border-color: rgba(93,202,138,0.4); box-shadow: 0 15px 35px rgba(93,202,138,0.06); }
+    .c2 { color: #928bf3; } .c2 .comp-dot { background: #928bf3; } .c2 .comp-bar-fill { background: #928bf3; } .c2 .comp-card:hover { border-color: rgba(146,139,243,0.4); box-shadow: 0 15px 35px rgba(146,139,243,0.06); }
+    .c3 { color: #f9b268; } .c3 .comp-dot { background: #f9b268; } .c3 .comp-bar-fill { background: #f9b268; } .c3 .comp-card:hover { border-color: rgba(249,178,104,0.4); box-shadow: 0 15px 35px rgba(249,178,104,0.06); }
+    .c4 { color: #61d5f2; } .c4 .comp-dot { background: #61d5f2; } .c4 .comp-bar-fill { background: #61d5f2; } .c4 .comp-card:hover { border-color: rgba(97,213,242,0.4); box-shadow: 0 15px 35px rgba(97,213,242,0.06); }
 
-    /* ===== NOUVEAU TABLEAU DE SYNTHÈSE DESIGN MODERNE ===== */
+    /* ===== NOUVEAU DESIGN DE TABLEAU EN "BENTO ROWS" CLAIR ET PREMIUM ===== */
     .modern-table-container {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      overflow-x: auto;
-      backdrop-filter: blur(10px);
-      margin-top: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 30px;
     }
-    .modern-table-container.visible { opacity: 1; transform: translateY(0); }
 
-    .synth-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 800px; /* Évite l'écrasement sur mobile */
+    .table-row-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 24px 30px;
+      display: grid;
+      grid-template-columns: 1.2fr 2fr 1.5fr 1.8fr;
+      gap: 24px;
+      align-items: start;
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s;
     }
-    .synth-table th {
+    .table-row-card.visible { opacity: 1; transform: translateY(0); }
+    .table-row-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 213, 79, 0.25);
+    }
+
+    /* En-tête fictif calqué sur la bento grid pour grands écrans */
+    .table-fake-header {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr 1.5fr 1.8fr;
+      gap: 24px;
+      padding: 10px 30px;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: rgba(255,255,255,0.4);
       font-weight: 600;
-      padding: 20px 24px;
-      text-align: left;
-      background: rgba(255, 255, 255, 0.01);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .synth-table td {
-      padding: 24px;
-      font-size: 0.95rem;
-      color: rgba(232,232,240,0.8);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      vertical-align: top;
-      line-height: 1.6;
-      transition: background 0.3s;
-    }
-    .synth-table tr:last-child td { border-bottom: none; }
-    .synth-table tr:hover td {
-      background: rgba(255,255,255,0.015);
-    }
-    
-    /* Badges ultra-modernes */
+
+    /* Badges épurés et lumineux */
     .synth-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 12px;
-      border-radius: 6px;
+      padding: 5px 12px;
+      border-radius: 8px;
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       border: 1px solid transparent;
+      margin-top: 8px;
     }
-    .badge-green  { background: rgba(93,202,138,0.06); color: #5dca8a; border-color: rgba(93,202,138,0.15); }
-    .badge-purple { background: rgba(146,139,243,0.06); color: #928bf3; border-color: rgba(146,139,243,0.15); }
-    .badge-orange { background: rgba(249,178,104,0.06); color: #f9b268; border-color: rgba(249,178,104,0.15); }
-    .badge-blue   { background: rgba(97,213,242,0.06); color: #61d5f2; border-color: rgba(97,213,242,0.15); }
+    .badge-green  { background: rgba(93,202,138,0.08); color: #5dca8a; border-color: rgba(93,202,138,0.2); }
+    .badge-purple { background: rgba(146,139,243,0.08); color: #928bf3; border-color: rgba(146,139,243,0.2); }
+    .badge-orange { background: rgba(249,178,104,0.08); color: #f9b268; border-color: rgba(249,178,104,0.2); }
+    .badge-blue   { background: rgba(97,213,242,0.08); color: #61d5f2; border-color: rgba(97,213,242,0.2); }
 
-    .table-list {
-      list-style: none;
-      padding: 0; margin: 0;
-    }
+    .table-list { list-style: none; padding: 0; margin: 0; }
     .table-list li {
-      position: relative;
-      padding-left: 18px;
-      margin-bottom: 4px;
-      font-size: 0.9rem;
+      position: relative; padding-left: 18px; margin-bottom: 6px; font-size: 0.9rem; color: rgba(241,241,247,0.85);
     }
     .table-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: #ffd54f;
-      font-weight: bold;
+      content: '⚡'; position: absolute; left: 0; color: #ffd54f; font-size: 0.75rem; top: 2px;
+    }
+
+    .row-quote {
+      font-style: italic; color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.5; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 12px;
     }
 
     /* ===== CITATION / HIGHLIGHT ===== */
@@ -404,11 +396,11 @@
       position: relative;
       border-left: 2px solid #ffd54f;
       padding: 24px 32px;
-      background: rgba(255,213,79,0.02);
+      background: rgba(255,213,79,0.04);
       border-radius: 0 16px 16px 0;
       margin: 40px 0;
       font-style: italic;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.8);
       font-size: 1.1rem;
       line-height: 1.8;
       opacity: 0;
@@ -417,82 +409,46 @@
     }
     .highlight-quote.visible { opacity: 1; transform: translateX(0); }
 
-    /* ===== FIERTÉ : CARD HIGHLIGHT ===== */
-    .pride-card {
-      background: linear-gradient(135deg, rgba(106,17,203,0.1) 0%, rgba(37,117,252,0.05) 100%);
-      border: 1px solid rgba(106,17,203,0.2);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 32px 0;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .pride-card.visible { opacity: 1; transform: translateY(0); }
-    .pride-card p {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: rgba(232,232,240,0.8);
-      margin: 0 0 16px;
-      text-align: justify;
-    }
-    .pride-card p:last-child { margin-bottom: 0; }
-
-    /* ===== CONCLUSION ===== */
+    /* ===== CONCLUSION ACCUEILLANTE ===== */
     .conclusion-wrap {
-      background: linear-gradient(135deg, #090522, #04091a);
-      border: 1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(135deg, #130f3a, #0c122b);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 24px;
       padding: 48px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
     .conclusion-wrap::before {
       content: '';
       position: absolute;
       top: -80px; right: -80px;
       width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(255,213,79,0.05) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,213,79,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
     .conclusion-wrap p {
       font-size: 1.05rem;
       line-height: 1.85;
-      color: rgba(232,232,240,0.78);
+      color: rgba(241,241,247,0.85);
       margin: 0;
       text-align: justify;
     }
 
-    /* ===== REVEAL MECHANISM ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ===== BUTTONS ===== */
+    /* ===== RETOUR ET CTA ===== */
     .btn-retour-bilan {
       position: fixed;
-      bottom: 24px; left: 24px;
-      z-index: 200;
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.7);
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-decoration: none;
+      bottom: 24px; left: 24px; z-index: 200;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      padding: 10px 22px; border-radius: 30px;
+      font-size: 0.8rem; font-weight: 600; text-decoration: none;
       transition: all 0.3s ease;
     }
     .btn-retour-bilan:hover {
-      background: rgba(255,213,79,0.1);
-      border-color: #ffd54f;
-      color: #ffd54f;
-      transform: translateX(-3px);
+      background: rgba(255,213,79,0.15); border-color: #ffd54f; color: #ffd54f; transform: translateX(-3px);
     }
 
     .btn-cta-main {
@@ -511,9 +467,18 @@
     }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .table-fake-header { display: none; }
+      .table-row-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 24px;
+      }
+      .row-quote { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 12px; }
+    }
     @media (max-width: 768px) {
       .bilan-nav ul { justify-content: flex-start; overflow-x: auto; padding: 0 8px; }
-      .bilan-nav ul li a { padding: 16px 16px; font-size: 0.75rem; }
+      .bilan-nav ul li a { padding: 16px; font-size: 0.75rem; }
       .bilan-section { padding: 60px 20px; }
       .comp-card { padding: 24px; }
       .conclusion-wrap { padding: 32px 24px; }
@@ -521,6 +486,10 @@
   </style>
 </head>
 <body>
+
+<!-- GLOW ORBS BACKGROUND -->
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
 
 <!-- HERO -->
 <section class="hero">
@@ -544,7 +513,6 @@
     <li><a href="#apports" data-section="apports">Apports</a></li>
     <li><a href="#competences" data-section="competences">Compétences</a></li>
     <li><a href="#synthese" data-section="synthese">Synthèse</a></li>
-    <li><a href="#fierte" data-section="fierte">Fierté</a></li>
     <li><a href="#conclusion" data-section="conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -591,7 +559,7 @@
           <div class="comp-body">
             <p>Lorsque je suis arrivée en BUT, je savais manipuler des données dans des contextes simples, mais je n'avais encore jamais été confrontée à des jeux de données complets ni à des problématiques proches de celles rencontrées en entreprise. Les premières SAÉ, comme la création de reporting à partir d'une base de données relationnelle ou encore l'écriture et la lecture de fichiers de données, m'ont permis d'acquérir les bases nécessaires pour comprendre le cycle de vie d'une donnée.</p>
             <p>Au fil des semestres, j'ai appris à travailler sur des volumes de données plus importants et à utiliser des outils plus variés. La SAÉ de conception et d'implémentation d'une base de données a marqué une étape importante, car elle m'a permis de mieux comprendre l'organisation des données en amont de leur exploitation. Plus tard, les projets d'analyse de données, de reporting et de migration vers des environnements NoSQL m'ont obligée à m'adapter à de nouvelles méthodes de stockage et de traitement.</p>
-            <p>Mon alternance a renforcé cette compétence de manière concrète. J'ai rapidement compris qu'avant toute analyse, il fallait s'assurer de la qualité et de la cohérence des données. Les automatisations réalisées avec Excel, VBA ou Power Query m'ont permis de gagner en efficacité tout en limitant les erreurs. Aujourd'hui, je suis plus attentive à la fiabilité des données et à la structuration des traitements mis en place.</p>
+            <p>Mon alternance a renforcé cette compétence de manière concret. J'ai rapidement compris qu'avant toute analyse, il fallait s'assurer de la qualité et de la cohérence des données. Les automatisations réalisées avec Excel, VBA ou Power Query m'ont permis de gagner en efficacité tout en limitant les erreurs. Aujourd'hui, je suis plus attentive à la fiabilité des données et à la structuration des traitements mis en place.</p>
           </div>
           <div class="comp-progress-wrap">
             <div class="comp-progress-label">
@@ -680,118 +648,104 @@
 
 <hr class="section-divider">
 
-<!-- ===== SECTION 03: SYNTHÈSE MODERNE ===== -->
+<!-- ===== SECTION 03: SYNTHÈSE ASSIMILÉE À UN DASHBOARD ===== -->
 <section id="synthese">
   <div class="bilan-section">
     <span class="section-label">03 — Vue d'ensemble</span>
     <h2 class="section-title">Matrice de synthèse des compétences</h2>
 
-    <div class="modern-table-container modern-reveal">
-      <table class="synth-table">
-        <thead>
-          <tr>
-            <th style="width: 22%">Compétence</th>
-            <th style="width: 30%">Évolution observée</th>
-            <th style="width: 23%">SAÉ marquantes</th>
-            <th style="width: 25%">Ce que j'en retiens aujourd'hui</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="fw-bold mb-2 text-white">Traiter</div>
-              <span class="synth-badge badge-green"><i class="fa-solid fa-circle-check me-1"></i> Très bon</span>
-            </td>
-            <td>Passage d'une manipulation simple des données à la mise en œuvre de traitements plus complets intégrant bases de données, automatisation et gestion de différentes sources.</td>
-            <td>
-              <ul class="table-list">
-                <li>S101 (Reporting SQL)</li>
-                <li>S201 (Base de données)</li>
-                <li>S206 (Reporting & analyse)</li>
-                <li>S502 (Migration NoSQL)</li>
-              </ul>
-            </td>
-            <td class="fst-italic text-white-50">"La qualité des analyses dépend avant tout de la rigueur et de la propreté des traitements en amont."</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="fw-bold mb-2 text-white">Analyser</div>
-              <span class="synth-badge badge-purple"><i class="fa-solid fa-chart-line me-1"></i> Très bon</span>
-            </td>
-            <td>Développement progressif d'une véritable démarche statistique : exploration mathématique, choix pertinent des méthodes, interprétation rigoureuse et recul critique.</td>
-            <td>
-              <ul class="table-list">
-                <li>S202 (Sondage)</li>
-                <li>S203 (Régression)</li>
-                <li>S401 (Analyse multivariée)</li>
-                <li>S504 (Analyse avancée)</li>
-              </ul>
-            </td>
-            <td class="fst-italic text-white-50">"Je sais aujourd'hui structurer un raisonnement statistique complet de bout en bout et justifier mes choix."</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="fw-bold mb-2 text-white">Valoriser</div>
-              <span class="synth-badge badge-orange"><i class="fa-solid fa-eye me-1"></i> Très bon</span>
-            </td>
-            <td>Évolution majeure dans la restitution et la vulgarisation des résultats (écrit/oral), avec une attention croissante portée aux besoins métiers réels.</td>
-            <td>
-              <ul class="table-list">
-                <li>S104 (Présentation)</li>
-                <li>S106 (Enquête)</li>
-                <li>S205 (KPI Performance)</li>
-                <li>S206 (Vidéo & Restitution)</li>
-              </ul>
-            </td>
-            <td class="fst-italic text-white-50">"Une analyse n'a de valeur réelle que si elle est comprise, transparente et exploitable pour la prise de décision."</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="fw-bold mb-2 text-white">Modéliser</div>
-              <span class="synth-badge badge-blue"><i class="fa-solid fa-brain me-1"></i> Bon niveau</span>
-            </td>
-            <td>Transition majeure d'une approche purement descriptive vers l'appropriation et la compréhension approfondie de modèles statistiques complexes et prédictifs.</td>
-            <td>
-              <ul class="table-list">
-                <li>S203 (Régression)</li>
-                <li>S401 (Prédiction de variable)</li>
-                <li>S503 (Datamining)</li>
-                <li>S504 (Analyse avancée)</li>
-              </ul>
-            </td>
-            <td class="fst-italic text-white-50">"C'est la brique maîtresse que je souhaite parfaire lors de mon Master à l'Institut Polytechnique de Paris."</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- En-têtes pour Desktop -->
+    <div class="table-fake-header">
+      <div>Compétence</div>
+      <div>Évolution observée</div>
+      <div>SAÉ marquantes</div>
+      <div>Ce que j'en retiens</div>
+    </div>
+
+    <div class="modern-table-container">
+      
+      <!-- Bloc Traiter -->
+      <div class="table-row-card table-reveal">
+        <div>
+          <div class="fw-bold text-white fs-5">Traiter</div>
+          <span class="synth-badge badge-green"><i class="fa-solid fa-database me-1"></i> Très bon</span>
+        </div>
+        <div>Passage d'une manipulation simple des données à la mise en œuvre de traitements plus complets intégrant bases de données, automatisation et gestion de différentes sources.</div>
+        <div>
+          <ul class="table-list">
+            <li>S101 (Reporting SQL)</li>
+            <li>S201 (Base de données)</li>
+            <li>S206 (Reporting & analyse)</li>
+            <li>S502 (Migration NoSQL)</li>
+          </ul>
+        </div>
+        <div class="row-quote">"La qualité des analyses dépend avant tout de la rigueur et de la propreté des traitements en amont."</div>
+      </div>
+
+      <!-- Bloc Analyser -->
+      <div class="table-row-card table-reveal">
+        <div>
+          <div class="fw-bold text-white fs-5">Analyser</div>
+          <span class="synth-badge badge-purple"><i class="fa-solid fa-chart-simple me-1"></i> Très bon</span>
+        </div>
+        <div>Développement progressif d'une véritable démarche statistique : exploration mathématique, choix pertinent des méthodes, interprétation rigoureuse et recul critique.</div>
+        <div>
+          <ul class="table-list">
+            <li>S202 (Sondage)</li>
+            <li>S203 (Régression)</li>
+            <li>S401 (Analyse multivariée)</li>
+            <li>S504 (Analyse avancée)</li>
+          </ul>
+        </div>
+        <div class="row-quote">"Je sais aujourd'hui structurer un raisonnement statistique complet de bout en bout et justifier mes choix."</div>
+      </div>
+
+      <!-- Bloc Valoriser -->
+      <div class="table-row-card table-reveal">
+        <div>
+          <div class="fw-bold text-white fs-5">Valoriser</div>
+          <span class="synth-badge badge-orange"><i class="fa-solid fa-chart-pie me-1"></i> Très bon</span>
+        </div>
+        <div>Évolution majeure dans la restitution et la vulgarisation des résultats (écrit/oral), avec une attention croissante portée aux besoins métiers réels.</div>
+        <div>
+          <ul class="table-list">
+            <li>S104 (Présentation)</li>
+            <li>S106 (Enquête)</li>
+            <li>S205 (KPI Performance)</li>
+            <li>S206 (Vidéo & Restitution)</li>
+          </ul>
+        </div>
+        <div class="row-quote">"Une analyse n'a de valeur réelle que si elle est comprise, transparente et exploitable pour la prise de décision."</div>
+      </div>
+
+      <!-- Bloc Modéliser -->
+      <div class="table-row-card table-reveal">
+        <div>
+          <div class="fw-bold text-white fs-5">Modéliser</div>
+          <span class="synth-badge badge-blue"><i class="fa-solid fa-gears me-1"></i> Bon niveau</span>
+        </div>
+        <div>Transition majeure d'une approche purement descriptive vers l'appropriation et la compréhension approfondie de modèles statistiques complexes et prédictifs.</div>
+        <div>
+          <ul class="table-list">
+            <li>S203 (Régression)</li>
+            <li>S401 (Prédiction de variable)</li>
+            <li>S503 (Datamining)</li>
+            <li>S504 (Analyse avancée)</li>
+          </ul>
+        </div>
+        <div class="row-quote">"C'est la brique maîtresse que je souhaite parfaire lors de mon Master à l'Institut Polytechnique de Paris."</div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <hr class="section-divider">
 
-<!-- ===== SECTION 04: FIERTÉ ===== -->
-<section id="fierte">
-  <div class="bilan-section">
-    <span class="section-label">04 — Accomplissement majeur</span>
-    <h2 class="section-title">Ma plus grande fierté</h2>
-    
-    <div class="pride-card reveal">
-      <p>
-        Si je devais retenir une réalisation majeure de ces trois années, ce serait la conception de A à Z d’un pipeline automatisé de traitement et de visualisation lors de mon alternance. Face à des processus métiers longs et sujets aux erreurs manuelles, j'ai su prendre l'initiative de concevoir des outils automatisés robustes (via VBA et Power Query), réduisant drastiquement le temps de traitement hebdomadaire.
-      </p>
-      <p>
-        Ce projet incarne pour moi la convergence parfaite des compétences acquises : l'agilité technique face à la donnée complexe, et la capacité à restituer un outil clair, pérenne et à forte valeur ajoutée pour les équipes décisionnelles.
-      </p>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ===== SECTION 05: CONCLUSION ===== -->
+<!-- ===== SECTION 04: CONCLUSION ===== -->
 <section id="conclusion">
   <div class="bilan-section">
-    <span class="section-label">05 — Bilan global</span>
+    <span class="section-label">04 — Bilan global</span>
     <h2 class="section-title">Là où tout converge</h2>
 
     <div class="reveal conclusion-wrap">
@@ -808,23 +762,23 @@
       </p>
     </div>
 
-    <!-- CTA de retour -->
+    <!-- Bouton Retour principal -->
     <div class="text-center mt-5 reveal">
       <a href="index.html" class="btn-cta-main">
         <i class="fa-solid fa-arrow-left"></i> Retour au portfolio
       </a>
     </div>
 
-    <div style="height: 40px;"></div>
+    <div style="height: 20px;"></div>
   </div>
 </section>
 
-<!-- BTN FIXE RETOUR MOBILE -->
+<!-- BOUTON RETOUR FIXE FLOTTANT -->
 <a href="index.html" class="btn-retour-bilan"><i class="fa-solid fa-arrow-left me-2"></i>Retour</a>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
-// ---- Canvas Étoiles avec Mouvement (Parallaxe spatial fluide) ----
+// ---- Canvas Étoiles Fluides Dynamiques ----
 (function() {
   const canvas = document.getElementById('stars-canvas');
   const ctx = canvas.getContext('2d');
@@ -837,13 +791,13 @@
 
   function initStars() {
     stars = [];
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 140; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 1.2 + 0.3,
+        r: Math.random() * 1.3 + 0.3,
         alpha: Math.random(),
-        speedY: Math.random() * 0.15 + 0.05 // Donne une impulsion vers le haut très discrète
+        speedY: Math.random() * 0.18 + 0.04 // Léger défilement ascendant reposant
       });
     }
   }
@@ -851,11 +805,11 @@
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     stars.forEach(s => {
-      s.y -= s.speedY; // Déplacement continu
-      if (s.y < 0) s.y = canvas.height; // Réinitialise en bas si sort de l'écran
+      s.y -= s.speedY;
+      if (s.y < 0) s.y = canvas.height;
 
       s.alpha += (Math.random() - 0.5) * 0.04;
-      s.alpha = Math.max(0.1, Math.min(0.8, s.alpha));
+      s.alpha = Math.max(0.15, Math.min(0.85, s.alpha));
 
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
@@ -871,10 +825,10 @@
   window.addEventListener('resize', () => { resize(); initStars(); });
 })();
 
-// ---- IntersectionObserver (Effet Reveal fluide au scroll) ----
+// ---- IntersectionObserver (Apparitions rythmées au défilement) ----
 (function() {
   const targets = document.querySelectorAll(
-    '.section-label, .section-title, .bilan-text, .comp-item, .reveal, .highlight-quote, .pride-card, .modern-table-container'
+    '.section-label, .section-title, .bilan-text, .comp-item, .reveal, .highlight-quote, .table-row-card'
   );
 
   const io = new IntersectionObserver((entries) => {
@@ -883,14 +837,14 @@
         e.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   targets.forEach(t => io.observe(t));
 })();
 
-// ---- Sticky Navigation Highlighting ----
+// ---- Sticky Navigation Active Highlighter ----
 (function() {
-  const sections = ['apports','competences','synthese','fierte','conclusion'];
+  const sections = ['apports','competences','synthese','conclusion'];
   const links = document.querySelectorAll('.bilan-nav a[data-section]');
 
   window.addEventListener('scroll', () => {
