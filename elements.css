@@ -476,3 +476,14 @@ nav a:hover {
 .sommet-sub     { font-size:0.8rem; color:rgba(255,255,255,0.6); }
 .sommet-arrow   { margin-left:auto; flex-shrink:0; font-size:1.5rem; color:#ffd54f; font-weight:bold; transition:transform 0.3s ease; }
 .sommet-card:hover .sommet-arrow { transform: translateX(6px); }
+/* Force le bouton sommet à apparaître au-dessus du filtre blanc de #projets */
+#projets .sommet-card {
+  isolation: isolate;
+  z-index: 2;
+  position: relative;
+}
+
+#projets .text-center.mt-2.mb-5 {
+  position: relative;
+  z-index: 2;
+}
