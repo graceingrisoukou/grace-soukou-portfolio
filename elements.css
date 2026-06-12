@@ -72,45 +72,43 @@ nav a:hover {
   width: 180px;
   height: 180px;
   object-fit: cover;
-  border-radius: 20px; /* change 50% → 20px pour un carré avec coins arrondis */
+  border-radius: 20px;
   border: 5px solid white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-
-/* CARROUSEL */
-.carousel-inner {
-  min-height: 100vh;
-  background: url('images/math.png') center center / cover no-repeat;
-}
-
-/* APRÈS */
+/* CARROUSEL — reset de base */
 .carousel-item {
   display: block !important;
   min-height: 0;
   padding: 0;
 }
-/* ===== SECTION À PROPOS ===== */
+
+/* ===================================================
+   SECTION À PROPOS — tout le bloc en un seul endroit
+   =================================================== */
 #apropos {
   padding: 0 !important;
   min-height: auto !important;
 }
+
 #apropos .carousel-inner {
-  min-height: 50vh;
+  min-height: 42vh;
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   position: relative;
   overflow: hidden;
 }
 
-/* Particules CSS animées en fond */
+/* Grille de points animée */
 #apropos .carousel-inner::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridDrift 20s linear infinite;
+    radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,213,79,0.06) 2px, transparent 2px);
+  background-size: 40px 40px, 80px 80px;
+  animation: gridDrift 15s linear infinite;
   pointer-events: none;
   z-index: 0;
 }
@@ -119,13 +117,13 @@ nav a:hover {
   100% { transform: translateY(40px) translateX(40px); }
 }
 
-/* Halos colorés animés */
+/* Halo violet animé */
 #apropos .carousel-inner::after {
   content: '';
   position: absolute;
   width: 500px; height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(106,17,203,0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(106,17,203,0.35) 0%, transparent 70%);
   top: -150px; left: -100px;
   animation: haloDrift 8s ease-in-out infinite alternate;
   pointer-events: none;
@@ -137,11 +135,11 @@ nav a:hover {
 }
 
 #apropos .carousel-slide-wrap {
-  min-height: 50vh;
+  min-height: 42vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 24px 20px;
   position: relative;
   z-index: 1;
 }
@@ -149,7 +147,7 @@ nav a:hover {
 #apropos .bg-blur {
   max-width: 640px;
   width: 100%;
-  padding: 32px 36px;
+  padding: 28px 36px;
   background: rgba(10, 5, 40, 0.55);
   backdrop-filter: blur(16px);
   border-radius: 18px;
@@ -170,20 +168,17 @@ nav a:hover {
   color: rgba(255,255,255,0.88);
   margin-bottom: 0;
 }
-.slide-anim {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+
+/* Pulse sur la carte à chaque slide */
+.carousel-item.active .bg-blur {
+  animation: cardPulse 0.7s ease;
 }
-.carousel-item.active .slide-anim {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes cardPulse {
+  0%   { box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
+  50%  { box-shadow: 0 8px 55px rgba(106,17,203,0.55), 0 0 0 3px rgba(255,213,79,0.25); }
+  100% { box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
 }
-@media (max-width: 768px) {
-  #apropos .carousel-slide-wrap { min-height: 60vh; padding: 30px 16px; }
-  #apropos .bg-blur { padding: 24px 20px; }
-  #apropos .bg-blur h1 { font-size: 1.4rem; }
-}
+
 /* Animation entrée slide */
 .slide-anim {
   opacity: 0;
@@ -195,42 +190,61 @@ nav a:hover {
   transform: translateY(0) scale(1);
 }
 
-/* Nouvelles flèches */
+/* ===================================================
+   FLÈCHES — bloc UNIQUE, Bootstrap écrasé proprement
+   =================================================== */
 .carousel-control-prev,
 .carousel-control-next {
-  width: 44px;
-  height: 44px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: none;
-  transition: background 0.3s ease, transform 0.3s ease;
+  width: 44px !important;
+  height: 44px !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255,255,255,0.15) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255,255,255,0.35) !important;
+  box-shadow: none !important;
+  transition: background 0.3s ease, transform 0.3s ease !important;
+  opacity: 1 !important;
 }
-.carousel-control-prev { left: 20px; }
-.carousel-control-next { right: 20px; }
+.carousel-control-prev { left: 20px !important; right: auto !important; }
+.carousel-control-next { right: 20px !important; left: auto !important; }
+
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-  background: rgba(255,255,255,0.28);
-  transform: translateY(-50%) scale(1.1);
+  background: rgba(255,255,255,0.3) !important;
+  transform: translateY(-50%) scale(1.12) !important;
 }
+
+/* On cache les icônes Bootstrap par défaut */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: none !important;
+}
+
+/* Nos flèches custom */
 .fleche-custom {
   font-size: 1.8rem;
   color: white;
   font-weight: 300;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Responsive à propos */
 @media (max-width: 768px) {
-  #apropos .carousel-slide-wrap { min-height: 55vh; padding: 28px 16px; }
+  #apropos .carousel-inner  { min-height: 55vh; }
+  #apropos .carousel-slide-wrap { min-height: 55vh; padding: 24px 16px; }
   #apropos .bg-blur { padding: 22px 18px; }
   #apropos .bg-blur h1 { font-size: 1.3rem; }
 }
 
-
-/* TEXTE ET BOUTON CENTRÉS */
+/* ===================================================
+   TEXTE ET BOUTON CARROUSEL
+   =================================================== */
 .carousel-caption {
   width: 100%;
   max-width: 900px;
@@ -239,7 +253,6 @@ nav a:hover {
   margin-bottom: 30px;
 }
 
-/* BOUTON SOUS LE TEXTE */
 .carousel-btn {
   margin-top: 25px;
 }
@@ -258,127 +271,15 @@ nav a:hover {
   color: white;
 }
 
-/* ANIMATION SLIDE */
-.carousel-item:not(.active) .carousel-caption h1,
-.carousel-item:not(.active) .carousel-caption p {
-  opacity: 0;
-  animation: fadeInSlide 2s ease forwards;
-}
-@keyframes fadeInSlide {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* FLÈCHES */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: brightness(3);
-  width: 3rem;
-  height: 3rem;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .bg-blur {
-    padding: 20px;
-    font-size: 0.9rem;
-  }
-  .carousel-caption h1 {
-    font-size: 1.6rem;
-  }
-  .carousel-caption p {
-    font-size: 1rem;
-  }
-  .carousel-btn a {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-  }
-}
-.carousel-control-prev,
-.carousel-control-next {
-  width: 60px;
-  height: 60px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.85); /* Blanc semi-transparent */
-  border-radius: 50%;
-  border: 2px solid #444; /* Liseré foncé */
-  transition: background-color 0.3s ease;
-  z-index: 10;
-}
-
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  background-color: #4dd0e1; /* Couleur d'accent */
-  color: white;
-}
-
-/* Icônes flèches */
-.carousel-arrow {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #212121; /* Couleur plus foncée */
-}
-.carousel-control-prev,
-.carousel-control-next {
-  width: 50px;
-  height: 50px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 50%;
-  border: 2px solid #444;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 10;
-}
-
-/* Positionnement plus proche du texte */
-.carousel-control-prev {
-  left: 5%;
-}
-
-.carousel-control-next {
-  right: 5%;
-}
-/* Conteneur escalier */
-.escalier-buttons {
-  gap: 60px;
-}
-
-/* Style général des boutons */
-/* Boutons escalier améliorés */
-.stair-button {
-  border-radius: 30px;
-  padding: 20px 40px;
-  font-size: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: clignote 2s infinite;
-}
-
-.stair-but1 {
-  background-color: #218838;
-  transform: translateY(30px);
-}
-
-.stair-but2 {
-  background-color: #0d6efd;
-}
-
-.stair-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* Animation clignotante */
-@keyframes clignote {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.75; }
-}
+/* ===================================================
+   SECTION PROJETS
+   =================================================== */
 #projets {
-  background-image: url('images/fondprojet.png');
-  background-size: cover;
-  background-position: center;
+  background-image: url('fondprojet.png');
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
   position: relative;
   z-index: 1;
   padding-top: 100px;
@@ -389,119 +290,9 @@ nav a:hover {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255, 255, 255, 0.8); /* léger filtre pour lisibilité du texte */
+  background: rgba(255, 255, 255, 0.8);
   z-index: -1;
 }
-/* Lightbox styles */
-#lightbox-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  cursor: zoom-out;
-  transition: opacity 0.3s ease;
-}
-
-#lightbox-modal img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 8px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.5);
-}
-
-.lightbox-hidden {
-  display: none;
-}
-/* Zoom fluide dans la section (sans lightbox plein écran) */
-
-/* Conteneur d’image centré avec zoom fluide */
-.image-container {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-  overflow: hidden;
-}
-
-.image-full {
-  display: block;
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  max-height: 100%;
-  transition: transform 0.3s ease-in-out;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.image-container:hover .image-full {
-  transform: scale(1.05);
-}
-.image-zoom-final {
-  max-width: 100%;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.image-zoom-final:hover {
-  transform: scale(1.03);
-}
-
-/* ===== MODAL PROJET PROFESSIONNEL ===== */
-.modal-pro {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  z-index: 3000;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content-pro {
-  max-width: 90%;
-  max-height: 90%;
-  text-align: center;
-  color: white;
-}
-
-.modal-content-pro img {
-  width: 100%;
-  max-height: 65vh;
-  object-fit: contain;
-  border-radius: 20px;
-}
-
-.modal-content-pro p {
-  margin-top: 15px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.close-pro {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 42px;
-  color: white;
-  cursor: pointer;
-}
-
-/* ===== RESPONSIVE MOBILE ===== */
-@media (max-width: 768px) {
-  .modal-content-pro p {
-    font-size: 1rem;
-  }
-}
-/* ===== AJUSTEMENT SECTION "Projets Académiques" ===== */
-/* Réduit la taille du bloc texte pour laisser voir l'illustration de fond */
 
 #projets .intro-box {
   max-width: 550px;
@@ -511,15 +302,38 @@ nav a:hover {
   animation: introFloat 0.9s ease-out;
 }
 
-/* Petite animation d'entrée : le bloc apparaît en douceur depuis le haut */
 @keyframes introFloat {
   from { opacity: 0; transform: translateY(-25px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Animation d'apparition pour les boutons BUT 1 / BUT 2 */
-#projets .stair-button {
+/* ===================================================
+   BOUTONS ESCALIER
+   =================================================== */
+.stair-button {
+  border-radius: 30px;
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: clignote 2s infinite, popIn 0.6s ease-out;
+}
+
+.stair-but1 {
+  background-color: #218838;
+  transform: translateY(30px);
+}
+.stair-but2 {
+  background-color: #0d6efd;
+}
+
+.stair-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+@keyframes clignote {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
 }
 
 @keyframes popIn {
@@ -530,13 +344,16 @@ nav a:hover {
 #projets .stair-but1 { animation-delay: 0s, 0.1s; }
 #projets .stair-but2 { animation-delay: 0s, 0.3s; }
 
-/* Sur mobile, on réduit encore un peu */
 @media (max-width: 768px) {
   #projets .intro-box {
     max-width: 90%;
     padding: 14px 18px;
   }
 }
+
+/* ===================================================
+   BOUTON SOMMET / BILAN
+   =================================================== */
 .sommet-btn-link { text-decoration: none; display: block; }
 .sommet-card {
   position: relative; max-width: 520px; border-radius: 22px;
@@ -601,14 +418,285 @@ nav a:hover {
 .sommet-sub     { font-size:0.8rem; color:rgba(255,255,255,0.6); }
 .sommet-arrow   { margin-left:auto; flex-shrink:0; font-size:1.5rem; color:#ffd54f; font-weight:bold; transition:transform 0.3s ease; }
 .sommet-card:hover .sommet-arrow { transform: translateX(6px); }
-/* Force le bouton sommet à apparaître au-dessus du filtre blanc de #projets */
+
 #projets .sommet-card {
   isolation: isolate;
   z-index: 2;
   position: relative;
 }
-
 #projets .text-center.mt-2.mb-5 {
   position: relative;
   z-index: 2;
+}
+
+/* ===================================================
+   IMAGES ZOOM
+   =================================================== */
+.image-zoom-final {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.image-zoom-final:hover {
+  transform: scale(1.03);
+}
+
+.image-illustree {
+  width: 100%;
+  max-width: 650px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.image-illustree:hover {
+  transform: scale(1.05) rotate(-1deg) translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+.image-container {
+  flex: 0 0 auto !important;
+  max-width: 420px !important;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+.image-full {
+  display: block;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.image-container:hover .image-full {
+  transform: scale(1.05);
+}
+
+/* ===================================================
+   MODAL PROJET PROFESSIONNEL
+   =================================================== */
+.modal-pro {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 3000;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content-pro {
+  max-width: 90%;
+  max-height: 90%;
+  text-align: center;
+  color: white;
+}
+.modal-content-pro img {
+  width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: 20px;
+}
+.modal-content-pro p {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.close-pro {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 42px;
+  color: white;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .modal-content-pro p { font-size: 1rem; }
+}
+
+/* ===================================================
+   SECTION OBJECTIFS
+   =================================================== */
+.objectifs-bg {
+  background: linear-gradient(120deg, #fdf6ec 30%, #f3e9da 70%);
+}
+.objectifs-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 50px;
+}
+.objectifs-timeline::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(to bottom, #5DCAA5, #AFA9EC, #F0997B);
+}
+.objectif-item {
+  position: relative;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.objectif-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.objectif-marker {
+  position: absolute;
+  left: -50px;
+  top: 4px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+.objectif-teal   { background-color: #1D9E75; }
+.objectif-purple { background-color: #7F77DD; }
+.objectif-coral  { background-color: #D85A30; }
+
+.objectif-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-left: 5px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.objectif-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.objectif-card.objectif-teal   { border-left-color: #1D9E75; }
+.objectif-card.objectif-purple { border-left-color: #7F77DD; }
+.objectif-card.objectif-coral  { border-left-color: #D85A30; }
+
+.objectif-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.objectif-card.objectif-teal .objectif-tag   { background-color: #E1F5EE; color: #085041; }
+.objectif-card.objectif-purple .objectif-tag { background-color: #EEEDFE; color: #3C3489; }
+.objectif-card.objectif-coral .objectif-tag  { background-color: #FAECE7; color: #712B13; }
+.objectif-card h5 {
+  margin: 0 0 10px;
+  color: #2C2C2A;
+  font-size: 1.15rem;
+}
+.objectif-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444441;
+  text-align: justify;
+}
+@media (max-width: 768px) {
+  .objectifs-timeline { padding-left: 40px; }
+  .objectif-marker { left: -40px; width: 32px; height: 32px; font-size: 1rem; }
+}
+
+/* ===================================================
+   FOOTER CONTACT
+   =================================================== */
+.contact-footer {
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  color: white;
+  padding: 60px 20px 0;
+  margin-top: 80px;
+}
+.contact-footer h2 { font-weight: 700; }
+.contact-infos p { font-size: 1.1rem; margin-bottom: 10px; }
+.contact-footer a { color: #ffd54f; text-decoration: none; font-weight: 500; }
+.contact-footer a:hover { text-decoration: underline; }
+.contact-footer hr { border-color: rgba(255,255,255,0.3); margin-top: 20px; margin-bottom: 20px; }
+.contact-footer .copyright {
+  display: block;
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #cccccc;
+  text-align: center;
+  padding: 15px 10px;
+  margin: 0;
+  font-size: 0.95rem;
+}
+@media (max-width: 768px) {
+  .contact-footer { padding: 40px 15px 0; }
+  .contact-footer h2 { font-size: 1.5rem; }
+  .contact-infos p { font-size: 1rem; }
+}
+
+/* ===================================================
+   ESCALIER DÉCORATIF (section legacy)
+   =================================================== */
+.escalier-section {
+  background: linear-gradient(135deg, #6e00ff, #009dff);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+.escalier-container {
+  position: relative;
+  width: 80%;
+  height: 80%;
+}
+.marche {
+  position: absolute;
+  background-color: white;
+  color: #1e1e2f;
+  padding: 20px 40px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: transform 0.3s;
+  z-index: 1;
+}
+#marche1 { bottom: 50px; left: 100px; }
+#marche2 { bottom: 150px; left: 300px; }
+.fille {
+  position: absolute;
+  bottom: 55px;
+  left: 60px;
+  width: 60px;
+  height: 120px;
+  background: linear-gradient(to bottom, #f9c74f 40%, #577590 40%);
+  border-radius: 20px;
+  transition: all 0.8s ease;
+}
+.fille::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  background: #f9844a;
+  border-radius: 50%;
 }
