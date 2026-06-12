@@ -362,7 +362,170 @@
   </div>
 </section>
 
-<!-- Rapport d'activité -->
+<!-- Mes objectifs -->
+<section id="objectifs" class="container my-5">
+  <div class="row g-5 p-4 rounded shadow-lg objectifs-bg">
+    <div class="col-12">
+      <h2 class="fw-bold text-center mb-5">🎯 MES OBJECTIFS</h2>
+
+      <div class="objectifs-timeline">
+
+        <div class="objectif-item">
+          <div class="objectif-marker objectif-teal">✓</div>
+          <div class="objectif-card objectif-teal">
+            <span class="objectif-tag">Court terme — objectif atteint</span>
+            <h5>Intégrer un master de haut niveau</h5>
+            <p>
+              Après une classe préparatoire dans mon pays d'origine puis un BUT Science des données en France, je m'étais fixé comme objectif de mettre toutes les chances de mon côté pour poursuivre mes études dans une formation reconnue en mathématiques appliquées et statistiques. Cet objectif est aujourd'hui atteint : je poursuivrai l'année prochaine en <strong>Master 1 Applied Mathematics and Statistics</strong> à l'<strong>Institut Polytechnique de Paris</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="objectif-item">
+          <div class="objectif-marker objectif-purple">2</div>
+          <div class="objectif-card objectif-purple">
+            <span class="objectif-tag">Moyen terme</span>
+            <h5>Se spécialiser en Master 2</h5>
+            <p>
+              À l'issue de cette première année de master, je souhaite me spécialiser dans un domaine appliqué à la finance, à l'économie ou à l'actuariat, afin de développer une expertise quantitative plus poussée.
+            </p>
+          </div>
+        </div>
+
+        <div class="objectif-item">
+          <div class="objectif-marker objectif-coral">3</div>
+          <div class="objectif-card objectif-coral">
+            <span class="objectif-tag">Long terme</span>
+            <h5>Évoluer dans la finance ou l'assurance</h5>
+            <p>
+              À terme, je souhaite évoluer dans les secteurs de la finance ou de l'assurance, dans des métiers mobilisant les mathématiques, les statistiques et l'analyse de données pour accompagner la prise de décision et l'évaluation des risques.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.objectifs-bg {
+  background: linear-gradient(120deg, #fdf6ec 30%, #f3e9da 70%);
+}
+.objectifs-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 50px;
+}
+.objectifs-timeline::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(to bottom, #5DCAA5, #AFA9EC, #F0997B);
+}
+.objectif-item {
+  position: relative;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.objectif-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.objectif-marker {
+  position: absolute;
+  left: -50px;
+  top: 4px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+.objectif-teal   { background-color: #1D9E75; }
+.objectif-purple { background-color: #7F77DD; }
+.objectif-coral  { background-color: #D85A30; }
+
+.objectif-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-left: 5px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.objectif-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.objectif-card.objectif-teal   { border-left-color: #1D9E75; }
+.objectif-card.objectif-purple { border-left-color: #7F77DD; }
+.objectif-card.objectif-coral  { border-left-color: #D85A30; }
+
+.objectif-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.objectif-teal .objectif-tag, .objectif-card.objectif-teal .objectif-tag {
+  background-color: #E1F5EE; color: #085041;
+}
+.objectif-card.objectif-purple .objectif-tag {
+  background-color: #EEEDFE; color: #3C3489;
+}
+.objectif-card.objectif-coral .objectif-tag {
+  background-color: #FAECE7; color: #712B13;
+}
+.objectif-card h5 {
+  margin: 0 0 10px;
+  color: #2C2C2A;
+  font-size: 1.15rem;
+}
+.objectif-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444441;
+  text-align: justify;
+}
+@media (max-width: 768px) {
+  .objectifs-timeline { padding-left: 40px; }
+  .objectif-marker { left: -40px; width: 32px; height: 32px; font-size: 1rem; }
+}
+</style>
+
+<script>
+(function() {
+  const items = document.querySelectorAll('.objectif-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  items.forEach(item => observer.observe(item));
+})();
+</script>
+
+
 <section id="rapport-activite" class="container my-5">
   <div class="row g-5 p-4 rounded shadow-lg text-center"
        style="background: linear-gradient(120deg, #f3e5f5 30%, #e1bee7 70%);">
@@ -415,3 +578,4 @@ function closeModal() {
   document.getElementById("imageModal").style.display = "none";
 }
 </script>
+
