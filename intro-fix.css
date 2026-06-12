@@ -1,14 +1,12 @@
-/* ===== AJUSTEMENT BANDEAU INTRO "Projets Académiques" ===== */
-/* Réduit la largeur/hauteur du bloc bleu-violet pour laisser voir
-   l'illustration de fond (la silhouette de la fille sur l'escalier) */
+/* ===== AJUSTEMENT SECTION "Projets Académiques" ===== */
+/* Réduit la taille du bloc texte pour laisser voir l'illustration de fond */
 
-#projets-academiques .bg-blur,
-#projets .bg-blur {
-  max-width: 600px;
-  padding: 20px 25px;
-  margin: 0 0 0 0;
+#projets .intro-box {
+  max-width: 550px;
+  padding: 18px 22px;
+  margin: 0 auto 30px auto;
   font-size: 0.95rem;
-  animation: introFloat 0.9s ease-out, introGlow 4s ease-in-out infinite;
+  animation: introFloat 0.9s ease-out;
 }
 
 /* Petite animation d'entrée : le bloc apparaît en douceur depuis le haut */
@@ -17,14 +15,8 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Légère pulsation lumineuse pour dynamiser le bloc sans le rendre imposant */
-@keyframes introGlow {
-  0%, 100% { box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
-  50%      { box-shadow: 0 8px 28px rgba(77,208,225,0.35); }
-}
-
-/* Boutons "Projet BUT 1 / 2" : petite animation au survol pour dynamiser */
-.stair-button {
+/* Animation d'apparition pour les boutons BUT 1 / BUT 2 */
+#projets .stair-button {
   animation: clignote 2s infinite, popIn 0.6s ease-out;
 }
 
@@ -33,14 +25,13 @@
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-.stair-but1 { animation-delay: 0s, 0.1s; }
-.stair-but2 { animation-delay: 0s, 0.3s; }
+#projets .stair-but1 { animation-delay: 0s, 0.1s; }
+#projets .stair-but2 { animation-delay: 0s, 0.3s; }
 
-/* Sur mobile, on réduit encore un peu pour bien voir l'image de fond */
+/* Sur mobile, on réduit encore un peu */
 @media (max-width: 768px) {
-  #projets-academiques .bg-blur,
-  #projets .bg-blur {
+  #projets .intro-box {
     max-width: 90%;
-    padding: 15px 18px;
+    padding: 14px 18px;
   }
 }
