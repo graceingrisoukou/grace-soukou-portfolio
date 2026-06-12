@@ -375,3 +375,40 @@ nav a:hover {
     font-size: 1rem;
   }
 }
+/* ===== AJUSTEMENT SECTION "Projets Académiques" ===== */
+/* Réduit la taille du bloc texte pour laisser voir l'illustration de fond */
+
+#projets .intro-box {
+  max-width: 550px;
+  padding: 18px 22px;
+  margin: 0 auto 30px auto;
+  font-size: 0.95rem;
+  animation: introFloat 0.9s ease-out;
+}
+
+/* Petite animation d'entrée : le bloc apparaît en douceur depuis le haut */
+@keyframes introFloat {
+  from { opacity: 0; transform: translateY(-25px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation d'apparition pour les boutons BUT 1 / BUT 2 */
+#projets .stair-button {
+  animation: clignote 2s infinite, popIn 0.6s ease-out;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85) translateY(15px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+#projets .stair-but1 { animation-delay: 0s, 0.1s; }
+#projets .stair-but2 { animation-delay: 0s, 0.3s; }
+
+/* Sur mobile, on réduit encore un peu */
+@media (max-width: 768px) {
+  #projets .intro-box {
+    max-width: 90%;
+    padding: 14px 18px;
+  }
+}
