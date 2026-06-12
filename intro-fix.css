@@ -2,10 +2,10 @@
 /* Réduit la taille du bloc texte pour laisser voir l'illustration de fond */
 
 #projets .intro-box {
-  max-width: 550px;
-  padding: 18px 22px;
-  margin: 0 auto 30px auto;
-  font-size: 0.95rem;
+  max-width: 420px;
+  padding: 16px 20px;
+  margin: 0 auto 30px 0;
+  font-size: 0.9rem;
   animation: introFloat 0.9s ease-out;
 }
 
@@ -28,10 +28,38 @@
 #projets .stair-but1 { animation-delay: 0s, 0.1s; }
 #projets .stair-but2 { animation-delay: 0s, 0.3s; }
 
-/* Sur mobile, on réduit encore un peu */
+/* Sur mobile, on réduit encore un peu et on centre */
 @media (max-width: 768px) {
   #projets .intro-box {
     max-width: 90%;
     padding: 14px 18px;
+    margin: 0 auto 30px auto;
+  }
+}
+
+/* Bouton Projets BUT 3 - même style que les autres, couleur distincte */
+#projets .stair-but3 {
+  background-color: #8e24aa;
+}
+
+/* ===== AJUSTEMENT BLOC "QUI SUIS-JE ?" (carousel À propos) ===== */
+/* Réduit la taille du bloc violet/flou pour laisser plus d'espace au fond */
+#apropos .bg-blur {
+  max-width: 600px;
+  padding: 20px 30px;
+}
+#apropos .carousel-item {
+  min-height: 50vh;
+}
+#apropos .bg-blur h1 {
+  font-size: 1.8rem;
+}
+#apropos .bg-blur p.lead {
+  font-size: 1rem;
+}
+@media (max-width: 768px) {
+  #apropos .bg-blur {
+    max-width: 90%;
+    padding: 16px 20px;
   }
 }
