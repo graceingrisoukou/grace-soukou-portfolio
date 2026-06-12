@@ -269,63 +269,71 @@
   </div>
 </section>
 
-<!-- Évolution des missions -->
-<section id="evolution-missions" class="container my-5">
+<style>
+.image-illustree {
+  width: 100%;
+  max-width: 650px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.image-illustree:hover,
+.image-illustree:active {
+  transform: scale(1.05) rotate(-1deg) translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+.image-illustree:nth-of-type(2):hover,
+.image-illustree:nth-of-type(2):active {
+  transform: scale(1.05) rotate(1deg) translateY(-6px);
+}
+@media (max-width: 768px) {
+  .image-illustree:active {
+    transform: scale(1.06) translateY(-4px);
+  }
+}
+</style>
+
+
+<section id="evolution-fierte" class="container my-5">
   <div class="row g-5 p-4 rounded shadow-lg"
        style="background: linear-gradient(120deg, #e8f5e9 30%, #c8e6c9 70%);">
     <div class="col-12">
       <h2 class="fw-bold text-center mb-4">📈 UNE CONFIANCE QUI GRANDIT, DES MISSIONS QUI ÉVOLUENT</h2>
 
       <p style="font-size: 1.1rem; text-align: justify;">
-        Ce dont je suis le plus fière, c'est d'avoir acquis le respect et la confiance de mes managers grâce à la qualité des résultats obtenus lors des missions qui m'ont été confiées. Au fil du temps, cette confiance les a conduits à me confier des projets de plus en plus ambitieux et à plus forte visibilité au sein de l'organisme.
-      </p>
-      <p style="font-size: 1.1rem; text-align: justify;">
-        Au début de mon alternance, j'ai travaillé sur la création d'outils Power BI destinés principalement à mon service et à ses managers. Progressivement, j'ai été amenée à développer des outils Excel/VBA utilisés par d'autres services de la caisse.
+        Au début de mon alternance, j'ai travaillé sur la création d'outils Power BI destinés principalement à mon service et à ses managers. Progressivement, j'ai été amenée à développer des outils Excel/VBA utilisés par d'autres services de la caisse, comme cet outil de suivi automatisé du délai de paiement et du nombre de factures B2, qui a permis à une manager de réduire considérablement le temps nécessaire au calcul de ses indicateurs.
       </p>
 
       <div class="text-center my-4">
-        <img src="alternance1.png" alt="Outil Excel/VBA - manager" class="image-illustree image-zoom">
-        <p class="mt-2" style="font-size: 0.95rem; color: #555;">
-          L'un de ces outils a notamment permis à une manager de réduire considérablement le temps nécessaire au calcul de ses indicateurs et d'automatiser une partie de son activité.
-        </p>
+        <img src="alternance1.png" alt="Outil de suivi du délai de paiement et du nombre de factures B2" class="image-illustree image-zoom mb-2">
+        <p style="font-size: 0.95rem; color: #555;">Projet 2 — Outil automatisé de suivi du délai de paiement et du nombre de factures B2</p>
       </div>
 
       <p style="font-size: 1.1rem; text-align: justify;">
-        Par la suite, j'ai participé à la création d'outils destinés à un périmètre encore plus large, utilisés par plusieurs managers ainsi que par la direction pour le suivi d'indicateurs de pilotage.
+        Par la suite, j'ai participé à la création d'outils destinés à un périmètre encore plus large, utilisés par plusieurs managers ainsi que par la direction pour le suivi d'indicateurs de pilotage à l'échelle de l'organisme.
       </p>
 
       <div class="text-center my-4">
-        <img src="alternance2.png" alt="Outil de pilotage - direction" class="image-illustree image-zoom">
-        <p class="mt-2" style="font-size: 0.95rem; color: #555;">
-          Cet outil, utilisé par plusieurs managers ainsi que par la direction, a permis le suivi d'indicateurs de pilotage à l'échelle de l'organisme.
-        </p>
+        <img src="alternance2.png" alt="Outil de pilotage utilisé par la direction" class="image-illustree image-zoom mb-2">
+        <p style="font-size: 0.95rem; color: #555;">Outil de pilotage destiné aux managers et à la direction</p>
       </div>
 
       <p style="font-size: 1.1rem; text-align: justify;">
-        Cette évolution des missions qui m'ont été confiées constitue pour moi une véritable source de fierté. Au-delà des compétences techniques acquises, elle témoigne de la confiance que mes responsables ont progressivement accordée à mon travail, à mon autonomie et à ma capacité à proposer des solutions répondant aux besoins du service.
+        Cette évolution constitue pour moi une véritable source de fierté : au-delà des compétences techniques acquises, elle témoigne de la confiance que mes responsables ont progressivement accordée à mon travail, à mon autonomie et à ma capacité à proposer des solutions adaptées aux besoins du service.
       </p>
-    </div>
-  </div>
-</section>
 
-<!-- Découvertes humaines -->
-<section id="decouvertes-humaines" class="container my-5">
-  <div class="row g-5 p-4 rounded shadow-lg"
-       style="background: linear-gradient(120deg, #fff3e0 30%, #ffe0b2 70%);">
-    <div class="col-12">
-      <h2 class="fw-bold text-center mb-4">☕ DES DÉCOUVERTES PLUS INATTENDUES</h2>
+      <hr class="my-4" style="border-color: rgba(0,0,0,0.1);">
+
+      <h2 class="fw-bold text-center mb-4">☕ ET CE QUE J'AI DÉCOUVERT EN CHEMIN</h2>
 
       <p style="font-size: 1.1rem; text-align: justify;">
-        Avant mon alternance, j'étais persuadée de pouvoir m'intégrer sans difficulté dans un environnement professionnel. Mon entourage m'a toujours décrite comme quelqu'un de sérieux, rigoureux et investi dans son travail. Cette perception s'est confirmée au cours de mon expérience à la CPAM, où j'ai rapidement trouvé ma place au sein de l'équipe et gagné progressivement en autonomie et en responsabilités.
+        Mon entourage m'a toujours décrite comme quelqu'un de sérieux et investi, et cette perception s'est confirmée : j'ai rapidement trouvé ma place au sein de l'équipe et gagné en responsabilités. Mais cette alternance m'a aussi réservé des surprises plus inattendues, comme de découvrir que je pouvais désormais boire du café tous les jours, ce qui était probablement la chose la moins envisageable avant mon entrée dans le monde professionnel.
       </p>
       <p style="font-size: 1.1rem; text-align: justify;">
-        Cependant, cette alternance m'a aussi permis de faire des découvertes plus inattendues sur moi-même. J'ai notamment découvert que je pouvais boire du café tous les jours, ce qui est probablement la chose que je pensais la moins probable avant d'entrer dans le monde professionnel !
-      </p>
-      <p style="font-size: 1.1rem; text-align: justify;">
-        J'ai également découvert l'importance des rituels informels dans la vie d'une entreprise. À la CPAM, le petit-déjeuner partagé avec les collègues est un véritable moment de convivialité. Au-delà du simple café du matin, ces moments favorisent les échanges, renforcent la cohésion d'équipe et permettent d'aborder la journée dans une ambiance agréable. J'ai compris que la vie professionnelle ne se résume pas uniquement aux missions et aux objectifs, mais qu'elle repose aussi sur les relations humaines et les moments de partage qui contribuent au bien-être au travail.
-      </p>
-      <p style="font-size: 1.1rem; text-align: justify;">
-        Cette expérience m'a donc permis de confirmer certaines qualités que je pensais posséder, tout en découvrant l'importance de dimensions plus humaines du monde professionnel que je n'avais pas forcément anticipées avant mon arrivée en entreprise.
+        J'ai également pris la mesure de l'importance des rituels informels dans la vie d'une entreprise. À la CPAM, le petit-déjeuner partagé avec les collègues va bien au-delà du simple café du matin : ces moments favorisent les échanges, renforcent la cohésion d'équipe et permettent d'aborder la journée dans une ambiance agréable. La vie professionnelle ne se résume donc pas aux missions et aux objectifs ; elle repose aussi sur les relations humaines et les moments de partage.
       </p>
     </div>
   </div>
@@ -348,10 +356,7 @@
         Chaque étape de mon parcours a été une victoire : comprendre un cours difficile, réussir un projet, prendre la parole en public, m'intégrer dans un nouvel environnement, trouver ma place dans le monde professionnel. Derrière chaque réussite se cachent des efforts, des remises en question, mais surtout une détermination constante à avancer.
       </p>
       <p style="font-size: 1.15rem; text-align: justify;">
-        Cette expérience m'a appris bien plus que des compétences académiques. Elle m'a appris la résilience, l'indépendance, la capacité à m'adapter et à évoluer seule tout en restant fidèle à mes valeurs. Aujourd'hui, lorsque je regarde mon parcours, je ne vois pas seulement une étudiante en science des données : je vois une personne qui a osé partir loin pour construire son avenir.
-      </p>
-      <p style="font-size: 1.15rem; text-align: justify;">
-        Et c'est cette force intérieure, cette capacité à me dépasser et à continuer à avancer malgré les défis, qui constitue ma plus grande fierté.
+        Cette expérience m'a appris la résilience, l'indépendance, la capacité à m'adapter et à évoluer seule tout en restant fidèle à mes valeurs. Aujourd'hui, lorsque je regarde mon parcours, je ne vois pas seulement une étudiante en science des données : je vois une personne qui a osé partir loin pour construire son avenir. Et c'est cette force intérieure, cette capacité à me dépasser et à continuer à avancer malgré les défis, qui constitue ma plus grande fierté.
       </p>
     </div>
   </div>
@@ -410,8 +415,3 @@ function closeModal() {
   document.getElementById("imageModal").style.display = "none";
 }
 </script>
-
-
-
-
-
