@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bilan — Grâce Soukou</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0b0b1a;
+      color: #e8e8f0;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px 80px;
+      background: linear-gradient(160deg, #0d0630 0%, #1a0840 40%, #0a1535 100%);
+      overflow: hidden;
+    }
+
+    /* Particules étoiles canvas */
+    #stars-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #ffd54f;
+      background: rgba(255,213,79,0.1);
+      padding: 6px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,213,79,0.3);
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 16px;
+      animation: fadeUp 0.9s ease 0.1s both;
+    }
+    .hero-title .gold { color: #ffd54f; }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: fadeUp 1.2s ease 0.5s both;
+    }
+    .scroll-dot {
+      width: 6px; height: 6px;
+      background: #ffd54f;
+      border-radius: 50%;
+      animation: scrollBounce 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50%       { transform: translateY(8px); opacity: 0.4; }
+    }
+
+    /* ===== NAVIGATION STICKY ===== */
+    .bilan-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 11, 26, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0;
+    }
+    .bilan-nav ul {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      overflow-x: auto;
+    }
+    .bilan-nav ul li a {
+      display: block;
+      padding: 16px 22px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.25s, border-color 0.25s;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .bilan-nav ul li a:hover,
+    .bilan-nav ul li a.active {
+      color: #ffd54f;
+      border-bottom-color: #ffd54f;
+    }
+
+    /* ===== LAYOUT SECTIONS ===== */
+    .bilan-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: #ffd54f;
+      font-weight: 700;
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 30px; height: 2px;
+      background: #ffd54f;
+    }
+    .section-label.visible { opacity: 1; transform: translateY(0); }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.7s ease 0.1s;
+    }
+    .section-title.visible { opacity: 1; transform: translateY(0); }
+
+    /* Texte courant */
+    .bilan-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(232,232,240,0.82);
+      text-align: justify;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 0.7s ease 0.2s;
+    }
+    .bilan-text.visible { opacity: 1; transform: translateY(0); }
+    .bilan-text + .bilan-text { margin-top: 18px; }
+
+    /* Séparateur de section */
+    .section-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,213,79,0.2), transparent);
+      margin: 0;
+    }
+
+    /* ===== COMPÉTENCES : TIMELINE VERTICALE ===== */
+    .competences-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 44px;
+    }
+    .competences-grid::before {
+      content: '';
+      position: absolute;
+      left: 15px; top: 20px; bottom: 20px;
+      width: 2px;
+      background: linear-gradient(to bottom, #6a11cb, #ffd54f, #2575fc);
+    }
+
+    .comp-item {
+      position: relative;
+      padding: 28px 0 28px 28px;
+      opacity: 0;
+      transform: translateX(-24px);
+      transition: all 0.7s ease;
+    }
+    .comp-item.visible { opacity: 1; transform: translateX(0); }
+
+    .comp-dot {
+      position: absolute;
+      left: -44px;
+      top: 32px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 0 0 4px #0b0b1a, 0 0 0 6px currentColor;
+      flex-shrink: 0;
+    }
+
+    .comp-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 24px 28px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .comp-card:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateX(4px);
+    }
+
+    .comp-number {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .comp-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .comp-body {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: rgba(232,232,240,0.78);
+    }
+
+    /* Barre de progression compétence */
+    .comp-progress-wrap {
+      margin-top: 18px;
+    }
+    .comp-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .comp-bar-bg {
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .comp-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(.22,1,.36,1) 0.4s;
+    }
+    .comp-item.visible .comp-bar-fill { width: var(--fill); }
+
+    /* Colors per competence */
+    .c1 { color: #5dca8a; } .c1 .comp-dot { background: #5dca8a; color: #5dca8a; } .c1 .comp-bar-fill { background: linear-gradient(to right, #5dca8a, #1d9e75); }
+    .c2 { color: #7f77dd; } .c2 .comp-dot { background: #7f77dd; color: #7f77dd; } .c2 .comp-bar-fill { background: linear-gradient(to right, #7f77dd, #5046c8); }
+    .c3 { color: #f9a54a; } .c3 .comp-dot { background: #f9a54a; color: #f9a54a; } .c3 .comp-bar-fill { background: linear-gradient(to right, #f9a54a, #e07b0a); }
+    .c4 { color: #4ec1e0; } .c4 .comp-dot { background: #4ec1e0; color: #4ec1e0; } .c4 .comp-bar-fill { background: linear-gradient(to right, #4ec1e0, #1785ab); }
+
+    /* ===== TABLEAU SYNTHÈSE ===== */
+    .synth-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .synth-table th {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 600;
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .synth-table td {
+      padding: 16px;
+      font-size: 0.95rem;
+      color: rgba(232,232,240,0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      vertical-align: top;
+    }
+    .synth-table tr:hover td {
+      background: rgba(255,255,255,0.03);
+    }
+    .synth-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .badge-green  { background: rgba(93,202,138,0.15); color: #5dca8a; }
+    .badge-purple { background: rgba(127,119,221,0.15); color: #7f77dd; }
+    .badge-orange { background: rgba(249,165,74,0.15); color: #f9a54a; }
+    .badge-blue   { background: rgba(78,193,224,0.15); color: #4ec1e0; }
+
+    /* ===== CITATION / HIGHLIGHT ===== */
+    .highlight-quote {
+      position: relative;
+      border-left: 3px solid #ffd54f;
+      padding: 20px 24px;
+      background: rgba(255,213,79,0.05);
+      border-radius: 0 12px 12px 0;
+      margin: 32px 0;
+      font-style: italic;
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: all 0.7s ease;
+    }
+    .highlight-quote.visible { opacity: 1; transform: translateX(0); }
+
+    /* ===== FIERTÉ : CARD HIGHLIGHT ===== */
+    .pride-card {
+      background: linear-gradient(135deg, rgba(106,17,203,0.25) 0%, rgba(37,117,252,0.15) 100%);
+      border: 1px solid rgba(106,17,203,0.3);
+      border-radius: 20px;
+      padding: 36px;
+      margin: 32px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    .pride-card.visible { opacity: 1; transform: translateY(0); }
+    .pride-card p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(232,232,240,0.82);
+      margin: 0 0 14px;
+      text-align: justify;
+    }
+    .pride-card p:last-child { margin-bottom: 0; }
+
+    /* ===== CONCLUSION ===== */
+    .conclusion-wrap {
+      background: linear-gradient(135deg, #0d0630, #0a1535);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .conclusion-wrap::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(255,213,79,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .conclusion-wrap p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(232,232,240,0.8);
+      margin: 0;
+      text-align: justify;
+    }
+
+    /* ===== RETOUR BTN ===== */
+    .btn-retour-bilan {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 200;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-retour-bilan:hover {
+      background: rgba(255,213,79,0.2);
+      border-color: #ffd54f;
+      color: #ffd54f;
+      transform: translateX(-3px);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== REVEAL (IntersectionObserver targets) ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: all 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .bilan-section { padding: 60px 18px; }
+      .conclusion-wrap { padding: 28px 20px; }
+      .comp-card { padding: 18px 18px; }
+      .bilan-nav ul li a { padding: 14px 14px; font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="stars-canvas"></canvas>
+  <div class="hero-content">
+    <span class="hero-eyebrow">BUT Science des données · 3 ans</span>
+    <h1 class="hero-title">
+      Le sommet<br>du <span class="gold">parcours</span>
+    </h1>
+    <p class="hero-subtitle">Ce que trois ans de BUT, de SAÉ et d'alternance ont vraiment changé.</p>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Défiler</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- NAV STICKY -->
+<nav class="bilan-nav">
+  <ul>
+    <li><a href="#apports" data-section="apports">Apports</a></li>
+    <li><a href="#competences" data-section="competences">Compétences</a></li>
+    <li><a href="#synthese" data-section="synthese">Synthèse</a></li>
+    <li><a href="#fierte" data-section="fierte">Fierté</a></li>
+    <li><a href="#conclusion" data-section="conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+<!-- ===== APPORTS DES SAÉ ===== -->
+<section id="apports">
+  <div class="bilan-section">
+    <span class="section-label">01 — Apports globaux</span>
+    <h2 class="section-title">Ce que les SAÉ ont construit</h2>
+
+    <p class="bilan-text">
+      Les SAÉ ont joué un rôle essentiel dans ma progression au cours du BUT. Elles m'ont permis de mettre en pratique les connaissances acquises en cours sur des problématiques réelles et d'apprendre à travailler en équipe sur des projets de plus en plus complexes.
+    </p>
+    <p class="bilan-text">
+      Elles ont également contribué à développer mon autonomie, ma capacité à rechercher de nouvelles solutions techniques et mon esprit critique face aux résultats obtenus. C'est notamment grâce à ces expériences que j'ai confirmé mon intérêt pour les mathématiques appliquées, les statistiques et la science des données.
+    </p>
+
+    <div class="highlight-quote">
+      « Au-delà des compétences techniques, les SAÉ m'ont permis de mieux identifier mes points forts, mes axes de progression et les domaines dans lesquels je souhaite évoluer. »
+    </div>
+
+    <p class="bilan-text">
+      Plusieurs projets m'ont conduite à travailler sur des outils ou des méthodes que je ne maîtrisais pas encore — notamment lors du projet autour des bases de données NoSQL. Malgré le manque de temps, j'ai réussi à comprendre les notions essentielles et à produire un travail satisfaisant. Cette expérience m'a montré que je suis capable d'apprendre rapidement lorsque je suis confrontée à une nouvelle technologie.
+    </p>
+    <p class="bilan-text">
+      Les SAÉ ont aussi confirmé mon attrait pour les projets qui associent rigueur quantitative et problématiques concrètes. C'est notamment ce qui m'a plu dans la SAÉ sur les biais de prédiction de la récidive, qui combinait analyse statistique, réflexion éthique et interprétation des résultats.
+    </p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===== COMPÉTENCES ===== -->
+<section id="competences">
+  <div class="bilan-section">
+    <span class="section-label">02 — Évolution par compétence</span>
+    <h2 class="section-title">3 ans de montée en puissance</h2>
+
+    <div class="competences-grid">
+
+      <!-- C1 -->
+      <div class="comp-item c1">
+        <div class="comp-dot">1</div>
+        <div class="comp-card">
+          <div class="comp-number c1">Compétence 1</div>
+          <div class="comp-title">Traiter des données à des fins décisionnelles</div>
+          <div class="comp-body">
+            <p>En BUT 1, je n'avais jamais travaillé sur des données réelles issues d'un contexte professionnel. Les SAÉ m'ont permis de découvrir les étapes de préparation des données : importation, nettoyage, gestion des valeurs manquantes, transformation des variables.</p>
+            <p>La SAÉ sur l'analyse des biais dans la prédiction de la récidive a constitué une étape importante. En alternance, j'ai découvert que la principale difficulté n'était pas toujours l'analyse elle-même, mais la qualité des données : PDF non structurés, formats incohérents, erreurs de saisie.</p>
+            <p>Aujourd'hui, je suis capable de construire des chaînes de traitement automatisées à l'aide d'Excel, VBA et Power Query afin de fiabiliser des données provenant de plusieurs sources.</p>
+          </div>
+          <div class="comp-progress-wrap">
+            <div class="comp-progress-label">
+              <span>Niveau atteint</span>
+              <span>Très bon</span>
+            </div>
+            <div class="comp-bar-bg">
+              <div class="comp-bar-fill" style="--fill: 88%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C2 -->
+      <div class="comp-item c2">
+        <div class="comp-dot">2</div>
+        <div class="comp-card">
+          <div class="comp-number c2">Compétence 2</div>
+          <div class="comp-title">Analyser statistiquement les données</div>
+          <div class="comp-body">
+            <p>Au début du BUT, mon approche reposait essentiellement sur la théorie. Les SAÉ ont progressivement développé cette compétence : le projet sur les biais de récidive m'a appris à explorer des données complexes, à interpréter des corrélations et à adopter un regard critique sur les résultats.</p>
+            <p>Les enseignements de méthodes statistiques pour le Big Data et de modélisation statistique avancée ont ensuite renforcé cette compétence. Au semestre 6, je me suis classée parmi les meilleurs étudiants de la promotion dans cette compétence.</p>
+            <p>Mon alternance m'a cependant permis d'identifier une limite : les analyses que je réalise restent principalement descriptives. C'est ce qui m'a conduite vers le Master Applied Mathematics and Statistics à l'Institut Polytechnique de Paris.</p>
+          </div>
+          <div class="comp-progress-wrap">
+            <div class="comp-progress-label">
+              <span>Niveau atteint</span>
+              <span>Bon niveau · En progression</span>
+            </div>
+            <div class="comp-bar-bg">
+              <div class="comp-bar-fill" style="--fill: 75%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C3 -->
+      <div class="comp-item c3">
+        <div class="comp-dot">3</div>
+        <div class="comp-card">
+          <div class="comp-number c3">Compétence 3</div>
+          <div class="comp-title">Valoriser les données dans un contexte professionnel</div>
+          <div class="comp-body">
+            <p>C'est probablement la compétence qui a le plus évolué. Au début de la formation, je considérais les projets sous un angle technique. Les SAÉ m'ont progressivement appris à présenter les résultats de manière claire : rapports, soutenances, visualisations.</p>
+            <p>L'alternance a profondément renforcé cette vision. En développant des tableaux de bord Power BI destinés à des utilisateurs non spécialistes, j'ai appris à concevoir des outils simples, lisibles et réellement utiles à la prise de décision.</p>
+            <p>Aujourd'hui, lorsque je réalise un tableau de bord, je réfléchis d'abord aux besoins des utilisateurs avant de penser aux aspects techniques.</p>
+          </div>
+          <div class="comp-progress-wrap">
+            <div class="comp-progress-label">
+              <span>Niveau atteint</span>
+              <span>Très bon</span>
+            </div>
+            <div class="comp-bar-bg">
+              <div class="comp-bar-fill" style="--fill: 90%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C4 -->
+      <div class="comp-item c4">
+        <div class="comp-dot">4</div>
+        <div class="comp-card">
+          <div class="comp-number c4">Compétence 4</div>
+          <div class="comp-title">Modéliser les données dans un cadre statistique</div>
+          <div class="comp-body">
+            <p>La modélisation est la compétence sur laquelle mon évolution est la plus visible. Au début du BUT, je maîtrisais essentiellement les modèles académiques. Les projets — apprentissage statistique, machine learning, NoSQL — ont progressivement élargi cette vision.</p>
+            <p>La découverte du NoSQL a représenté un véritable défi. Les concepts étaient nouveaux et je n'avais pas le temps de tout assimiler, mais j'ai réussi à comprendre les principes fondamentaux et à mener à bien le projet.</p>
+            <p>C'est la compétence que je souhaite le plus approfondir — d'où mon choix de poursuivre en Master Applied Mathematics and Statistics à l'Institut Polytechnique de Paris.</p>
+          </div>
+          <div class="comp-progress-wrap">
+            <div class="comp-progress-label">
+              <span>Niveau atteint</span>
+              <span>Bases solides · À approfondir</span>
+            </div>
+            <div class="comp-bar-bg">
+              <div class="comp-bar-fill" style="--fill: 65%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===== SYNTHÈSE ===== -->
+<section id="synthese">
+  <div class="bilan-section">
+    <span class="section-label">03 — Tableau synthèse</span>
+    <h2 class="section-title">Vue d'ensemble</h2>
+
+    <div class="reveal">
+      <table class="synth-table">
+        <thead>
+          <tr>
+            <th>Compétence</th>
+            <th>Niveau atteint</th>
+            <th>Principales preuves</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Traiter</strong></td>
+            <td><span class="synth-badge badge-green">Très bon niveau</span></td>
+            <td>SAÉ récidive, Power Query, VBA automatisé</td>
+          </tr>
+          <tr>
+            <td><strong>Analyser</strong></td>
+            <td><span class="synth-badge badge-purple">Bon niveau</span></td>
+            <td>SAÉ Big Data, statistiques avancées, classement S6</td>
+          </tr>
+          <tr>
+            <td><strong>Valoriser</strong></td>
+            <td><span class="synth-badge badge-orange">Très bon niveau</span></td>
+            <td>Power BI CPAM, tableaux de bord direction</td>
+          </tr>
+          <tr>
+            <td><strong>Modéliser</strong></td>
+            <td><span class="synth-badge badge-blue">En progression</span></td>
+            <td>NoSQL, DAX, apprentissage statistique</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===== FIERTÉ ===== -->
+<section id="fierte">
+  <div class="bilan-section">
+    <span class="section-label">04 — Ce dont je suis la plus fière</span>
+    <h2 class="section-title">Le projet qui compte le plus</h2>
+
+    <div class="pride-card">
+      <p>Parmi l'ensemble des projets réalisés durant mon parcours, le développement d'un tableau de bord Power BI dans le cadre de mon alternance constitue ma plus grande source de fierté.</p>
+      <p>Lorsque ce projet m'a été confié, je possédais seulement des connaissances limitées de l'outil. Afin de répondre aux besoins du service, j'ai entrepris de me former de manière autonome à Power BI à travers des documentations, des tutoriels et des expérimentations personnelles.</p>
+      <p>Cette démarche m'a permis de concevoir un tableau de bord interactif destiné au contrôle de gestion. L'outil centralise plusieurs indicateurs de suivi, facilite la visualisation des données et automatise une partie de la production des rapports. Il est aujourd'hui utilisé par le service pour le suivi des activités et l'aide à la décision.</p>
+      <p>Au-delà de la réalisation technique, ce projet représente pour moi la preuve de ma capacité à apprendre de façon autonome, à m'adapter à un besoin professionnel concret et à proposer une solution utile aux utilisateurs. Il illustre l'évolution réalisée depuis mon arrivée en BUT, où je découvrais encore les outils de la donnée, jusqu'à aujourd'hui.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===== CONCLUSION ===== -->
+<section id="conclusion">
+  <div class="bilan-section">
+    <span class="section-label">05 — Bilan global</span>
+    <h2 class="section-title">Là où tout converge</h2>
+
+    <div class="reveal conclusion-wrap">
+      <p>
+        Le BUT Science des données m'a permis d'acquérir des compétences solides en traitement, analyse, modélisation et valorisation des données. Les enseignements théoriques, les SAÉ, le stage et l'alternance se sont révélés complémentaires dans ma progression. Au fil des trois années, j'ai développé non seulement des compétences techniques en statistiques, programmation, bases de données et visualisation, mais également des compétences transversales : autonomie, organisation, communication, travail en équipe.
+      </p>
+      <br>
+      <p>
+        L'alternance a joué un rôle déterminant en me permettant de confronter les connaissances acquises aux réalités du monde professionnel. Elle m'a appris que la donnée n'a de valeur que lorsqu'elle répond à un besoin concret et contribue à la prise de décision.
+      </p>
+      <br>
+      <p>
+        Aujourd'hui, je termine cette formation avec une vision plus claire de mon projet professionnel. Le BUT a confirmé mon intérêt pour les mathématiques appliquées, les statistiques et la modélisation des données — et m'a donné les bases nécessaires pour poursuivre mes études dans ce domaine. C'est dans cette continuité que j'intégrerai l'année prochaine le <strong style="color:#ffd54f;">Master Applied Mathematics and Statistics de l'Institut Polytechnique de Paris</strong>.
+      </p>
+    </div>
+
+    <!-- CTA retour -->
+    <div class="text-center mt-5 reveal">
+      <a href="index.html" style="
+        display: inline-flex; align-items: center; gap: 12px;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white; text-decoration: none;
+        padding: 16px 36px; border-radius: 50px;
+        font-weight: 700; font-size: 1rem;
+        box-shadow: 0 8px 25px rgba(106,17,203,0.4);
+        transition: transform 0.3s, box-shadow 0.3s;
+      "
+      onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 14px 35px rgba(106,17,203,0.55)'"
+      onmouseout="this.style.transform='';this.style.boxShadow='0 8px 25px rgba(106,17,203,0.4)'"
+      >
+        ← Retour au portfolio
+      </a>
+    </div>
+
+    <div style="height: 80px;"></div>
+  </div>
+</section>
+
+<!-- BOUTON RETOUR FIXE -->
+<a href="index.html" class="btn-retour-bilan">← Retour</a>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+// ---- Étoiles canvas ----
+(function() {
+  const canvas = document.getElementById('stars-canvas');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function initStars() {
+    stars = [];
+    for (let i = 0; i < 160; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.2,
+        alpha: Math.random(),
+        speed: Math.random() * 0.4 + 0.1
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => {
+      s.alpha += (Math.random() - 0.5) * 0.03;
+      s.alpha = Math.max(0.05, Math.min(0.9, s.alpha));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  initStars();
+  draw();
+  window.addEventListener('resize', () => { resize(); initStars(); });
+})();
+
+// ---- IntersectionObserver pour les révélations ----
+(function() {
+  const targets = document.querySelectorAll(
+    '.section-label, .section-title, .bilan-text, .comp-item, .reveal, .highlight-quote, .pride-card'
+  );
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach(t => io.observe(t));
+})();
+
+// ---- Nav active sur scroll ----
+(function() {
+  const sections = ['apports','competences','synthese','fierte','conclusion'];
+  const links = document.querySelectorAll('.bilan-nav a[data-section]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+    links.forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }, { passive: true });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
