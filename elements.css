@@ -84,14 +84,62 @@ nav a:hover {
   background: url('images/math.png') center center / cover no-repeat;
 }
 
+/* APRÈS */
 .carousel-item {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
+  display: block !important;
+  min-height: 0;
+  padding: 0;
+}
+/* ===== SECTION À PROPOS ===== */
+#apropos {
+  padding: 0 !important;
+  min-height: auto !important;
+}
+#apropos .carousel-inner {
+  min-height: 55vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+#apropos .carousel-slide-wrap {
+  min-height: 55vh;
+  display: flex;
   align-items: center;
-  min-height: 70vh;
-  padding: 40px 20px;
+  justify-content: center;
+  padding: 50px 20px;
+}
+#apropos .bg-blur {
+  max-width: 680px;
+  width: 100%;
+  padding: 36px 40px;
+  background: rgba(10, 5, 40, 0.6);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
   text-align: center;
+  margin: 0 auto;
+}
+#apropos .bg-blur h1 {
+  font-size: 1.7rem;
+  margin-bottom: 14px;
+}
+#apropos .bg-blur p.lead {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.88);
+}
+.slide-anim {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.carousel-item.active .slide-anim {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  #apropos .carousel-slide-wrap { min-height: 60vh; padding: 30px 16px; }
+  #apropos .bg-blur { padding: 24px 20px; }
+  #apropos .bg-blur h1 { font-size: 1.4rem; }
 }
 
 /* TEXTE ET BOUTON CENTRÉS */
