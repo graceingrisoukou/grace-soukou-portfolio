@@ -698,3 +698,20 @@ nav a:hover {
   background: #f9844a;
   border-radius: 50%;
 }
+/* Amélioration du zoom au survol pour la section Pro (Power BI) */
+.image-zoom-final {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease !important;
+  cursor: pointer;
+}
+
+.image-zoom-final:hover {
+  transform: scale(1.08); /* Agrandissement de 8% */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
+  position: relative;
+  z-index: 5; /* Passe au-dessus des autres éléments */
+}
+
+/* Empêche Bootstrap de couper l'image qui s'agrandit */
+#projet-pro .col-12.col-sm-6.col-lg-4 {
+  overflow: visible !important;
+}
