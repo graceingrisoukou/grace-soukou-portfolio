@@ -170,7 +170,20 @@ nav a:hover {
   color: rgba(255,255,255,0.88);
   margin-bottom: 0;
 }
-
+.slide-anim {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.carousel-item.active .slide-anim {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  #apropos .carousel-slide-wrap { min-height: 60vh; padding: 30px 16px; }
+  #apropos .bg-blur { padding: 24px 20px; }
+  #apropos .bg-blur h1 { font-size: 1.4rem; }
+}
 /* Animation entrée slide */
 .slide-anim {
   opacity: 0;
