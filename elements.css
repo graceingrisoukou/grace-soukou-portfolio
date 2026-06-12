@@ -96,51 +96,126 @@ nav a:hover {
   min-height: auto !important;
 }
 #apropos .carousel-inner {
-  min-height: 55vh;
+  min-height: 50vh;
   background: linear-gradient(135deg, #6a11cb, #2575fc);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Particules CSS animées en fond */
+#apropos .carousel-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes gridDrift {
+  0%   { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(40px) translateX(40px); }
+}
+
+/* Halos colorés animés */
+#apropos .carousel-inner::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(106,17,203,0.3) 0%, transparent 70%);
+  top: -150px; left: -100px;
+  animation: haloDrift 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes haloDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(200px, 80px) scale(1.3); }
+}
+
 #apropos .carousel-slide-wrap {
-  min-height: 55vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px 20px;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
 }
+
 #apropos .bg-blur {
-  max-width: 680px;
+  max-width: 640px;
   width: 100%;
-  padding: 36px 40px;
-  background: rgba(10, 5, 40, 0.6);
-  backdrop-filter: blur(14px);
+  padding: 32px 36px;
+  background: rgba(10, 5, 40, 0.55);
+  backdrop-filter: blur(16px);
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.13);
   box-shadow: 0 8px 32px rgba(0,0,0,0.35);
   text-align: center;
   margin: 0 auto;
 }
+
 #apropos .bg-blur h1 {
-  font-size: 1.7rem;
-  margin-bottom: 14px;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
 }
+
 #apropos .bg-blur p.lead {
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.97rem;
+  line-height: 1.65;
   color: rgba(255,255,255,0.88);
+  margin-bottom: 0;
 }
+
+/* Animation entrée slide */
 .slide-anim {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(20px) scale(0.98);
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 .carousel-item.active .slide-anim {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
+
+/* Nouvelles flèches */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 44px;
+  height: 44px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.carousel-control-prev { left: 20px; }
+.carousel-control-next { right: 20px; }
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-50%) scale(1.1);
+}
+.fleche-custom {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 300;
+  line-height: 1;
+}
+
 @media (max-width: 768px) {
-  #apropos .carousel-slide-wrap { min-height: 60vh; padding: 30px 16px; }
-  #apropos .bg-blur { padding: 24px 20px; }
-  #apropos .bg-blur h1 { font-size: 1.4rem; }
+  #apropos .carousel-slide-wrap { min-height: 55vh; padding: 28px 16px; }
+  #apropos .bg-blur { padding: 22px 18px; }
+  #apropos .bg-blur h1 { font-size: 1.3rem; }
 }
+
 
 /* TEXTE ET BOUTON CENTRÉS */
 .carousel-caption {
