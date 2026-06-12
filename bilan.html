@@ -13,11 +13,17 @@
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0b0b1a;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #060613;
       color: #e8e8f0;
       overflow-x: hidden;
     }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #060613; }
+    ::-webkit-scrollbar-thumb { background: #251b4f; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ffd54f; }
 
     /* ===== HERO ===== */
     .hero {
@@ -29,11 +35,10 @@
       justify-content: center;
       text-align: center;
       padding: 60px 20px 80px;
-      background: linear-gradient(160deg, #0d0630 0%, #1a0840 40%, #0a1535 100%);
+      background: linear-gradient(160deg, #07031a 0%, #0f052b 40%, #050b1e 100%);
       overflow: hidden;
     }
 
-    /* Particules étoiles canvas */
     #stars-canvas {
       position: absolute;
       inset: 0;
@@ -49,56 +54,71 @@
       text-transform: uppercase;
       letter-spacing: 3px;
       color: #ffd54f;
-      background: rgba(255,213,79,0.1);
-      padding: 6px 18px;
+      background: rgba(255,213,79,0.08);
+      padding: 8px 20px;
       border-radius: 30px;
-      border: 1px solid rgba(255,213,79,0.3);
+      border: 1px solid rgba(255,213,79,0.25);
       margin-bottom: 24px;
-      animation: fadeUp 0.8s ease both;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      font-size: clamp(2.5rem, 7vw, 5rem);
       font-weight: 800;
       line-height: 1.1;
       color: #ffffff;
-      margin-bottom: 16px;
-      animation: fadeUp 0.9s ease 0.1s both;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
     }
-    .hero-title .gold { color: #ffd54f; }
+    .hero-title .gold { 
+      color: #ffd54f; 
+      text-shadow: 0 0 30px rgba(255, 213, 79, 0.2);
+    }
 
     .hero-subtitle {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.6);
-      max-width: 540px;
+      font-size: 1.2rem;
+      color: rgba(232, 232, 240, 0.65);
+      max-width: 580px;
       margin: 0 auto 40px;
-      animation: fadeUp 1s ease 0.2s both;
+      line-height: 1.6;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
     }
 
     .hero-scroll-hint {
       position: absolute;
-      bottom: 28px;
+      bottom: 35px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: rgba(255,255,255,0.4);
       font-size: 0.75rem;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       animation: fadeUp 1.2s ease 0.5s both;
     }
     .scroll-dot {
-      width: 6px; height: 6px;
+      width: 6px; height: 12px;
+      border: 1px solid rgba(255, 213, 79, 0.6);
+      border-radius: 4px;
+      position: relative;
+    }
+    .scroll-dot::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 50%;
+      transform: translateX(-50%);
+      width: 2px; height: 4px;
       background: #ffd54f;
       border-radius: 50%;
-      animation: scrollBounce 1.5s ease-in-out infinite;
+      animation: scrollBounce 1.6s ease-in-out infinite;
     }
     @keyframes scrollBounce {
-      0%, 100% { transform: translateY(0); opacity: 1; }
-      50%       { transform: translateY(8px); opacity: 0.4; }
+      0%, 100% { transform: translate(-50__, 0); opacity: 0; }
+      50%       { transform: translate(-50%, 4px); opacity: 1; }
     }
 
     /* ===== NAVIGATION STICKY ===== */
@@ -106,9 +126,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(11, 11, 26, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(6, 6, 19, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
       padding: 0;
     }
     .bilan-nav ul {
@@ -116,19 +137,17 @@
       margin: 0; padding: 0;
       display: flex;
       justify-content: center;
-      gap: 0;
-      overflow-x: auto;
     }
     .bilan-nav ul li a {
       display: block;
-      padding: 16px 22px;
-      color: rgba(255,255,255,0.5);
+      padding: 20px 24px;
+      color: rgba(255,255,255,0.45);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: color 0.25s, border-color 0.25s;
+      letter-spacing: 1.5px;
+      transition: color 0.3s, border-color 0.3s;
       border-bottom: 2px solid transparent;
       white-space: nowrap;
     }
@@ -140,63 +159,63 @@
 
     /* ===== LAYOUT SECTIONS ===== */
     .bilan-section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 100px 24px;
     }
 
     .section-label {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
+      gap: 12px;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 2.5px;
+      letter-spacing: 3px;
       color: #ffd54f;
       font-weight: 700;
       margin-bottom: 16px;
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
+      transform: translateY(15px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .section-label::before {
       content: '';
       display: block;
-      width: 30px; height: 2px;
+      width: 24px; height: 1px;
       background: #ffd54f;
     }
     .section-label.visible { opacity: 1; transform: translateY(0); }
 
     .section-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800;
       color: #ffffff;
       line-height: 1.2;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
+      letter-spacing: -0.5px;
       opacity: 0;
-      transform: translateY(24px);
-      transition: all 0.7s ease 0.1s;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
     }
     .section-title.visible { opacity: 1; transform: translateY(0); }
 
-    /* Texte courant */
     .bilan-text {
       font-size: 1.05rem;
-      line-height: 1.8;
-      color: rgba(232,232,240,0.82);
+      line-height: 1.85;
+      color: rgba(232,232,240,0.8);
       text-align: justify;
       opacity: 0;
-      transform: translateY(18px);
-      transition: all 0.7s ease 0.2s;
+      transform: translateY(15px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
     }
     .bilan-text.visible { opacity: 1; transform: translateY(0); }
-    .bilan-text + .bilan-text { margin-top: 18px; }
+    .bilan-text + .bilan-text { margin-top: 20px; }
 
-    /* Séparateur de section */
+    /* Séparateur */
     .section-divider {
       border: none;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,213,79,0.2), transparent);
+      background: linear-gradient(to right, transparent, rgba(255,213,79,0.12), transparent);
       margin: 0;
     }
 
@@ -204,184 +223,225 @@
     .competences-grid {
       display: flex;
       flex-direction: column;
-      gap: 0;
       position: relative;
-      padding-left: 44px;
+      padding-left: 40px;
     }
     .competences-grid::before {
       content: '';
       position: absolute;
-      left: 15px; top: 20px; bottom: 20px;
-      width: 2px;
-      background: linear-gradient(to bottom, #6a11cb, #ffd54f, #2575fc);
+      left: 11px; top: 30px; bottom: 30px;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(106,17,203,0.4), rgba(255,213,79,0.4), rgba(37,117,252,0.4));
     }
 
     .comp-item {
       position: relative;
-      padding: 28px 0 28px 28px;
+      padding: 24px 0;
       opacity: 0;
-      transform: translateX(-24px);
-      transition: all 0.7s ease;
+      transform: translateX(-15px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .comp-item.visible { opacity: 1; transform: translateX(0); }
 
     .comp-dot {
       position: absolute;
-      left: -44px;
-      top: 32px;
-      width: 32px; height: 32px;
+      left: -40px;
+      top: 28px;
+      width: 24px; height: 24px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      color: white;
-      box-shadow: 0 0 0 4px #0b0b1a, 0 0 0 6px currentColor;
-      flex-shrink: 0;
+      color: #060613;
+      box-shadow: 0 0 0 6px #060613;
     }
 
     .comp-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
       border-radius: 16px;
-      padding: 24px 28px;
-      transition: background 0.3s, transform 0.3s;
+      padding: 32px;
+      backdrop-filter: blur(8px);
+      transition: background 0.4s, border-color 0.4s, transform 0.4s, box-shadow 0.4s;
     }
     .comp-card:hover {
-      background: rgba(255,255,255,0.07);
-      transform: translateX(4px);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-2px);
     }
 
     .comp-number {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .comp-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
-    .comp-body {
-      font-size: 0.97rem;
-      line-height: 1.75;
-      color: rgba(232,232,240,0.78);
+    .comp-body p {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: rgba(232,232,240,0.75);
+      margin-bottom: 16px;
     }
+    .comp-body p:last-child { margin-bottom: 0; }
 
-    /* Barre de progression compétence */
-    .comp-progress-wrap {
-      margin-top: 18px;
-    }
+    /* Barre de progression */
+    .comp-progress-wrap { margin-top: 24px; }
     .comp-progress-label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: rgba(255,255,255,0.5);
       margin-bottom: 8px;
     }
     .comp-bar-bg {
-      height: 6px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 3px;
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
       overflow: hidden;
     }
     .comp-bar-fill {
       height: 100%;
-      border-radius: 3px;
+      border-radius: 2px;
       width: 0;
-      transition: width 1.2s cubic-bezier(.22,1,.36,1) 0.4s;
+      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
     }
     .comp-item.visible .comp-bar-fill { width: var(--fill); }
 
-    /* Colors per competence */
-    .c1 { color: #5dca8a; } .c1 .comp-dot { background: #5dca8a; color: #5dca8a; } .c1 .comp-bar-fill { background: linear-gradient(to right, #5dca8a, #1d9e75); }
-    .c2 { color: #7f77dd; } .c2 .comp-dot { background: #7f77dd; color: #7f77dd; } .c2 .comp-bar-fill { background: linear-gradient(to right, #7f77dd, #5046c8); }
-    .c3 { color: #f9a54a; } .c3 .comp-dot { background: #f9a54a; color: #f9a54a; } .c3 .comp-bar-fill { background: linear-gradient(to right, #f9a54a, #e07b0a); }
-    .c4 { color: #4ec1e0; } .c4 .comp-dot { background: #4ec1e0; color: #4ec1e0; } .c4 .comp-bar-fill { background: linear-gradient(to right, #4ec1e0, #1785ab); }
+    /* Theme Couleurs Custom Épuré */
+    .c1 { color: #5dca8a; } .c1 .comp-dot { background: #5dca8a; } .c1 .comp-bar-fill { background: #5dca8a; } .c1 .comp-card:hover { border-color: rgba(93,202,138,0.3); box-shadow: 0 10px 30px rgba(93,202,138,0.04); }
+    .c2 { color: #928bf3; } .c2 .comp-dot { background: #928bf3; } .c2 .comp-bar-fill { background: #928bf3; } .c2 .comp-card:hover { border-color: rgba(146,139,243,0.3); box-shadow: 0 10px 30px rgba(146,139,243,0.04); }
+    .c3 { color: #f9b268; } .c3 .comp-dot { background: #f9b268; } .c3 .comp-bar-fill { background: #f9b268; } .c3 .comp-card:hover { border-color: rgba(249,178,104,0.3); box-shadow: 0 10px 30px rgba(249,178,104,0.04); }
+    .c4 { color: #61d5f2; } .c4 .comp-dot { background: #61d5f2; } .c4 .comp-bar-fill { background: #61d5f2; } .c4 .comp-card:hover { border-color: rgba(97,213,242,0.3); box-shadow: 0 10px 30px rgba(97,213,242,0.04); }
 
-    /* ===== TABLEAU SYNTHÈSE ===== */
+    /* ===== NOUVEAU TABLEAU DE SYNTHÈSE DESIGN MODERNE ===== */
+    .modern-table-container {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      overflow-x: auto;
+      backdrop-filter: blur(10px);
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modern-table-container.visible { opacity: 1; transform: translateY(0); }
+
     .synth-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 8px;
+      min-width: 800px; /* Évite l'écrasement sur mobile */
     }
     .synth-table th {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       color: rgba(255,255,255,0.4);
       font-weight: 600;
-      padding: 10px 16px;
+      padding: 20px 24px;
       text-align: left;
+      background: rgba(255, 255, 255, 0.01);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .synth-table td {
-      padding: 16px;
+      padding: 24px;
       font-size: 0.95rem;
-      color: rgba(232,232,240,0.85);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: rgba(232,232,240,0.8);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
       vertical-align: top;
+      line-height: 1.6;
+      transition: background 0.3s;
     }
+    .synth-table tr:last-child td { border-bottom: none; }
     .synth-table tr:hover td {
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.015);
     }
+    
+    /* Badges ultra-modernes */
     .synth-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1px solid transparent;
     }
-    .badge-green  { background: rgba(93,202,138,0.15); color: #5dca8a; }
-    .badge-purple { background: rgba(127,119,221,0.15); color: #7f77dd; }
-    .badge-orange { background: rgba(249,165,74,0.15); color: #f9a54a; }
-    .badge-blue   { background: rgba(78,193,224,0.15); color: #4ec1e0; }
+    .badge-green  { background: rgba(93,202,138,0.06); color: #5dca8a; border-color: rgba(93,202,138,0.15); }
+    .badge-purple { background: rgba(146,139,243,0.06); color: #928bf3; border-color: rgba(146,139,243,0.15); }
+    .badge-orange { background: rgba(249,178,104,0.06); color: #f9b268; border-color: rgba(249,178,104,0.15); }
+    .badge-blue   { background: rgba(97,213,242,0.06); color: #61d5f2; border-color: rgba(97,213,242,0.15); }
+
+    .table-list {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .table-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+    .table-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #ffd54f;
+      font-weight: bold;
+    }
 
     /* ===== CITATION / HIGHLIGHT ===== */
     .highlight-quote {
       position: relative;
-      border-left: 3px solid #ffd54f;
-      padding: 20px 24px;
-      background: rgba(255,213,79,0.05);
-      border-radius: 0 12px 12px 0;
-      margin: 32px 0;
+      border-left: 2px solid #ffd54f;
+      padding: 24px 32px;
+      background: rgba(255,213,79,0.02);
+      border-radius: 0 16px 16px 0;
+      margin: 40px 0;
       font-style: italic;
       color: rgba(255,255,255,0.75);
-      font-size: 1.05rem;
-      line-height: 1.75;
+      font-size: 1.1rem;
+      line-height: 1.8;
       opacity: 0;
-      transform: translateX(-16px);
-      transition: all 0.7s ease;
+      transform: translateX(-15px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .highlight-quote.visible { opacity: 1; transform: translateX(0); }
 
     /* ===== FIERTÉ : CARD HIGHLIGHT ===== */
     .pride-card {
-      background: linear-gradient(135deg, rgba(106,17,203,0.25) 0%, rgba(37,117,252,0.15) 100%);
-      border: 1px solid rgba(106,17,203,0.3);
+      background: linear-gradient(135deg, rgba(106,17,203,0.1) 0%, rgba(37,117,252,0.05) 100%);
+      border: 1px solid rgba(106,17,203,0.2);
       border-radius: 20px;
-      padding: 36px;
+      padding: 40px;
       margin: 32px 0;
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.8s ease;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .pride-card.visible { opacity: 1; transform: translateY(0); }
     .pride-card p {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: rgba(232,232,240,0.82);
-      margin: 0 0 14px;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(232,232,240,0.8);
+      margin: 0 0 16px;
       text-align: justify;
     }
     .pride-card p:last-child { margin-bottom: 0; }
 
     /* ===== CONCLUSION ===== */
     .conclusion-wrap {
-      background: linear-gradient(135deg, #0d0630, #0a1535);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: linear-gradient(135deg, #090522, #04091a);
+      border: 1px solid rgba(255,255,255,0.04);
       border-radius: 24px;
       padding: 48px;
       position: relative;
@@ -390,68 +450,73 @@
     .conclusion-wrap::before {
       content: '';
       position: absolute;
-      top: -60px; right: -60px;
-      width: 250px; height: 250px;
-      background: radial-gradient(circle, rgba(255,213,79,0.08) 0%, transparent 70%);
-      border-radius: 50%;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,213,79,0.05) 0%, transparent 70%);
       pointer-events: none;
     }
     .conclusion-wrap p {
       font-size: 1.05rem;
       line-height: 1.85;
-      color: rgba(232,232,240,0.8);
+      color: rgba(232,232,240,0.78);
       margin: 0;
       text-align: justify;
     }
 
-    /* ===== RETOUR BTN ===== */
+    /* ===== REVEAL MECHANISM ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== BUTTONS ===== */
     .btn-retour-bilan {
       position: fixed;
-      bottom: 24px;
-      left: 24px;
+      bottom: 24px; left: 24px;
       z-index: 200;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #fff;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.7);
       padding: 10px 20px;
-      border-radius: 50px;
-      font-size: 0.85rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
       font-weight: 600;
       text-decoration: none;
-      transition: background 0.3s, transform 0.3s;
-      display: flex; align-items: center; gap: 8px;
+      transition: all 0.3s ease;
     }
     .btn-retour-bilan:hover {
-      background: rgba(255,213,79,0.2);
+      background: rgba(255,213,79,0.1);
       border-color: #ffd54f;
       color: #ffd54f;
       transform: translateX(-3px);
     }
 
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .btn-cta-main {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white; text-decoration: none;
+      padding: 16px 36px; border-radius: 50px;
+      font-weight: 700; font-size: 0.95rem;
+      box-shadow: 0 8px 30px rgba(106,17,203,0.3);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
-    /* ===== REVEAL (IntersectionObserver targets) ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: all 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .btn-cta-main:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(106,17,203,0.5);
+      color: white;
     }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 600px) {
-      .bilan-section { padding: 60px 18px; }
-      .conclusion-wrap { padding: 28px 20px; }
-      .comp-card { padding: 18px 18px; }
-      .bilan-nav ul li a { padding: 14px 14px; font-size: 0.72rem; }
+    @media (max-width: 768px) {
+      .bilan-nav ul { justify-content: flex-start; overflow-x: auto; padding: 0 8px; }
+      .bilan-nav ul li a { padding: 16px 16px; font-size: 0.75rem; }
+      .bilan-section { padding: 60px 20px; }
+      .comp-card { padding: 24px; }
+      .conclusion-wrap { padding: 32px 24px; }
     }
   </style>
 </head>
@@ -465,7 +530,7 @@
     <h1 class="hero-title">
       Le sommet<br>du <span class="gold">parcours</span>
     </h1>
-    <p class="hero-subtitle">Ce que trois ans de BUT, de SAÉ et d'alternance ont vraiment changé.</p>
+    <p class="hero-subtitle">Ce que trois ans de BUT, de SAÉ et d'alternance ont véritablement transformé.</p>
   </div>
   <div class="hero-scroll-hint">
     <span>Défiler</span>
@@ -473,7 +538,7 @@
   </div>
 </section>
 
-<!-- NAV STICKY -->
+<!-- STICKY NAV -->
 <nav class="bilan-nav">
   <ul>
     <li><a href="#apports" data-section="apports">Apports</a></li>
@@ -484,7 +549,7 @@
   </ul>
 </nav>
 
-<!-- ===== APPORTS DES SAÉ ===== -->
+<!-- ===== SECTION 01: APPORTS ===== -->
 <section id="apports">
   <div class="bilan-section">
     <span class="section-label">01 — Apports globaux</span>
@@ -502,15 +567,14 @@
     </div>
 
     <p class="bilan-text">
-      Plusieurs projets m'ont conduite à travailler sur des outils ou des méthodes que je ne maîtrisais pas encore.Malgré le manque de temps d'assimulation des notions , j'ai réussi à comprendre les notions essentielles et à produire un travail satisfaisant. Ces expériences m'ont montré que je suis capable d'apprendre rapidement lorsque je suis confrontée à une nouvelle technologie.
+      Plusieurs projets m'ont conduite à travailler sur des outils ou des méthodes que je ne maîtrisais pas encore. Malgré le manque de temps d'assimilation des notions, j'ai réussi à comprendre les concepts essentiels et à produire un travail satisfaisant. Ces expériences m'ont montré que je suis capable d'apprendre rapidement lorsque je suis confrontée à une nouvelle technologie.
     </p>
-    
   </div>
 </section>
 
 <hr class="section-divider">
 
-<!-- ===== COMPÉTENCES ===== -->
+<!-- ===== SECTION 02: COMPÉTENCES ===== -->
 <section id="competences">
   <div class="bilan-section">
     <span class="section-label">02 — Évolution par compétence</span>
@@ -525,11 +589,9 @@
           <div class="comp-number c1">Compétence 1</div>
           <div class="comp-title">Traiter des données à des fins décisionnelles</div>
           <div class="comp-body">
-              <p>Lorsque je suis arrivée en BUT, je savais manipuler des données dans des contextes simples, mais je n'avais encore jamais été confrontée à des jeux de données complets ni à des problématiques proches de celles rencontrées en entreprise. Les premières SAÉ, comme la création de reporting à partir d'une base de données relationnelle ou encore l'écriture et la lecture de fichiers de données, m'ont permis d'acquérir les bases nécessaires pour comprendre le cycle de vie d'une donnée.</p>
-            
-              <p>Au fil des semestres, j'ai appris à travailler sur des volumes de données plus importants et à utiliser des outils plus variés. La SAÉ de conception et d'implémentation d'une base de données a marqué une étape importante, car elle m'a permis de mieux comprendre l'organisation des données en amont de leur exploitation. Plus tard, les projets d'analyse de données, de reporting et de migration vers des environnements NoSQL m'ont obligée à m'adapter à de nouvelles méthodes de stockage et de traitement.</p>
-            
-              <p>Mon alternance a renforcé cette compétence de manière concrète. J'ai rapidement compris qu'avant toute analyse, il fallait s'assurer de la qualité et de la cohérence des données. Les automatisations réalisées avec Excel, VBA ou Power Query m'ont permis de gagner en efficacité tout en limitant les erreurs. Aujourd'hui, je suis plus attentive à la fiabilité des données et à la structuration des traitements mis en place.</p>
+            <p>Lorsque je suis arrivée en BUT, je savais manipuler des données dans des contextes simples, mais je n'avais encore jamais été confrontée à des jeux de données complets ni à des problématiques proches de celles rencontrées en entreprise. Les premières SAÉ, comme la création de reporting à partir d'une base de données relationnelle ou encore l'écriture et la lecture de fichiers de données, m'ont permis d'acquérir les bases nécessaires pour comprendre le cycle de vie d'une donnée.</p>
+            <p>Au fil des semestres, j'ai appris à travailler sur des volumes de données plus importants et à utiliser des outils plus variés. La SAÉ de conception et d'implémentation d'une base de données a marqué une étape importante, car elle m'a permis de mieux comprendre l'organisation des données en amont de leur exploitation. Plus tard, les projets d'analyse de données, de reporting et de migration vers des environnements NoSQL m'ont obligée à m'adapter à de nouvelles méthodes de stockage et de traitement.</p>
+            <p>Mon alternance a renforcé cette compétence de manière concrète. J'ai rapidement compris qu'avant toute analyse, il fallait s'assurer de la qualité et de la cohérence des données. Les automatisations réalisées avec Excel, VBA ou Power Query m'ont permis de gagner en efficacité tout en limitant les erreurs. Aujourd'hui, je suis plus attentive à la fiabilité des données et à la structuration des traitements mis en place.</p>
           </div>
           <div class="comp-progress-wrap">
             <div class="comp-progress-label">
@@ -549,13 +611,11 @@
         <div class="comp-card">
           <div class="comp-number c2">Compétence 2</div>
           <div class="comp-title">Analyser statistiquement les données</div>
-         <div class="comp-body">
+          <div class="comp-body">
             <p>La compétence que j'ai probablement le plus développée durant le BUT est l'analyse statistique. Au début de la formation, je maîtrisais surtout les méthodes vues en cours, mais j'avais encore des difficultés à choisir moi-même une démarche d'analyse adaptée à une problématique donnée.</p>
-          
             <p>Les SAÉ d'estimation par sondage, de régression sur données réelles et d'analyse de données ont progressivement changé ma façon de travailler. J'ai appris à ne plus me limiter à l'application mécanique d'une méthode mais à m'interroger sur la pertinence des résultats obtenus, les hypothèses utilisées et les limites des analyses réalisées. La SAÉ S401 a constitué un véritable tournant : il ne s'agissait plus seulement d'analyser des données mais aussi d'expliquer une variable à partir de plusieurs facteurs et d'interpréter les résultats obtenus.</p>
-          
             <p>Avec le temps, j'ai gagné en confiance dans ce domaine. Les résultats obtenus dans les SAÉ d'analyse avancée ou de modélisation montrent cette progression, mais ce qui me paraît le plus important est ma capacité actuelle à construire un raisonnement statistique complet. Cette évolution a également confirmé mon intérêt pour les mathématiques appliquées et explique mon choix de poursuivre en master dans ce domaine.</p>
-        </div>
+          </div>
           <div class="comp-progress-wrap">
             <div class="comp-progress-label">
               <span>Niveau atteint</span>
@@ -576,11 +636,9 @@
           <div class="comp-title">Valoriser les données dans un contexte professionnel</div>
           <div class="comp-body">
             <p>Au début du BUT, je considérais souvent qu'une analyse était terminée une fois les calculs réalisés. Les différentes SAÉ m'ont progressivement montré qu'une analyse n'a réellement de valeur que si ses résultats sont compris par les personnes à qui elle s'adresse.</p>
-          
             <p>Les enquêtes réalisées en première année, les soutenances, les rapports d'analyse ainsi que les projets de datavisualisation m'ont permis de travailler cette dimension de communication. J'ai appris à sélectionner les informations essentielles, à construire un discours cohérent et à adapter mes explications à des publics qui ne possèdent pas forcément de connaissances statistiques.</p>
-          
             <p>L'alternance a renforcé cette compétence de manière particulièrement concrète. En développant des tableaux de bord et des outils de suivi destinés à des utilisateurs métiers, j'ai compris que l'objectif n'était pas de montrer la complexité du travail réalisé mais de rendre les résultats lisibles et utiles à la prise de décision. Aujourd'hui, je réfléchis davantage aux besoins des utilisateurs avant de choisir les indicateurs ou les visualisations à mettre en avant.</p>
-         </div>
+          </div>
           <div class="comp-progress-wrap">
             <div class="comp-progress-label">
               <span>Niveau atteint</span>
@@ -601,9 +659,7 @@
           <div class="comp-title">Modéliser les données dans un cadre statistique</div>
           <div class="comp-body">
             <p>La modélisation est la compétence qui a le plus évolué entre mon arrivée en BUT et aujourd'hui. En première année, ma vision des statistiques était principalement descriptive. Les notions de prédiction, de modélisation ou d'apprentissage statistique me semblaient encore très théoriques.</p>
-          
             <p>Les SAÉ réalisées en deuxième et troisième année m'ont progressivement permis d'aborder ces problématiques sous un angle plus concret. Les projets de régression sur données réelles, d'analyse multivariée, de datamining ou encore d'analyse avancée m'ont montré comment construire et interpréter des modèles à partir de situations réelles. J'ai également découvert des environnements et des méthodes nouveaux, notamment lors de la migration vers des bases NoSQL.</p>
-          
             <p>Même si cette compétence reste celle que je souhaite le plus approfondir, je constate aujourd'hui une réelle progression dans ma manière d'aborder les modèles statistiques. Je suis davantage capable d'en comprendre les hypothèses, d'interpréter leurs résultats et d'identifier leurs limites. C'est également cette compétence qui a renforcé mon envie de poursuivre mes études en mathématiques appliquées et statistique.</p>
           </div>
           <div class="comp-progress-wrap">
@@ -624,113 +680,115 @@
 
 <hr class="section-divider">
 
-<!-- ===== SYNTHÈSE ===== -->
-<table class="synth-table">
-  <thead>
-    <tr>
-      <th>Compétence</th>
-      <th>Évolution observée</th>
-      <th>SAÉ marquantes</th>
-      <th>Ce que j'en retiens aujourd'hui</th>
-    </tr>
-  </thead>
-  <tbody>
+<!-- ===== SECTION 03: SYNTHÈSE MODERNE ===== -->
+<section id="synthese">
+  <div class="bilan-section">
+    <span class="section-label">03 — Vue d'ensemble</span>
+    <h2 class="section-title">Matrice de synthèse des compétences</h2>
 
-    <tr>
-      <td>
-        <strong>Traiter</strong><br>
-        <span class="synth-badge badge-green">Très bon niveau</span>
-      </td>
-      <td>
-        Passage d'une manipulation simple des données à la mise en œuvre
-        de traitements plus complets intégrant bases de données,
-        automatisation et gestion de différentes sources.
-      </td>
-      <td>
-        S101 (Reporting SQL)<br>
-        S201 (Base de données)<br>
-        S206 (Reporting et analyse)<br>
-        S502 (Migration NoSQL)
-      </td>
-      <td>
-        J'ai appris que la qualité des analyses dépend avant tout de la
-        qualité des données et des traitements réalisés en amont.
-      </td>
-    </tr>
+    <div class="modern-table-container modern-reveal">
+      <table class="synth-table">
+        <thead>
+          <tr>
+            <th style="width: 22%">Compétence</th>
+            <th style="width: 30%">Évolution observée</th>
+            <th style="width: 23%">SAÉ marquantes</th>
+            <th style="width: 25%">Ce que j'en retiens aujourd'hui</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="fw-bold mb-2 text-white">Traiter</div>
+              <span class="synth-badge badge-green"><i class="fa-solid fa-circle-check me-1"></i> Très bon</span>
+            </td>
+            <td>Passage d'une manipulation simple des données à la mise en œuvre de traitements plus complets intégrant bases de données, automatisation et gestion de différentes sources.</td>
+            <td>
+              <ul class="table-list">
+                <li>S101 (Reporting SQL)</li>
+                <li>S201 (Base de données)</li>
+                <li>S206 (Reporting & analyse)</li>
+                <li>S502 (Migration NoSQL)</li>
+              </ul>
+            </td>
+            <td class="fst-italic text-white-50">"La qualité des analyses dépend avant tout de la rigueur et de la propreté des traitements en amont."</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="fw-bold mb-2 text-white">Analyser</div>
+              <span class="synth-badge badge-purple"><i class="fa-solid fa-chart-line me-1"></i> Très bon</span>
+            </td>
+            <td>Développement progressif d'une véritable démarche statistique : exploration mathématique, choix pertinent des méthodes, interprétation rigoureuse et recul critique.</td>
+            <td>
+              <ul class="table-list">
+                <li>S202 (Sondage)</li>
+                <li>S203 (Régression)</li>
+                <li>S401 (Analyse multivariée)</li>
+                <li>S504 (Analyse avancée)</li>
+              </ul>
+            </td>
+            <td class="fst-italic text-white-50">"Je sais aujourd'hui structurer un raisonnement statistique complet de bout en bout et justifier mes choix."</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="fw-bold mb-2 text-white">Valoriser</div>
+              <span class="synth-badge badge-orange"><i class="fa-solid fa-eye me-1"></i> Très bon</span>
+            </td>
+            <td>Évolution majeure dans la restitution et la vulgarisation des résultats (écrit/oral), avec une attention croissante portée aux besoins métiers réels.</td>
+            <td>
+              <ul class="table-list">
+                <li>S104 (Présentation)</li>
+                <li>S106 (Enquête)</li>
+                <li>S205 (KPI Performance)</li>
+                <li>S206 (Vidéo & Restitution)</li>
+              </ul>
+            </td>
+            <td class="fst-italic text-white-50">"Une analyse n'a de valeur réelle que si elle est comprise, transparente et exploitable pour la prise de décision."</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="fw-bold mb-2 text-white">Modéliser</div>
+              <span class="synth-badge badge-blue"><i class="fa-solid fa-brain me-1"></i> Bon niveau</span>
+            </td>
+            <td>Transition majeure d'une approche purement descriptive vers l'appropriation et la compréhension approfondie de modèles statistiques complexes et prédictifs.</td>
+            <td>
+              <ul class="table-list">
+                <li>S203 (Régression)</li>
+                <li>S401 (Prédiction de variable)</li>
+                <li>S503 (Datamining)</li>
+                <li>S504 (Analyse avancée)</li>
+              </ul>
+            </td>
+            <td class="fst-italic text-white-50">"C'est la brique maîtresse que je souhaite parfaire lors de mon Master à l'Institut Polytechnique de Paris."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-    <tr>
-      <td>
-        <strong>Analyser</strong><br>
-        <span class="synth-badge badge-purple">Très bon niveau</span>
-      </td>
-      <td>
-        Développement progressif d'une véritable démarche statistique :
-        exploration, choix des méthodes, interprétation et recul critique
-        sur les résultats.
-      </td>
-      <td>
-        S202 (Sondage)<br>
-        S203 (Régression)<br>
-        S401 (Analyse multivariée)<br>
-        S504 (Analyse avancée)
-      </td>
-      <td>
-        Je suis aujourd'hui plus à l'aise pour construire un raisonnement
-        statistique complet et justifier mes choix méthodologiques.
-      </td>
-    </tr>
+<hr class="section-divider">
 
-    <tr>
-      <td>
-        <strong>Valoriser</strong><br>
-        <span class="synth-badge badge-orange">Très bon niveau</span>
-      </td>
-      <td>
-        Évolution importante dans la communication des résultats,
-        aussi bien à l'écrit qu'à l'oral, avec une attention croissante
-        portée aux besoins des utilisateurs.
-      </td>
-      <td>
-        S104 (Présentation d'entreprise)<br>
-        S106 (Enquête)<br>
-        S205 (Indicateurs de performance)<br>
-        S206 (Vidéo et restitution)
-      </td>
-      <td>
-        Une analyse n'a de valeur que si elle est comprise et utilisée
-        par les personnes auxquelles elle est destinée.
-      </td>
-    </tr>
+<!-- ===== SECTION 04: FIERTÉ ===== -->
+<section id="fierte">
+  <div class="bilan-section">
+    <span class="section-label">04 — Accomplissement majeur</span>
+    <h2 class="section-title">Ma plus grande fierté</h2>
+    
+    <div class="pride-card reveal">
+      <p>
+        Si je devais retenir une réalisation majeure de ces trois années, ce serait la conception de A à Z d’un pipeline automatisé de traitement et de visualisation lors de mon alternance. Face à des processus métiers longs et sujets aux erreurs manuelles, j'ai su prendre l'initiative de concevoir des outils automatisés robustes (via VBA et Power Query), réduisant drastiquement le temps de traitement hebdomadaire.
+      </p>
+      <p>
+        Ce projet incarne pour moi la convergence parfaite des compétences acquises : l'agilité technique face à la donnée complexe, et la capacité à restituer un outil clair, pérenne et à forte valeur ajoutée pour les équipes décisionnelles.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <tr>
-      <td>
-        <strong>Modéliser</strong><br>
-        <span class="synth-badge badge-blue">Bon niveau</span>
-      </td>
-      <td>
-        Passage d'une approche essentiellement descriptive à une
-        compréhension plus approfondie des modèles statistiques et
-        prédictifs.
-      </td>
-      <td>
-        S203 (Régression)<br>
-        S401 (Prédiction d'une variable)<br>
-        S503 (Datamining)<br>
-        S504 (Analyse avancée)
-      </td>
-      <td>
-        Cette compétence est celle que je souhaite continuer à développer
-        dans la poursuite de mes études en mathématiques appliquées et
-        statistique.
-      </td>
-    </tr>
+<hr class="section-divider">
 
-  </tbody>
-</table>
-
-
-
-<!-- ===== CONCLUSION ===== -->
+<!-- ===== SECTION 05: CONCLUSION ===== -->
 <section id="conclusion">
   <div class="bilan-section">
     <span class="section-label">05 — Bilan global</span>
@@ -750,34 +808,23 @@
       </p>
     </div>
 
-    <!-- CTA retour -->
+    <!-- CTA de retour -->
     <div class="text-center mt-5 reveal">
-      <a href="index.html" style="
-        display: inline-flex; align-items: center; gap: 12px;
-        background: linear-gradient(135deg, #6a11cb, #2575fc);
-        color: white; text-decoration: none;
-        padding: 16px 36px; border-radius: 50px;
-        font-weight: 700; font-size: 1rem;
-        box-shadow: 0 8px 25px rgba(106,17,203,0.4);
-        transition: transform 0.3s, box-shadow 0.3s;
-      "
-      onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 14px 35px rgba(106,17,203,0.55)'"
-      onmouseout="this.style.transform='';this.style.boxShadow='0 8px 25px rgba(106,17,203,0.4)'"
-      >
-        ← Retour au portfolio
+      <a href="index.html" class="btn-cta-main">
+        <i class="fa-solid fa-arrow-left"></i> Retour au portfolio
       </a>
     </div>
 
-    <div style="height: 80px;"></div>
+    <div style="height: 40px;"></div>
   </div>
 </section>
 
-<!-- BOUTON RETOUR FIXE -->
-<a href="index.html" class="btn-retour-bilan">← Retour</a>
+<!-- BTN FIXE RETOUR MOBILE -->
+<a href="index.html" class="btn-retour-bilan"><i class="fa-solid fa-arrow-left me-2"></i>Retour</a>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
-// ---- Étoiles canvas ----
+// ---- Canvas Étoiles avec Mouvement (Parallaxe spatial fluide) ----
 (function() {
   const canvas = document.getElementById('stars-canvas');
   const ctx = canvas.getContext('2d');
@@ -790,13 +837,13 @@
 
   function initStars() {
     stars = [];
-    for (let i = 0; i < 160; i++) {
+    for (let i = 0; i < 150; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.2,
+        r: Math.random() * 1.2 + 0.3,
         alpha: Math.random(),
-        speed: Math.random() * 0.4 + 0.1
+        speedY: Math.random() * 0.15 + 0.05 // Donne une impulsion vers le haut très discrète
       });
     }
   }
@@ -804,8 +851,12 @@
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     stars.forEach(s => {
-      s.alpha += (Math.random() - 0.5) * 0.03;
-      s.alpha = Math.max(0.05, Math.min(0.9, s.alpha));
+      s.y -= s.speedY; // Déplacement continu
+      if (s.y < 0) s.y = canvas.height; // Réinitialise en bas si sort de l'écran
+
+      s.alpha += (Math.random() - 0.5) * 0.04;
+      s.alpha = Math.max(0.1, Math.min(0.8, s.alpha));
+
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255,255,255,${s.alpha})`;
@@ -820,10 +871,10 @@
   window.addEventListener('resize', () => { resize(); initStars(); });
 })();
 
-// ---- IntersectionObserver pour les révélations ----
+// ---- IntersectionObserver (Effet Reveal fluide au scroll) ----
 (function() {
   const targets = document.querySelectorAll(
-    '.section-label, .section-title, .bilan-text, .comp-item, .reveal, .highlight-quote, .pride-card'
+    '.section-label, .section-title, .bilan-text, .comp-item, .reveal, .highlight-quote, .pride-card, .modern-table-container'
   );
 
   const io = new IntersectionObserver((entries) => {
@@ -832,12 +883,12 @@
         e.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
 
   targets.forEach(t => io.observe(t));
 })();
 
-// ---- Nav active sur scroll ----
+// ---- Sticky Navigation Highlighting ----
 (function() {
   const sections = ['apports','competences','synthese','fierte','conclusion'];
   const links = document.querySelectorAll('.bilan-nav a[data-section]');
@@ -846,7 +897,7 @@
     let current = '';
     sections.forEach(id => {
       const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+      if (el && window.scrollY >= el.offsetTop - 140) current = id;
     });
     links.forEach(a => {
       a.classList.toggle('active', a.dataset.section === current);
