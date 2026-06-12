@@ -63,3 +63,18 @@
     padding: 16px 20px;
   }
 }
+
+/* ===== RÉDUCTION DU BANDEAU VIOLET/BLEU "À PROPOS" ===== */
+#apropos {
+  padding: 0 !important;
+  min-height: auto !important;
+}
+#apropos .carousel-item {
+  min-height: 35vh;
+  padding: 30px 20px;
+}
+@media (max-width: 768px) {
+  #apropos .carousel-item {
+    min-height: 40vh;
+  }
+}
