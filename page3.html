@@ -289,13 +289,32 @@
           🏆 2ème place de la promotion – Compétition Kaggle
         </span>
       </div>
+
+      <!-- Captures du classement Kaggle -->
+      <div class="row g-4 justify-content-center mt-4" style="overflow:visible;">
+        <div class="col-md-4 text-center" style="overflow:visible;">
+          <img src="kaggle.png" alt="Présentation de la compétition Kaggle SAE Data Science 2025/26"
+               class="image-illustree" onclick="openModal(this)"
+               data-description="Présentation de la compétition Kaggle organisée pour la SAE Data Science 2025/26, autour de la prédiction des scores de reviews Amazon.">
+        </div>
+        <div class="col-md-4 text-center" style="overflow:visible;">
+          <img src="kaggle1.png" alt="Classement final de la compétition Kaggle"
+               class="image-illustree" onclick="openModal(this)"
+               data-description="Classement final de la compétition : notre équipe 'Les Bridgerton' termine 2ème de la promotion.">
+        </div>
+        <div class="col-md-4 text-center" style="overflow:visible;">
+          <img src="kaggle3.png" alt="Évolution du score sur le leaderboard Kaggle"
+               class="image-illustree" onclick="openModal(this)"
+               data-description="Évolution de notre score sur le leaderboard, avec une amélioration progressive au fil des soumissions.">
+        </div>
+      </div>
     </section>
 
-    <!-- Section ter mes travaux – SAE 3 -->
+    <!-- Section Importer mes travaux – SAE 3 -->
     <div class="import-section-3">
-      <h3>📂 Consulter mes travaux</h3>
+      <h3>📂 Importer mes travaux</h3>
       <div class="import-btns">
-        <a href="sae3_BUT3.ipynb" class="import-btn"><span class="btn-icon">📁</span> Télécharger les travaux</a>
+        <a href="#" class="import-btn"><span class="btn-icon">📁</span> Importer les travaux</a>
         <a href="#" class="import-btn secondary"><span class="btn-icon">🎞️</span> Importer la diapo</a>
       </div>
     </div>
@@ -313,5 +332,29 @@
     <small>© Grace Soukou – Tous droits réservés</small>
   </footer>
 
+  <!-- MODAL ZOOM IMAGES -->
+  <div id="imageModal" class="modal-pro" onclick="closeModal()">
+    <span class="close-pro">&times;</span>
+    <div class="modal-content-pro">
+      <img id="modalImgPro">
+      <p id="modalTextPro"></p>
+    </div>
+  </div>
+
+  <script>
+  function openModal(img) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImgPro");
+    const modalText = document.getElementById("modalTextPro");
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+    modalText.textContent = img.dataset.description || "";
+  }
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+  </script>
+
 </body>
 </html>
+
