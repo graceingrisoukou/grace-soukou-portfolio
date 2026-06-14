@@ -314,7 +314,7 @@
       </p>
 
       <div class="text-center my-4">
-        <img src="alternance1.png" alt="Outil de suivi du délai de paiement et du nombre de factures B2" class="image-illustree image-zoom mb-2">
+        <img src="alternance1.png" alt="Outil de suivi" class="image-illustree image-zoom mb-2" onclick="openModal(this)" data-description="Projet 2 — Outil automatisé de suivi du délai de paiement et du nombre de factures B2, développé sous Excel/VBA pour une manager d'un autre service.">
         <p style="font-size: 0.95rem; color: #555;">Projet 2 — Outil automatisé de suivi du délai de paiement et du nombre de factures B2</p>
       </div>
 
@@ -323,7 +323,7 @@
       </p>
 
       <div class="text-center my-4">
-        <img src="alternance2.png" alt="Outil de pilotage utilisé par la direction" class="image-illustree image-zoom mb-2">
+        <img src="alternance2.png" alt="Outil de pilotage" class="image-illustree image-zoom mb-2" onclick="openModal(this)" data-description="Outil de pilotage destiné aux managers et à la direction pour le suivi d'indicateurs à l'échelle de l'organisme.">
         <p style="font-size: 0.95rem; color: #555;">Outil de pilotage destiné aux managers et à la direction</p>
       </div>
 
@@ -548,67 +548,129 @@
 </section>
 
 
-<footer class="contact-footer" style="padding: 60px 0; background-color: #1a1a1a; color: white;">
-  <div class="container">
-    <div class="row g-4 align-items-center">
-      
-      <div class="col-md-6 text-center text-md-start">
-        <h2 class="mb-4 text-white"><i class="fas fa-envelope-open-text me-2"></i> Me contacter</h2>
-        <div class="contact-infos" style="font-size: 1.1rem;">
-          <p class="mb-2">📞 <strong>Téléphone :</strong> <a href="tel:+33784895900" style="color: #ffd54f;">+33 07 84 89 59 00</a></p>
-          <p class="mb-0">📧 <strong>Email :</strong> <a href="mailto:grace.soukou@edu.univ-paris13.fr" style="color: #ffd54f;">grace.soukou@edu.univ-paris13.fr</a></p>
-        </div>
+  <footer id="contact-footer" class="contact-footer">
+    <div class="container text-center">
+      <h2 class="mb-4">📩 Me contacter</h2>
+      <div class="contact-infos">
+        <p class="mb-2">📞 <strong>Téléphone :</strong> <a href="tel:+33784895900">+33 07 84 89 59 00</a></p>
+        <p class="mb-0">📧 <strong>Email :</strong> <a href="mailto:grace.soukou@edu.univ-paris13.fr">grace.soukou@edu.univ-paris13.fr</a></p>
       </div>
-      
-      <div class="col-md-6 text-center text-md-end">
-        <h2 class="mb-4 text-white"><i class="fas fa-file-pdf me-2"></i> Mon Curriculum Vitae</h2>
-        <a href="cv.pdf" target="_blank" class="btn btn-warning btn-lg fw-bold px-4 py-3 shadow" style="border-radius: 30px;">
-          📥 Télécharger mon CV (PDF)
-        </a>
-      </div>
+      <hr class="my-4">
+      <p class="copyright">© 2025 Grâce Soukou | Portfolio créatif et data-driven 💫</p>
+    </div>
+  </footer>
 
-    </div>
-    <hr class="my-4" style="border-color: rgba(255,255,255,0.15);">
-    <div class="text-center">
-      <p class="copyright mb-0">© 2025 Grâce Soukou | Portfolio créatif et data-driven 💫</p>
+  <!-- MODALE IMAGE UNIFIÉE -->
+  <div id="imageModal" onclick="closeModal()" style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    cursor: zoom-out;
+  ">
+    <span onclick="closeModal()" style="
+      position: fixed;
+      top: 18px;
+      right: 28px;
+      font-size: 2.4rem;
+      color: white;
+      cursor: pointer;
+      font-weight: 300;
+      line-height: 1;
+      z-index: 10000;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    " onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">&times;</span>
+
+    <div onclick="event.stopPropagation()" style="
+      max-width: 90vw;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    ">
+      <img id="modalImg" src="" alt="Vue agrandie" style="
+        max-width: 100%;
+        max-height: 72vh;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        object-fit: contain;
+        animation: zoomIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      ">
+      <p id="modalText" style="
+        color: #f0f0f0;
+        font-size: 1rem;
+        text-align: center;
+        max-width: 700px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0 10px;
+      "></p>
     </div>
   </div>
-</footer>
-  <div id="imageModal" class="modal-pro" onclick="closeModalPro()">
-    <span class="close-pro" onclick="closeModalPro()">&times;</span>
-    <div class="modal-content-pro" onclick="event.stopPropagation()">
-      <img id="modalImgPro" src="" alt="Vue agrandie">
-      <p id="modalTextPro" class="mt-3 px-3"></p>
-    </div>
-  </div>
+
+  <style>
+    @keyframes zoomIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+    .image-zoom-final {
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      cursor: zoom-in;
+      transition:
+        transform 0.45s cubic-bezier(0.34,1.56,0.64,1),
+        box-shadow 0.45s ease,
+        filter 0.45s ease;
+      will-change: transform;
+    }
+    .image-zoom-final:hover {
+      transform: scale(1.35);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.22), 0 0 0 4px rgba(0,123,255,0.18);
+      filter: brightness(1.04) saturate(1.08);
+      z-index: 20;
+      position: relative;
+    }
+    .image-zoom {
+      cursor: zoom-in;
+      transition:
+        transform 0.45s cubic-bezier(0.34,1.56,0.64,1),
+        box-shadow 0.45s ease,
+        filter 0.45s ease;
+      will-change: transform;
+    }
+    .image-zoom:hover {
+      transform: scale(1.35);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.22), 0 0 0 4px rgba(0,123,255,0.18);
+      filter: brightness(1.04) saturate(1.08);
+      z-index: 20;
+      position: relative;
+    }
+  </style>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Script de gestion de la modale d'affichage
-    function openModalPro(src, description) {
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImgPro');
-      const modalText = document.getElementById('modalTextPro');
-      
-      if (modal && modalImg && modalText) {
-        modal.style.display = "flex";
-        modalImg.src = src;
-        modalText.textContent = description;
-      }
+    function openModal(el) {
+      const modal   = document.getElementById('imageModal');
+      const img     = document.getElementById('modalImg');
+      const caption = document.getElementById('modalText');
+      modal.style.display   = 'flex';
+      img.src               = el.src;
+      caption.textContent   = el.getAttribute('data-description') || el.alt || '';
     }
 
-    function closeModalPro() {
-      const modal = document.getElementById('imageModal');
-      if (modal) {
-        modal.style.display = "none";
-      }
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
     }
 
-    // Sécurité d'échappement avec la touche Échap
     document.addEventListener('keydown', function(e) {
-      if (e.key === "Escape") {
-        closeModalPro();
-      }
+      if (e.key === 'Escape') closeModal();
     });
   </script>
 </body>
