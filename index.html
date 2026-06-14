@@ -11,183 +11,542 @@
 </head>
 <body>
 
+  <!-- Barre de navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Grâce Soukou</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id=\"navbarNav\">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
           <li class="nav-item"><a class="nav-link" href="#apropos">À propos de moi</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projets">Projets Académiques</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projet-pro">Projet Professionnel</a></li>
-          <li class="nav-item"><a class="nav-link" href="#evolution-fierte">Évolution & Fierté</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact-footer">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projets">Projets académiques</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projet-pro">Projets professionnels</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <section id="accueil" class="intro-section">
-    <div class="intro-background"></div>
-    <div class="intro-container container">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-md-5 text-center mb-4 mb-md-0 position-relative animate-pop">
-          <div class="photo-wrapper">
-            <img src="profil.jpg" alt="Grâce Soukou" class="photo-profil img-fluid">
-          </div>
-        </div>
-        <div class="col-md-7 text-center text-md-start animate-fade-right">
-          <div class="intro-card-glass">
-            <h1 class="display-4 fw-bold mb-2">Grâce Soukou</h1>
-            <h2 class="h3 text-accent mb-4 fw-semibold">Étudiante en BUT Science des Données</h2>
-            <p class="lead text-light-muted mb-4">
-              Bienvenue sur mon portfolio ! Passionnée par l'analyse de données, le développement d'outils décisionnels et la programmation, je vous invite à explorer mon parcours à travers mes projets académiques et mes expériences professionnelles.
-            </p>
-            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start">
-              <a href="#projets" class="btn btn-primary btn-lg shadow-sm">🚀 Découvrir mes projets</a>
-              <a href="#contact-footer" class="btn btn-outline-light btn-lg">📩 Me contacter</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Accueil -->
+  <header id="accueil" class="container-fluid d-flex align-items-center text-white fade-section"
+  style="min-height: 60vh;
+         background-image: url('fond-data-grace.png');
+         background-size: cover;
+         background-position: center;
+         background-repeat: no-repeat;
+         padding: 40px 20px;">
+  
+  <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-center gap-5">
 
-  <section id="apropos" class="my-0">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
-      <div class="carousel-inner">
-        
-        <div class="carousel-item active">
-          <div class="carousel-slide-wrap">
-            <div class="bg-blur slide-anim text-white">
-              <h1 class="fw-bold mb-3">🎓 Mon Parcours Académique</h1>
-              <p class="lead">
-                Actuellement en troisième année de <strong>BUT Science des Données</strong> (formation en alternance), j'acquiers des compétences solides en traitement statistique, machine learning et gestion de bases de données. Mon parcours est guidé par la volonté de transformer des données brutes en leviers stratégiques décisionnels.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="carousel-slide-wrap">
-            <div class="bg-blur slide-anim text-white">
-              <h1 class="fw-bold mb-3">💻 Mes Compétences Techniques</h1>
-              <p class="lead">
-                Je maîtrise la programmation sous <strong>Python, R, SAS, et SQL</strong> pour manipuler, modéliser et interroger les données. Spécialisée en Data Visualization (Power BI, Shiny, Seaborn), je conçois des tableaux de bord interactifs et automatisés adaptés aux besoins métiers.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="carousel-slide-wrap">
-            <div class="bg-blur slide-anim text-white">
-              <h1 class="fw-bold mb-3">🌟 Mes Aspirations Professionnelles</h1>
-              <p class="lead">
-                Ayant une forte appétence pour la Data Science et la Business Intelligence, j'aspire à évoluer vers des postes de Data Analyst ou Consultante BI. Mon objectif est d'accompagner les entreprises dans leur transition data-driven en apportant de la clarté grâce aux statistiques.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="fleche-custom">‹</span>
-        <span class="visually-hidden">Précédent</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="fleche-custom">›</span>
-        <span class="visually-hidden">Suivant</span>
-      </button>
-    </div>
-  </section>
-
-  <section id="projets">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-3 text-dark">📚 MES PROJETS ACADÉMIQUES (SAÉ)</h2>
+    <!-- Texte à gauche avec effet flou -->
+    <div class="text-center text-lg-start mb-5 mb-lg-0" style="
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      max-width: 600px;">
       
-      <div class="card shadow-sm border-0 intro-box bg-white text-secondary rounded-3">
-        Mon parcours universitaire est rythmé par des Situations d'Apprentissage et d'Évaluation (SAÉ). Ces projets concrets m'ont permis de développer mon autonomie, ma rigueur scientifique et mon esprit d'équipe. Cliquez sur les marches pour explorer mes travaux par année.
-      </div>
+      <h1 class="display-2 fw-bold text-white">
+        Grâce <span style="color: #ffd54f;">SOUKOU</span>
+      </h1>
+      <p class="lead text-white mt-3 fs-4">
+        🎓 Étudiante en science des données <br>
+        Passionnée par les mathématiques et les projets concrets
+      </p>
+    </div>
 
-      <div class="d-flex flex-column align-items-center gap-4 mt-5">
-        <a href="page1.html" class="stair-button stair-but1 btn btn-success text-white shadow fw-bold">
-          🌱 PREMIÈRE ET DEUXIÈME ANNÉE (BUT 1 & 2)
-        </a>
-        <a href="page3 (2).html" class="stair-button stair-but2 btn btn-primary text-white shadow fw-bold">
-          🚀 TROISIÈME ANNÉE (BUT 3)
-        </a>
-      </div>
+    <!-- Image à droite -->
+    <div class="text-center">
+      <img src="grace.png" alt="Photo de Grâce Soukou"
+        style="border-radius: 20px; width: 450px; height: 450px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 6px solid white;">
+    </div>
 
-      <div class="d-flex justify-content-center mt-5 pt-4">
-        <a href="bilan.html" class="sommet-btn-link">
-          <div class="sommet-card">
-            <div class="sommet-glow"></div>
-            <div class="sommet-inner">
-              <div class="sommet-icon-wrap">🏆</div>
-              <div class="sommet-text">
-                <span class="sommet-eyebrow">Atteindre le sommet</span>
-                <span class="sommet-title">Mon Bilan de Compétences complet</span>
-                <span class="sommet-sub">Découvrez la synthèse de mes savoir-faire</span>
-              </div>
-              <div class="sommet-arrow">➔</div>
-            </div>
+  </div>
+</header>
+
+ <!-- À propos -->
+<header id="apropos" class="text-white">
+  <div id="carouselAccueil" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="7000">
+    <div class="carousel-inner">
+
+      <div class="carousel-item active" data-bs-interval="5000">
+        <div class="carousel-slide-wrap">
+          <div class="bg-blur slide-anim">
+            <h1 class="display-5 fw-bold">QUI SUIS-JE ?</h1>
+            <p class="lead">
+              Passionnée par la science des données, j'incarne l'équilibre entre rigueur académique et expérience concrète.
+              Deux années de classe préparatoire m'ont forgé un esprit d'analyse solide, une vraie gestion du stress
+              et le goût du travail en équipe.
+            </p>
+            <div class="carousel-btn"><a href="parcours.html">Découvrir mon parcours</a></div>
           </div>
-        </a>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="7000">
+        <div class="carousel-slide-wrap">
+          <div class="bg-blur slide-anim">
+            <h1 class="display-5 fw-bold">Un parcours académique riche 📚</h1>
+            <p class="lead">
+              En BUT Science des données à l'Université Sorbonne Paris Nord, j'ai consolidé mes bases
+              tout en explorant de nouvelles méthodologies et des outils techniques de plus en plus avancés.
+              Chaque année m'a permis de progresser sur des projets concrets et variés.
+            </p>
+            <div class="carousel-btn"><a href="parcours.html">Découvrir mon parcours</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="7000">
+        <div class="carousel-slide-wrap">
+          <div class="bg-blur slide-anim">
+            <h1 class="display-5 fw-bold">Une expérience professionnelle concrète 💼</h1>
+            <p class="lead">
+              J'ai effectué un stage de quatre mois à la CPAM du Val-de-Marne, prolongé ensuite par une alternance
+              dans le même service. J'y ai développé des outils de data visualisation et d'automatisation
+              utilisés aujourd'hui par plusieurs collaborateurs et la direction.
+            </p>
+            <div class="carousel-btn"><a href="parcours.html">Découvrir mon parcours</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="7000">
+        <div class="carousel-slide-wrap">
+          <div class="bg-blur slide-anim">
+            <h1 class="display-5 fw-bold">Une prochaine étape ambitieuse 🎯</h1>
+            <p class="lead">
+              L'année prochaine, j'intègre le <strong>Master Applied Mathematics and Statistics</strong>
+              à l'Institut Polytechnique de Paris. Un choix qui prolonge naturellement mon BUT :
+              approfondir les mathématiques appliquées, la modélisation et l'analyse statistique avancée.
+            </p>
+            <div class="carousel-btn"><a href="parcours.html">Découvrir mon parcours</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="7000">
+        <div class="carousel-slide-wrap">
+          <div class="bg-blur slide-anim">
+            <h1 class="display-5 fw-bold">Une vision tournée vers l'impact ✨</h1>
+            <p class="lead">
+              Ce qui me motive, c'est de transformer les données en décisions utiles.
+              Analyse, modélisation, visualisation — je veux m'inscrire dans des projets où la donnée
+              a un impact réel, dans la finance, l'assurance ou l'aide à la décision.
+            </p>
+            <div class="carousel-btn"><a href="parcours.html">Découvrir mon parcours</a></div>
+          </div>
+        </div>
       </div>
 
     </div>
-  </section>
 
-  <section id="projet-pro" class="container my-5" style="overflow: visible !important;">
-    <div class="row g-5 p-4 rounded shadow-lg" style="background: linear-gradient(120deg, #e3f2fd 30%, #fce4ec 70%); overflow: visible !important;">
-      <div class="col-12" style="overflow: visible !important;">
-        <h2 class="fw-bold text-center mb-4 text-dark">💼 À LA DÉCOVERY DU MONDE PROFESSIONNEL</h2>
-        <p class="lead text-center text-muted mb-5">
-          Au-delà des projets académiques, mon parcours intègre une immersion forte en entreprise. Découvrez la synthèse de mes missions professionnelles à travers mon poster de stage et ma fiche de poste d'alternance.
-        </p>
-        
-        <div class="row g-5 justify-content-center text-center" style="overflow: visible !important;">
-          <div class="col-12 col-sm-6 col-lg-4" style="overflow: visible !important;">
-            <h4 class="fw-bold mb-3 text-primary">📊 Mon Poster de Stage</h4>
-            <img src="poster.png" alt="Poster de Stage" class="img-fluid image-zoom-final shadow-sm rounded" onclick="openModalPro('poster.png', 'Poster de Stage : Synthèse visuelle de mes missions, de la problématique traitée et des résultats clés obtenus au cours de mon stage de fin de deuxième année.')">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselAccueil" data-bs-slide="prev">
+      <span class="fleche-custom">‹</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselAccueil" data-bs-slide="next">
+      <span class="fleche-custom">›</span>
+    </button>
+  </div>
+</header>
+   
+<!-- Projets -->
+<section id="projets" class="py-5 fade-section" style="
+  background-image: url('fondprojet.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+">
+  <div class="container text-center">
+    <h2 class="mb-4"><i class="fas fa-chart-line"></i> Projets Académiques</h2>
+
+    <!-- Texte d’introduction stylisé -->
+    <div class="intro-box p-4 mb-5 mx-auto" style="max-width: 800px; background: #f8f9fa; border-left: 5px solid #1e88e5; border-radius: 10px;">
+      <p class="mb-0" style="font-size: 1.15rem;">
+        Je vais vous présenter quelques projets académiques, appelés <strong>SAÉ</strong>, que j’ai réalisés au cours de mes trois années   de BUT.
+        Cliquez sur la marche correspondant à l’année pour découvrir les projets concrets menés en <strong>BUT 1</strong> , <strong>BUT 2</strong> et  <strong>BUT 3</strong>.
+      </p>
+    </div>
+
+    <!-- Escalier avec boutons BUT 1 et BUT 2 -->
+    <div class="d-flex justify-content-center align-items-end gap-4 mb-4">
+      <a href="page1.html" class="btn stair-button stair-but1 fw-bold text-white">Projets BUT 1</a>
+      <a href="page 2.html" class="btn stair-button stair-but2 fw-bold text-white">Projets BUT 2</a>
+      <a href="page3.html" class="btn stair-button stair-but3 fw-bold text-white">Projets BUT 3</a>
+    </div>
+    <!-- Séparateur -->
+<div style="width:2px;height:50px;background:linear-gradient(to bottom,#ccc,#6a11cb);opacity:0.4;margin:8px auto;"></div>
+
+<!-- Bouton Bilan -->
+<div class="text-center mt-2 mb-5">
+  <a href="bilan.html" class="sommet-btn-link">
+    <div class="sommet-card mx-auto">
+      <div class="sommet-glow"></div>
+      <div class="sommet-inner">
+        <div class="sommet-icon-wrap">🎓</div>
+        <div class="sommet-text">
+          <span class="sommet-eyebrow">3 ans · 3 marches</span>
+          <span class="sommet-title">Le Bilan — au sommet du parcours</span>
+          <span class="sommet-sub">Compétences · Progression · Ce que ça m'a appris</span>
+        </div>
+        <div class="sommet-arrow">→</div>
+      </div>
+    </div>
+  </a>
+</div>
+  </div>
+</section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Projet Professionnel -->
+<section id="projet-pro" class="container my-5">
+  <div class="row g-5 p-4 rounded shadow-lg"
+       style="background: linear-gradient(120deg, #e3f2fd 30%, #bbdefb 70%);">
+    <div class="col-12">
+      <h2 class="fw-bold text-center mb-4">💼 À LA DÉCOUVERTE DU MONDE PROFESSIONNEL</h2>
+      <p class="text-center mb-4" style="font-size: 1.1rem;">
+        Dans le cadre de ma deuxième année de BUT Science des données, j'ai effectué un stage de quatre mois au sein de la CPAM du Val-de-Marne. Cette expérience s'est prolongée à partir de septembre 2025 par une alternance dans le même service, en tant que chargée de data visualisation et d'automatisation d'outils d'aide à la décision. Cette continuité m'a permis de m'inscrire pleinement dans les missions du service, de gagner en autonomie et de développer une véritable compréhension des enjeux liés à l'exploitation des données dans un contexte professionnel.
+      </p>
+      <p class="text-center mb-4" style="font-size: 1.1rem;">
+        Au-delà des compétences techniques que j'ai pu mobiliser et renforcer, cette expérience s'inscrit dans un environnement de travail dont les valeurs correspondent pleinement aux miennes. J'évolue au sein d'une équipe particulièrement bienveillante, où la communication, l'entraide et l'encouragement mutuel occupent une place centrale. L'esprit collectif est très présent au quotidien, notamment à travers des temps de partage réguliers qui favorisent la cohésion et la convivialité. Cette dynamique fait écho au slogan de l'organisme, « Agir ensemble, protéger chacun », que j'ai pu observer concrètement dans les relations entre collaborateurs comme dans la manière de conduire les projets.
+      </p>
+      <p class="text-center mb-4" style="font-size: 1.1rem;">
+        C'est dans ce contexte que j'ai eu l'opportunité de participer à plusieurs projets structurants, dont l'un constitue aujourd'hui une réelle source de fierté pour moi, car je me suis autoformée à un nouvel outil sur lequel j'avais très peu d'expérience, afin de répondre de manière autonome aux besoins du service et de proposer une solution adaptée. J'ai donc développé un tableau de bord Power BI interactif pour le service dans lequel je travaillais : le contrôle de gestion. Cet outil permet le suivi de tâches, la visualisation de KPIs et la production de rapports automatisés. Voici ci-dessous un aperçu des différentes vues du tableau.
+      </p>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-sm-6 col-lg-4 text-center">
+          <img src="synthese.png" alt="Synthèse" class="img-fluid image-zoom-final" onclick="openModal(this)"
+               data-description="Cette première page est la page principale du tableau de bord Power BI permettant un suivi global des indicateurs clés de performance du service.">
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 text-center">
+          <img src="taches.png" alt="Tâches" class="img-fluid image-zoom-final" onclick="openModal(this)"
+               data-description="Avec cet onglet, on peut visualiser en détail l'avancée des tâches pour le contrôle de gestion, facilitant le pilotage opérationnel.">
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 text-center">
+          <img src="alerte.png" alt="Alerte" class="img-fluid image-zoom-final" onclick="openModal(this)"
+               data-description="Ici, j'ai un système d'alertes automatisées permettant d'identifier rapidement les anomalies ou écarts significatifs comme le retard dans le traitement de certaines tâches récurrentes.">
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 text-center">
+          <img src="dev.png" alt="Développement" class="img-fluid image-zoom-final" onclick="openModal(this)"
+               data-description="Cette interface est dédiée au suivi d'une tâche spécifique : le développement d'outils, leur maintenance et l'analyse des évolutions des indicateurs dans le temps.">
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 text-center">
+          <img src="rapport.png" alt="Rapport" class="img-fluid image-zoom-final" onclick="openModal(this)"
+               data-description="Cet onglet permet de générer automatiquement des rapports dynamiques facilitant la communication des résultats aux équipes et à la direction.">
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 text-center">
+          <img src="note.png" alt="Note de conjoncture" class="img-fluid image-zoom-final" onclick="openModal(this)"
+               data-description="Analyse conjoncturelle synthétique appuyant la prise de décision stratégique du service.">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ce que j'ai découvert de moi-même -->
+<section id="decouverte-soi" class="container my-5">
+  <div class="row g-5 p-4 rounded shadow-lg"
+       style="background: linear-gradient(120deg, #ede7f6 30%, #d1c4e9 70%);">
+    <div class="col-12">
+      <h2 class="fw-bold text-center mb-4">🔍 CE QUE J'AI DÉCOUVERT DE MOI-MÊME</h2>
+
+      <p style="font-size: 1.1rem; text-align: justify;">
+        Mon alternance à la CPAM du Val-de-Marne m'a permis de mieux comprendre le type de missions dans lesquelles je m'épanouis. Avant cette expérience, j'appréciais déjà travailler avec les données, mais je ne savais pas encore dans quel contexte professionnel je souhaitais mobiliser ces compétences.
+      </p>
+      <p style="font-size: 1.1rem; text-align: justify;">
+        Au fil des projets qui m'ont été confiés, j'ai découvert que j'aimais particulièrement concevoir des outils qui répondent à un besoin concret exprimé par des utilisateurs. Ce qui me motive n'est pas seulement l'aspect technique du développement, mais le fait de proposer une solution utile qui facilite le travail d'une équipe ou améliore le pilotage d'une activité.
+      </p>
+      <p style="font-size: 1.1rem; text-align: justify;">
+        J'ai également découvert une capacité d'autonomie plus importante que je ne l'imaginais. Lorsque j'ai été amenée à développer un tableau de bord Power BI pour le service Contrôle de gestion, je maîtrisais encore peu cet outil. J'ai dû me former de manière autonome, rechercher des ressources, expérimenter différentes solutions et progresser par essais successifs afin de répondre aux attentes du service. Cette expérience m'a montré que je suis capable d'apprendre rapidement un nouvel environnement technique lorsque j'ai un objectif concret à atteindre.
+      </p>
+      <p style="font-size: 1.1rem; text-align: justify;">
+        Cette alternance m'a aussi permis de prendre conscience de l'importance des compétences relationnelles dans les métiers de la donnée. Les échanges réguliers avec les utilisateurs, la compréhension de leurs besoins et l'adaptation des outils à leurs contraintes sont des dimensions que je n'avais pas pleinement perçues à travers les projets académiques. J'ai compris que la réussite d'un projet ne dépend pas uniquement de sa qualité technique, mais également de sa capacité à être comprise, adoptée et utilisée par ses destinataires.
+      </p>
+      <p style="font-size: 1.1rem; text-align: justify;">
+        Enfin, cette expérience a confirmé mon intérêt pour les métiers qui se situent à l'interface entre les données, l'automatisation et l'aide à la décision. Elle a également renforcé mon envie de poursuivre mes études afin d'acquérir des compétences analytiques et statistiques plus avancées.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+.image-illustree {
+  width: 100%;
+  max-width: 650px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.image-illustree:hover,
+.image-illustree:active {
+  transform: scale(1.05) rotate(-1deg) translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+.image-illustree:nth-of-type(2):hover,
+.image-illustree:nth-of-type(2):active {
+  transform: scale(1.05) rotate(1deg) translateY(-6px);
+}
+@media (max-width: 768px) {
+  .image-illustree:active {
+    transform: scale(1.06) translateY(-4px);
+  }
+}
+</style>
+
+
+<section id="evolution-fierte" class="container my-5">
+  <div class="row g-5 p-4 rounded shadow-lg"
+       style="background: linear-gradient(120deg, #e8f5e9 30%, #c8e6c9 70%);">
+    <div class="col-12">
+      <h2 class="fw-bold text-center mb-4">📈 UNE CONFIANCE QUI GRANDIT, DES MISSIONS QUI ÉVOLUENT</h2>
+
+      <p style="font-size: 1.1rem; text-align: justify;">
+        Au début de mon alternance, j'ai travaillé sur la création d'outils Power BI destinés principalement à mon service et à ses managers. Progressivement, j'ai été amenée à développer des outils Excel/VBA utilisés par d'autres services de la caisse, comme cet outil de suivi automatisé du délai de paiement et du nombre de factures B2, qui a permis à une manager de réduire considérablement le temps nécessaire au calcul de ses indicateurs.
+      </p>
+
+      <div class="text-center my-4">
+        <img src="alternance1.png" alt="Outil de suivi du délai de paiement et du nombre de factures B2" class="image-illustree image-zoom mb-2">
+        <p style="font-size: 0.95rem; color: #555;">Projet 2 — Outil automatisé de suivi du délai de paiement et du nombre de factures B2</p>
+      </div>
+
+      <p style="font-size: 1.1rem; text-align: justify;">
+        Par la suite, j'ai participé à la création d'outils destinés à un périmètre encore plus large, utilisés par plusieurs managers ainsi que par la direction pour le suivi d'indicateurs de pilotage à l'échelle de l'organisme.
+      </p>
+
+      <div class="text-center my-4">
+        <img src="alternance2.png" alt="Outil de pilotage utilisé par la direction" class="image-illustree image-zoom mb-2">
+        <p style="font-size: 0.95rem; color: #555;">Outil de pilotage destiné aux managers et à la direction</p>
+      </div>
+
+      <p style="font-size: 1.1rem; text-align: justify;">
+        Cette évolution constitue pour moi une véritable source de fierté : au-delà des compétences techniques acquises, elle témoigne de la confiance que mes responsables ont progressivement accordée à mon travail, à mon autonomie et à ma capacité à proposer des solutions adaptées aux besoins du service.
+      </p>
+
+      <hr class="my-4" style="border-color: rgba(0,0,0,0.1);">
+
+      <h2 class="fw-bold text-center mb-4">☕ ET CE QUE J'AI DÉCOUVERT EN CHEMIN</h2>
+
+      <p style="font-size: 1.1rem; text-align: justify;">
+        Mon entourage m'a toujours décrite comme quelqu'un de sérieux et investi, et cette perception s'est confirmée : j'ai rapidement trouvé ma place au sein de l'équipe et gagné en responsabilités. Mais cette alternance m'a aussi réservé des surprises plus inattendues, comme de découvrir que je pouvais désormais boire du café tous les jours, ce qui était probablement la chose la moins envisageable avant mon entrée dans le monde professionnel.
+      </p>
+      <p style="font-size: 1.1rem; text-align: justify;">
+        J'ai également pris la mesure de l'importance des rituels informels dans la vie d'une entreprise. À la CPAM, le petit-déjeuner partagé avec les collègues va bien au-delà du simple café du matin : ces moments favorisent les échanges, renforcent la cohésion d'équipe et permettent d'aborder la journée dans une ambiance agréable. La vie professionnelle ne se résume donc pas aux missions et aux objectifs ; elle repose aussi sur les relations humaines et les moments de partage.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Fierté personnelle -->
+<section id="fierte" class="container my-5">
+  <div class="row g-5 p-4 rounded shadow-lg"
+       style="background: linear-gradient(120deg, #e0f7fa 30%, #b2ebf2 70%);">
+    <div class="col-12">
+      <h2 class="fw-bold text-center mb-4">🌍 CE DONT JE SUIS LE PLUS FIÈRE</h2>
+
+      <p style="font-size: 1.15rem; text-align: justify;">
+        Au-delà des compétences techniques et des projets académiques, ce dont je suis le plus fière aujourd'hui est le chemin personnel que j'ai parcouru.
+      </p>
+      <p style="font-size: 1.15rem; text-align: justify;">
+        Quitter mon pays, ma famille, mes repères et venir étudier à plusieurs milliers de kilomètres n'a pas été une décision facile. C'était un choix guidé par une conviction profonde : celle que l'éducation, le travail et la persévérance peuvent transformer une vie. En arrivant en France, j'ai dû tout reconstruire — apprendre à m'adapter à un nouvel environnement, développer mon autonomie, sortir de ma zone de confort et croire en moi-même dans les moments de doute.
+      </p>
+      <p style="font-size: 1.15rem; text-align: justify;">
+        Chaque étape de mon parcours a été une victoire : comprendre un cours difficile, réussir un projet, prendre la parole en public, m'intégrer dans un nouvel environnement, trouver ma place dans le monde professionnel. Derrière chaque réussite se cachent des efforts, des remises en question, mais surtout une détermination constante à avancer.
+      </p>
+      <p style="font-size: 1.15rem; text-align: justify;">
+        Cette expérience m'a appris la résilience, l'indépendance, la capacité à m'adapter et à évoluer seule tout en restant fidèle à mes valeurs. Aujourd'hui, lorsque je regarde mon parcours, je ne vois pas seulement une étudiante en science des données : je vois une personne qui a osé partir loin pour construire son avenir. Et c'est cette force intérieure, cette capacité à me dépasser et à continuer à avancer malgré les défis, qui constitue ma plus grande fierté.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Mes objectifs -->
+<section id="objectifs" class="container my-5">
+  <div class="row g-5 p-4 rounded shadow-lg objectifs-bg">
+    <div class="col-12">
+      <h2 class="fw-bold text-center mb-5">🎯 MES OBJECTIFS</h2>
+
+      <div class="objectifs-timeline">
+
+        <div class="objectif-item">
+          <div class="objectif-marker objectif-teal">✓</div>
+          <div class="objectif-card objectif-teal">
+            <span class="objectif-tag">Court terme — objectif atteint</span>
+            <h5>Intégrer un master de haut niveau</h5>
+            <p>
+              Après une classe préparatoire dans mon pays d'origine puis un BUT Science des données en France, je m'étais fixé comme objectif de mettre toutes les chances de mon côté pour poursuivre mes études dans une formation reconnue en mathématiques appliquées et statistiques. Cet objectif est aujourd'hui atteint : je poursuivrai l'année prochaine en <strong>Master 1 Applied Mathematics and Statistics</strong> à l'<strong>Institut Polytechnique de Paris</strong>.
+            </p>
           </div>
-          
-          <div class="col-12 col-sm-6 col-lg-4" style="overflow: visible !important;">
-            <h4 class="fw-bold mb-3 text-primary">📝 Ma Fiche de Poste</h4>
-            <img src="fiche.png" alt="Fiche de Poste" class="img-fluid image-zoom-final shadow-sm rounded" onclick="openModalPro('fiche.png', 'Fiche de Poste : Description détaillée de mes responsabilités, des outils techniques mobilisés et de mon rôle stratégique en tant qu\'alternante Data Science.'))">
+        </div>
+
+        <div class="objectif-item">
+          <div class="objectif-marker objectif-purple">2</div>
+          <div class="objectif-card objectif-purple">
+            <span class="objectif-tag">Moyen terme</span>
+            <h5>Se spécialiser en Master 2</h5>
+            <p>
+              À l'issue de cette première année de master, je souhaite me spécialiser dans un domaine appliqué à la finance, à l'économie ou à l'actuariat, afin de développer une expertise quantitative plus poussée.
+            </p>
+          </div>
+        </div>
+
+        <div class="objectif-item">
+          <div class="objectif-marker objectif-coral">3</div>
+          <div class="objectif-card objectif-coral">
+            <span class="objectif-tag">Long terme</span>
+            <h5>Évoluer dans la finance ou l'assurance</h5>
+            <p>
+              À terme, je souhaite évoluer dans les secteurs de la finance ou de l'assurance, dans des métiers mobilisant les mathématiques, les statistiques et l'analyse de données pour accompagner la prise de décision et l'évaluation des risques.
+            </p>
           </div>
         </div>
 
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="evolution-fierte" class="container my-5" style="overflow: visible !important;">
-    <div class="row g-5 p-4 rounded shadow-lg" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); overflow: visible !important;">
-      <div class="col-12 text-center" style="overflow: visible !important;">
-        <h2 class="fw-bold text-center mb-4 text-dark">⭐ ÉVOLUTION ET FIERTÉ</h2>
-        <p class="lead text-muted max-width-700 mx-auto mb-5">
-          Chaque étape de ma formation m'a permis de relever des défis techniques stimulants. La synthèse de mon évolution au cours du Semestre 3 illustre ma progression méthodologique et la qualité de mes livrables.
-        </p>
-        
-        <div class="d-inline-block text-center" style="overflow: visible !important; width: 100%; max-width: 650px;">
-          <img src="synthese.png" alt="Synthèse Évolution S3" class="img-fluid image-zoom-final shadow rounded" onclick="openModalPro('synthese.png', 'Synthèse Évolution Semestre 3 : Cartographie détaillée de mes compétences acquises, de mes axes de progression et de mes accomplissements les plus significatifs.')">
-        </div>
+<style>
+.objectifs-bg {
+  background: linear-gradient(120deg, #fdf6ec 30%, #f3e9da 70%);
+}
+.objectifs-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 50px;
+}
+.objectifs-timeline::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(to bottom, #5DCAA5, #AFA9EC, #F0997B);
+}
+.objectif-item {
+  position: relative;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.objectif-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.objectif-marker {
+  position: absolute;
+  left: -50px;
+  top: 4px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+.objectif-teal   { background-color: #1D9E75; }
+.objectif-purple { background-color: #7F77DD; }
+.objectif-coral  { background-color: #D85A30; }
 
-        <p class="text-muted mt-5 mx-auto" style="max-width: 650px;">
-          Pour approfondir l'analyse de cette période charnière de mon cursus, vous pouvez télécharger mon rapport d'activité complet du semestre 3.
-        </p>
-        <a href="RAPPORTs3.pdf" target="_blank" class="btn btn-primary btn-lg mt-3 shadow-sm">
-          📥 Télécharger le rapport d'activité (PDF)
-        </a>
-      </div>
+.objectif-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-left: 5px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.objectif-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.objectif-card.objectif-teal   { border-left-color: #1D9E75; }
+.objectif-card.objectif-purple { border-left-color: #7F77DD; }
+.objectif-card.objectif-coral  { border-left-color: #D85A30; }
+
+.objectif-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.objectif-teal .objectif-tag, .objectif-card.objectif-teal .objectif-tag {
+  background-color: #E1F5EE; color: #085041;
+}
+.objectif-card.objectif-purple .objectif-tag {
+  background-color: #EEEDFE; color: #3C3489;
+}
+.objectif-card.objectif-coral .objectif-tag {
+  background-color: #FAECE7; color: #712B13;
+}
+.objectif-card h5 {
+  margin: 0 0 10px;
+  color: #2C2C2A;
+  font-size: 1.15rem;
+}
+.objectif-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444441;
+  text-align: justify;
+}
+@media (max-width: 768px) {
+  .objectifs-timeline { padding-left: 40px; }
+  .objectif-marker { left: -40px; width: 32px; height: 32px; font-size: 1rem; }
+}
+</style>
+
+<script>
+(function() {
+  const items = document.querySelectorAll('.objectif-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  items.forEach(item => observer.observe(item));
+})();
+</script>
+
+
+<section id="rapport-activite" class="container my-5">
+  <div class="row g-5 p-4 rounded shadow-lg text-center"
+       style="background: linear-gradient(120deg, #f3e5f5 30%, #e1bee7 70%);">
+    <div class="col-12">
+      <h2 class="fw-bold mb-4">📄 RAPPORT D'ACTIVITÉ — SEMESTRE 3</h2>
+      <p style="font-size: 1.1rem;">
+        Pour aller plus loin, vous pouvez consulter ou télécharger mon rapport d'activité complet du semestre 3.
+      </p>
+      <a href="RAPPORTs3.pdf" target="_blank" class="btn btn-primary btn-lg mt-3">
+        📥 Télécharger le rapport d'activité (PDF)
+      </a>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <footer id="contact-footer" class="contact-footer">
     <div class="container text-center">
