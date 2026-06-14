@@ -25,6 +25,7 @@ h1, h2 {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.06);
   margin-bottom: 40px;
+  overflow: visible;
 }
 
 .project-block h5 {
@@ -125,24 +126,54 @@ body {
   max-width: 650px;
   border-radius: 25px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
   display: block;
   margin: 0 auto;
+  cursor: zoom-in;
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.45s ease,
+    border-radius 0.45s ease,
+    filter 0.45s ease;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
 }
 
 .image-illustree:hover {
-  transform: scale(1.03);
+  transform: scale(1.13);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.22),
+    0 0 0 4px rgba(0, 123, 255, 0.18);
+  border-radius: 18px;
+  filter: brightness(1.04) saturate(1.08);
+  z-index: 20;
 }
 
 .image-zoom {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: zoom-in;
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.45s ease,
+    filter 0.45s ease;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
 }
 
 .image-zoom:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  z-index: 10;
+  transform: scale(1.13);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.22),
+    0 0 0 4px rgba(0, 123, 255, 0.18);
+  filter: brightness(1.04) saturate(1.08);
+  z-index: 20;
+}
+
+.img-wrapper {
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ===== EFFET ENTONNOIR - BLOCS SAE ===== */
@@ -336,4 +367,15 @@ body {
   .contact-footer { padding: 40px 15px 0; }
   .contact-footer h2 { font-size: 1.5rem; }
   .contact-infos p { font-size: 1rem; }
+}
+
+/* ===== IMAGE ZOOM — prevent parent clipping ===== */
+.sae-bloc-1,
+.sae-bloc-2,
+.sae-bloc-3,
+.row,
+.col-md-4,
+.col-lg-5,
+.col-12 {
+  overflow: visible !important;
 }
