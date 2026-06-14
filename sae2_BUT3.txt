@@ -1,0 +1,50 @@
+# ecureuils roux
+- bon emoji
+- ecommerce
+- bon usage de diagramdb.io
+- très bonnes données et normalisation
+- créationd e classes pour le sDAO ==> abstraction et héritage
+- oui pour la denormalisaion à partir des DAO !
+- pourquoi forcément un iphone ?
+- oui pour les pivots. Ce n'était pas obligatoire mais agréable à voir. Vous avez un peu surcomplexifié le processus.
+- ok pour neo4j pour proposer des articles connexes
+- renormalisation redis-W> SQLite ne fonctionne pas
+- la première renormalisation ne prend pas en compte toutes les denorm mongo mais uniquement une seule
+- pour l'ORM vous n'avez pas utilisé l'ORM de redis : https://redis.io/docs/latest/integrate/redisom-for-python/
+- denorm->renorm ORM ne fonctionne pas : chemin absolu à partir de la racine /data
+- pas d'ORM de mongoengine
+
+# bareme
+normalisation
+- 5 capacité à normaliser
+- 3 intégrer des jointures
+- 2 dans SQL
+
+
+dénormalisations :
+- 1 point par dénormalisation (4 max)
+- 5 points qualité dénormalisations
+- 1 bon usage de mongodb ou autre outil nosql
+
+renormalisations :
+- 3 justficiations
+- 2 une renorm par denorm
+- 2 mongodb ou autre
+- 3 jointures 
+
+abstraction :
+- 5 bon usage global des classes pour représenter les données abstraites
+- 5 bon usage des classes Model
+
+DAO :
+- 10 bonne séparation des contraintes
+
+
+ORM :
+- 5 bon usage de l'ORM dans le model
+- 5 bon exploitation de l'ORM
+- -2 points en moimns si pas de mongoengine
+
+
+retard : -5
+fonctionne pas : -5
