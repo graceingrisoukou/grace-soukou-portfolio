@@ -11,7 +11,6 @@
 </head>
 <body>
 
-  <!-- Barre de navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Grâce Soukou</a>
@@ -29,7 +28,6 @@
     </div>
   </nav>
 
-  <!-- Accueil -->
   <header id="accueil" class="container-fluid d-flex align-items-center text-white fade-section"
   style="min-height: 60vh;
          background-image: url('fond-data-grace.png');
@@ -40,7 +38,6 @@
   
   <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-center gap-5">
 
-    <!-- Texte à gauche avec effet flou -->
     <div class="text-center text-lg-start mb-5 mb-lg-0" style="
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(8px);
@@ -59,7 +56,6 @@
       </p>
     </div>
 
-    <!-- Image à droite -->
     <div class="text-center">
       <img src="grace.png" alt="Photo de Grâce Soukou"
         style="border-radius: 20px; width: 450px; height: 450px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 6px solid white;">
@@ -68,12 +64,10 @@
   </div>
 </header>
 
- <!-- À propos -->
-<header id="apropos" class="text-white">
+ <header id="apropos" class="text-white">
   <div id="carouselAccueil" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="7000">
     <div class="carousel-inner">
 
-      <!-- Slide 1 -->
       <div class="carousel-item active">
         <div class="carousel-slide-wrap">
           <div class="bg-blur slide-anim">
@@ -88,7 +82,6 @@
         </div>
       </div>
 
-      <!-- Slide 2 -->
       <div class="carousel-item">
         <div class="carousel-slide-wrap">
           <div class="bg-blur slide-anim">
@@ -103,7 +96,6 @@
         </div>
       </div>
 
-      <!-- Slide 3 -->
       <div class="carousel-item">
         <div class="carousel-slide-wrap">
           <div class="bg-blur slide-anim">
@@ -118,7 +110,6 @@
         </div>
       </div>
 
-      <!-- Slide 4 -->
       <div class="carousel-item">
         <div class="carousel-slide-wrap">
           <div class="bg-blur slide-anim">
@@ -133,7 +124,6 @@
         </div>
       </div>
 
-      <!-- Slide 5 -->
       <div class="carousel-item">
         <div class="carousel-slide-wrap">
           <div class="bg-blur slide-anim">
@@ -150,7 +140,6 @@
 
     </div>
 
-    <!-- Flèches -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselAccueil" data-bs-slide="prev">
       <span class="fleche-custom">‹</span>
     </button>
@@ -160,7 +149,6 @@
   </div>
 </header>
    
-<!-- Projets -->
 <section id="projets" class="py-5 fade-section" style="
   background-image: url('fondprojet.png');
   background-size: contain;
@@ -171,7 +159,6 @@
   <div class="container text-center">
     <h2 class="mb-4"><i class="fas fa-chart-line"></i> Projets Académiques</h2>
 
-    <!-- Texte d’introduction stylisé -->
     <div class="intro-box p-4 mb-5 mx-auto" style="max-width: 800px; background: #f8f9fa; border-left: 5px solid #1e88e5; border-radius: 10px;">
       <p class="mb-0" style="font-size: 1.15rem;">
         Je vais vous présenter quelques projets académiques, appelés <strong>SAÉ</strong>, que j’ai réalisés au cours de mes trois années   de BUT.
@@ -179,16 +166,13 @@
       </p>
     </div>
 
-    <!-- Escalier avec boutons BUT 1 et BUT 2 -->
     <div class="d-flex justify-content-center align-items-end gap-4 mb-4">
       <a href="page1.html" class="btn stair-button stair-but1 fw-bold text-white">Projet BUT 1</a>
       <a href="page 2.html" class="btn stair-button stair-but2 fw-bold text-white">Projet BUT 2</a>
       <a href="page3.html" class="btn stair-button stair-but3 fw-bold text-white">Projet BUT 3</a>
     </div>
-    <!-- Séparateur -->
-<div style="width:2px;height:50px;background:linear-gradient(to bottom,#ccc,#6a11cb);opacity:0.4;margin:8px auto;"></div>
+    <div style="width:2px;height:50px;background:linear-gradient(to bottom,#ccc,#6a11cb);opacity:0.4;margin:8px auto;"></div>
 
-<!-- Bouton Bilan -->
 <div class="text-center mt-2 mb-5">
   <a href="bilan.html" class="sommet-btn-link">
     <div class="sommet-card mx-auto">
@@ -209,7 +193,6 @@
 </section>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Projet Professionnel -->
 <section id="projet-pro" class="container my-5">
   <div class="row g-5 p-4 rounded shadow-lg"
        style="background: linear-gradient(120deg, #e3f2fd 30%, #bbdefb 70%);">
@@ -227,27 +210,27 @@
 
       <div class="row g-4 justify-content-center">
         <div class="col-12 col-sm-6 col-lg-4 text-center">
-          <img src="synthese.png" alt="Synthèse" class="img-fluid image-zoom-final" onclick="openModal(this)"
+          <img src="synthese.png" alt="Synthèse" class="img-fluid image-illustree image-zoom-final" onclick="openModal(this)"
                data-description="Cette première page est la page principale du tableau de bord Power BI permettant un suivi global des indicateurs clés de performance du service.">
         </div>
         <div class="col-12 col-sm-6 col-lg-4 text-center">
-          <img src="taches.png" alt="Tâches" class="img-fluid image-zoom-final" onclick="openModal(this)"
+          <img src="taches.png" alt="Tâches" class="img-fluid image-illustree image-zoom-final" onclick="openModal(this)"
                data-description="Avec cet onglet, on peut visualiser en détail l'avancée des tâches pour le contrôle de gestion, facilitant le pilotage opérationnel.">
         </div>
         <div class="col-12 col-sm-6 col-lg-4 text-center">
-          <img src="alerte.png" alt="Alerte" class="img-fluid image-zoom-final" onclick="openModal(this)"
+          <img src="alerte.png" alt="Alerte" class="img-fluid image-illustree image-zoom-final" onclick="openModal(this)"
                data-description="Ici, j'ai un système d'alertes automatisées permettant d'identifier rapidement les anomalies ou écarts significatifs comme le retard dans le traitement de certaines tâches récurrentes.">
         </div>
         <div class="col-12 col-sm-6 col-lg-4 text-center">
-          <img src="dev.png" alt="Développement" class="img-fluid image-zoom-final" onclick="openModal(this)"
+          <img src="dev.png" alt="Développement" class="img-fluid image-illustree image-zoom-final" onclick="openModal(this)"
                data-description="Cette interface est dédiée au suivi d'une tâche spécifique : le développement d'outils, leur maintenance et l'analyse des évolutions des indicateurs dans le temps.">
         </div>
         <div class="col-12 col-sm-6 col-lg-4 text-center">
-          <img src="rapport.png" alt="Rapport" class="img-fluid image-zoom-final" onclick="openModal(this)"
+          <img src="rapport.png" alt="Rapport" class="img-fluid image-illustree image-zoom-final" onclick="openModal(this)"
                data-description="Cet onglet permet de générer automatiquement des rapports dynamiques facilitant la communication des résultats aux équipes et à la direction.">
         </div>
         <div class="col-12 col-sm-6 col-lg-4 text-center">
-          <img src="note.png" alt="Note de conjoncture" class="img-fluid image-zoom-final" onclick="openModal(this)"
+          <img src="note.png" alt="Note de conjoncture" class="img-fluid image-illustree image-zoom-final" onclick="openModal(this)"
                data-description="Analyse conjoncturelle synthétique appuyant la prise de décision stratégique du service.">
         </div>
       </div>
@@ -255,7 +238,6 @@
   </div>
 </section>
 
-<!-- Ce que j'ai découvert de moi-même -->
 <section id="decouverte-soi" class="container my-5">
   <div class="row g-5 p-4 rounded shadow-lg"
        style="background: linear-gradient(120deg, #ede7f6 30%, #d1c4e9 70%);">
@@ -266,7 +248,7 @@
         Mon alternance à la CPAM du Val-de-Marne m'a permis de mieux comprendre le type de missions dans lesquelles je m'épanouis. Avant cette expérience, j'appréciais déjà travailler avec les données, mais je ne savais pas encore dans quel contexte professionnel je souhaitais mobiliser ces compétences.
       </p>
       <p style="font-size: 1.1rem; text-align: justify;">
-        Au fil des projets qui m'ont été confiés, j'ai découvert que j'aimais particulièrement concevoir des outils qui répondent à un besoin concret exprimé par des utilisateurs. Ce qui me motive n'est pas seulement l'aspect technique du développement, mais le fait de proposer une solution utile qui facilite le travail d'une équipe ou améliore le pilotage d'une activité.
+        Au fil des projets qui m'ont été confiés, j'ai découvert que j'aimais particulièrement concevoir des outils qui répondent à un besoin concret exprimé by des utilisateurs. Ce qui me motive n'est pas seulement l'aspect technique du développement, mais le fait de proposer une solution utile qui facilite le travail d'une équipe ou améliore le pilotage d'une activity.
       </p>
       <p style="font-size: 1.1rem; text-align: justify;">
         J'ai également découvert une capacité d'autonomie plus importante que je ne l'imaginais. Lorsque j'ai été amenée à développer un tableau de bord Power BI pour le service Contrôle de gestion, je maîtrisais encore peu cet outil. J'ai dû me former de manière autonome, rechercher des ressources, expérimenter différentes solutions et progresser par essais successifs afin de répondre aux attentes du service. Cette expérience m'a montré que je suis capable d'apprendre rapidement un nouvel environnement technique lorsque j'ai un objectif concret à atteindre.
@@ -282,6 +264,7 @@
 </section>
 
 <style>
+/* Style d'agrandissement dynamique appliqué à toutes les images projets */
 .image-illustree {
   width: 100%;
   max-width: 650px;
@@ -345,13 +328,12 @@
         Mon entourage m'a toujours décrite comme quelqu'un de sérieux et investi, et cette perception s'est confirmée : j'ai rapidement trouvé ma place au sein de l'équipe et gagné en responsabilités. Mais cette alternance m'a aussi réservé des surprises plus inattendues, comme de découvrir que je pouvais désormais boire du café tous les jours, ce qui était probablement la chose la moins envisageable avant mon entrée dans le monde professionnel.
       </p>
       <p style="font-size: 1.1rem; text-align: justify;">
-        J'ai également pris la mesure de l'importance des rituels informels dans la vie d'une entreprise. À la CPAM, le petit-déjeuner partagé avec les collègues va bien au-delà du simple café du matin : ces moments favorisent les échanges, renforcent la cohésion d'équipe et permettent d'aborder la journée dans une ambiance agréable. La vie professionnelle ne se résume donc pas aux missions et aux objectifs ; elle repose aussi sur les relations humaines et les moments de partage.
+        J'ai également pris la mesure de l'importance des rituels informels dans la vie d'une entreprise. À la CPAM, le petit-déjeuner partagé avec les collègues va bien au-delà du simple café du matin : ces moments favorisent les échanges, renforcent la cohésion d'équipe et permettent d'aborder la journée dans une ambiance agréable. La vie professionnelle ne se résume pas aux missions et aux objectifs ; elle repose aussi sur les relations humaines et les moments de partage.
       </p>
     </div>
   </div>
 </section>
 
-<!-- Fierté personnelle -->
 <section id="fierte" class="container my-5">
   <div class="row g-5 p-4 rounded shadow-lg"
        style="background: linear-gradient(120deg, #e0f7fa 30%, #b2ebf2 70%);">
@@ -368,13 +350,12 @@
         Chaque étape de mon parcours a été une victoire : comprendre un cours difficile, réussir un projet, prendre la parole en public, m'intégrer dans un nouvel environnement, trouver ma place dans le monde professionnel. Derrière chaque réussite se cachent des efforts, des remises en question, mais surtout une détermination constante à avancer.
       </p>
       <p style="font-size: 1.15rem; text-align: justify;">
-        Cette expérience m'a appris la résilience, l'indépendance, la capacité à m'adapter et à évoluer seule tout en restant fidèle à mes valeurs. Aujourd'hui, lorsque je regarde mon parcours, je ne vois pas seulement une étudiante en science des données : je vois une personne qui a osé partir loin pour construire son avenir. Et c'est cette force intérieure, cette capacité à me dépasser et à continuer à avancer malgré les défis, qui constitue ma plus grande fierté.
+        Cette expérience m'a appris la résilience, l'indépendance, la capacité à m'adapter et à évoluer seule tout en restant fidèle à mes valeurs. Aujourd'hui, lorsque je regarde mon parcours, je ne vois pas seulement une étudiante en science des données : je vois une personne qui a osé partir loin pour construire son avenir. Et c'est cette force intérieure, cette capacité à me dépasser et à continuer à avancer malgré les défis, qui constitue ma plus grande fierte.
       </p>
     </div>
   </div>
 </section>
 
-<!-- Mes objectifs -->
 <section id="objectifs" class="container my-5">
   <div class="row g-5 p-4 rounded shadow-lg objectifs-bg">
     <div class="col-12">
@@ -553,22 +534,34 @@
   </div>
 </section>
 
-<!-- SECTION CONTACT -->
-<footer class="contact-footer">
-  <div class="container text-center">
-    <h2 class="mb-4">📩 Me contacter</h2>
-    <div class="contact-infos">
-      <p>📞 <strong>Téléphone :</strong> <a href="tel:+33784895900">+33 07 84 89 59 00</a></p>
-      <p>📧 <strong>Email :</strong>
-        <a href="mailto:grace.soukou@edu.univ-paris13.fr">grace.soukou@edu.univ-paris13.fr</a>
-      </p>
+<footer class="contact-footer" style="padding: 60px 0; background-color: #1a1a1a; color: white;">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      
+      <div class="col-md-6 text-center text-md-start">
+        <h2 class="mb-4 text-white"><i class="fas fa-envelope-open-text me-2"></i> Me contacter</h2>
+        <div class="contact-infos" style="font-size: 1.1rem;">
+          <p class="mb-2">📞 <strong>Téléphone :</strong> <a href="tel:+33784895900" style="color: #ffd54f; text-decoration: none;">+33 07 84 89 59 00</a></p>
+          <p class="mb-0">📧 <strong>Email :</strong> <a href="mailto:grace.soukou@edu.univ-paris13.fr" style="color: #ffd54f; text-decoration: none;">grace.soukou@edu.univ-paris13.fr</a></p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 text-center text-md-end">
+        <h2 class="mb-4 text-white"><i class="fas fa-file-pdf me-2"></i> Mon Curriculum Vitae</h2>
+        <a href="cv.pdf" target="_blank" class="btn btn-warning btn-lg fw-bold px-4 py-3 shadow" style="border-radius: 30px; transition: all 0.3s ease;">
+          📥 Télécharger mon CV (PDF)
+        </a>
+      </div>
+
     </div>
-    <hr class="my-4">
-    <p class="copyright">© 2025 Grâce Soukou | Portfolio créatif et data-driven 💫</p>
+    
+    <hr class="my-4" style="border-color: rgba(255,255,255,0.15);">
+    <div class="text-center">
+      <p class="copyright mb-0" style="color: #aaa; font-size: 0.95rem;">© 2025 Grâce Soukou | Portfolio créatif et data-driven 💫</p>
+    </div>
   </div>
 </footer>
 
-<!-- MODAL PROJET PROFESSIONNEL -->
 <div id="imageModal" class="modal-pro" onclick="closeModal()">
   <span class="close-pro">&times;</span>
   <div class="modal-content-pro">
@@ -591,3 +584,5 @@ function closeModal() {
 }
 </script>
 
+</body>
+</html>
