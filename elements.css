@@ -67,7 +67,7 @@ nav a:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* PHOTO PROFIL */
+/* PHOTO PROFIL (Reste fixe, sans zoom) */
 .photo-profil {
   width: 180px;
   height: 180px;
@@ -83,7 +83,7 @@ nav a:hover {
 }
 
 /* ===================================================
-   SECTION À PROPOS — tout le bloc en un seul endroit
+   SECTION À PROPOS
    =================================================== */
 #apropos {
   padding: 0 !important;
@@ -189,7 +189,7 @@ nav a:hover {
 }
 
 /* ===================================================
-   FLÈCHES — bloc UNIQUE, Bootstrap écrasé proprement
+   FLÈCHES CARROUSEL
    =================================================== */
 .carousel-control-prev,
 .carousel-control-next {
@@ -215,13 +215,11 @@ nav a:hover {
   transform: translateY(-50%) scale(1.12) !important;
 }
 
-/* On cache les icônes Bootstrap par défaut */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   display: none !important;
 }
 
-/* Nos flèches custom */
 .fleche-custom {
   font-size: 1.8rem;
   color: white;
@@ -232,7 +230,6 @@ nav a:hover {
   justify-content: center;
 }
 
-/* Responsive à propos */
 @media (max-width: 768px) {
   #apropos .carousel-inner  { min-height: 55vh; }
   #apropos .carousel-slide-wrap { min-height: 55vh; padding: 24px 16px; }
@@ -240,9 +237,6 @@ nav a:hover {
   #apropos .bg-blur h1 { font-size: 1.3rem; }
 }
 
-/* ===================================================
-   TEXTE ET BOUTON CARROUSEL
-   =================================================== */
 .carousel-caption {
   width: 100%;
   max-width: 900px;
@@ -270,7 +264,7 @@ nav a:hover {
 }
 
 /* ===================================================
-   SECTION PROJETS
+   SECTION PROJETS ACADÉMIQUES
    =================================================== */
 #projets {
   background-image: url('fondprojet.png');
@@ -305,9 +299,6 @@ nav a:hover {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===================================================
-   BOUTONS ESCALIER
-   =================================================== */
 .stair-button {
   border-radius: 30px;
   padding: 20px 40px;
@@ -316,13 +307,8 @@ nav a:hover {
   animation: clignote 2s infinite, popIn 0.6s ease-out;
 }
 
-.stair-but1 {
-  background-color: #218838;
-  transform: translateY(30px);
-}
-.stair-but2 {
-  background-color: #0d6efd;
-}
+.stair-but1 { background-color: #218838; transform: translateY(30px); }
+.stair-but2 { background-color: #0d6efd; }
 
 .stair-button:hover {
   transform: scale(1.05);
@@ -333,7 +319,6 @@ nav a:hover {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.75; }
 }
-
 @keyframes popIn {
   from { opacity: 0; transform: scale(0.85) translateY(15px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
@@ -341,13 +326,6 @@ nav a:hover {
 
 #projets .stair-but1 { animation-delay: 0s, 0.1s; }
 #projets .stair-but2 { animation-delay: 0s, 0.3s; }
-
-@media (max-width: 768px) {
-  #projets .intro-box {
-    max-width: 90%;
-    padding: 14px 18px;
-  }
-}
 
 /* ===================================================
    BOUTON SOMMET / BILAN
@@ -388,13 +366,6 @@ nav a:hover {
   animation: glowRotate 6s linear infinite;
   pointer-events:none;
 }
-@keyframes glowRotate {
-  0%   { transform: translate(0,0); }
-  25%  { transform: translate(300px,20px); }
-  50%  { transform: translate(300px,60px); }
-  75%  { transform: translate(0px,40px); }
-  100% { transform: translate(0,0); }
-}
 .sommet-inner {
   position:relative; display:flex; align-items:center; gap:18px;
   padding:22px 28px; z-index:1;
@@ -406,10 +377,6 @@ nav a:hover {
   font-size:1.7rem; box-shadow: 0 4px 15px rgba(255,143,0,0.5);
   animation: iconBounce 2.5s ease-in-out infinite;
 }
-@keyframes iconBounce {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-5px); }
-}
 .sommet-text { display:flex; flex-direction:column; text-align:left; gap:3px; }
 .sommet-eyebrow { font-size:0.72rem; text-transform:uppercase; letter-spacing:1.5px; color:#ffd54f; font-weight:600; }
 .sommet-title   { font-size:1.05rem; font-weight:700; color:#ffffff; line-height:1.3; }
@@ -417,65 +384,33 @@ nav a:hover {
 .sommet-arrow   { margin-left:auto; flex-shrink:0; font-size:1.5rem; color:#ffd54f; font-weight:bold; transition:transform 0.3s ease; }
 .sommet-card:hover .sommet-arrow { transform: translateX(6px); }
 
-#projets .sommet-card {
-  isolation: isolate;
-  z-index: 2;
-  position: relative;
-}
-#projets .text-center.mt-2.mb-5 {
-  position: relative;
-  z-index: 2;
-}
-
 /* ===================================================
-   IMAGES ZOOM
+   EFFET DE ZOOM DES IMAGES (IDENTIQUE PAGE 3)
    =================================================== */
-.image-zoom-final {
-  max-width: 100%;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-.image-zoom-final:hover {
-  transform: scale(1.03);
-}
-
-.image-illustree {
+.image-zoom-final, .image-illustree, .image-full {
   width: 100%;
   max-width: 650px;
   border-radius: 25px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   display: block;
   margin: 0 auto;
   cursor: pointer;
-}
-.image-illustree:hover {
-  transform: scale(1.05) rotate(-1deg) translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  position: relative;
+  z-index: 1;
+  /* Courbe de transition fluide de la page 3 */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
 }
 
-.image-container {
-  flex: 0 0 auto !important;
-  max-width: 420px !important;
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-  overflow: hidden;
+/* Activation de l'effet au survol */
+.image-zoom-final:hover, .image-illustree:hover, .image-full:hover {
+  transform: scale(1.08) translateY(-10px) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35) !important;
+  z-index: 100 !important;
 }
-.image-full {
-  display: block;
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  max-height: 100%;
-  transition: transform 0.3s ease-in-out;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-.image-container:hover .image-full {
-  transform: scale(1.05);
+
+/* Sécurité conteneurs Bootstrap pour ne pas couper le zoom */
+#projet-pro .col-12, #evolution-fierte .text-center {
+  overflow: visible !important;
 }
 
 /* ===================================================
@@ -515,107 +450,6 @@ nav a:hover {
   color: white;
   cursor: pointer;
 }
-@media (max-width: 768px) {
-  .modal-content-pro p { font-size: 1rem; }
-}
-
-/* ===================================================
-   SECTION OBJECTIFS
-   =================================================== */
-.objectifs-bg {
-  background: linear-gradient(120deg, #fdf6ec 30%, #f3e9da 70%);
-}
-.objectifs-timeline {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  padding-left: 50px;
-}
-.objectifs-timeline::before {
-  content: '';
-  position: absolute;
-  left: 19px;
-  top: 10px;
-  bottom: 10px;
-  width: 2px;
-  background: linear-gradient(to bottom, #5DCAA5, #AFA9EC, #F0997B);
-}
-.objectif-item {
-  position: relative;
-  margin-bottom: 40px;
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.objectif-item.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.objectif-marker {
-  position: absolute;
-  left: -50px;
-  top: 4px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  z-index: 2;
-}
-.objectif-teal   { background-color: #1D9E75; }
-.objectif-purple { background-color: #7F77DD; }
-.objectif-coral  { background-color: #D85A30; }
-
-.objectif-card {
-  background: white;
-  border-radius: 15px;
-  padding: 20px 25px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  border-left: 5px solid transparent;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.objectif-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-.objectif-card.objectif-teal   { border-left-color: #1D9E75; }
-.objectif-card.objectif-purple { border-left-color: #7F77DD; }
-.objectif-card.objectif-coral  { border-left-color: #D85A30; }
-
-.objectif-tag {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.objectif-card.objectif-teal .objectif-tag   { background-color: #E1F5EE; color: #085041; }
-.objectif-card.objectif-purple .objectif-tag { background-color: #EEEDFE; color: #3C3489; }
-.objectif-card.objectif-coral .objectif-tag  { background-color: #FAECE7; color: #712B13; }
-.objectif-card h5 {
-  margin: 0 0 10px;
-  color: #2C2C2A;
-  font-size: 1.15rem;
-}
-.objectif-card p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #444441;
-  text-align: justify;
-}
-@media (max-width: 768px) {
-  .objectifs-timeline { padding-left: 40px; }
-  .objectif-marker { left: -40px; width: 32px; height: 32px; font-size: 1rem; }
-}
 
 /* ===================================================
    FOOTER CONTACT
@@ -640,78 +474,4 @@ nav a:hover {
   padding: 15px 10px;
   margin: 0;
   font-size: 0.95rem;
-}
-@media (max-width: 768px) {
-  .contact-footer { padding: 40px 15px 0; }
-  .contact-footer h2 { font-size: 1.5rem; }
-  .contact-infos p { font-size: 1rem; }
-}
-
-/* ===================================================
-   ESCALIER DÉCORATIF (section legacy)
-   =================================================== */
-.escalier-section {
-  background: linear-gradient(135deg, #6e00ff, #009dff);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-  overflow: hidden;
-}
-.escalier-container {
-  position: relative;
-  width: 80%;
-  height: 80%;
-}
-.marche {
-  position: absolute;
-  background-color: white;
-  color: #1e1e2f;
-  padding: 20px 40px;
-  border-radius: 15px;
-  font-weight: bold;
-  font-size: 1.3rem;
-  text-decoration: none;
-  transition: transform 0.3s;
-  z-index: 1;
-}
-#marche1 { bottom: 50px; left: 100px; }
-#marche2 { bottom: 150px; left: 300px; }
-.fille {
-  position: absolute;
-  bottom: 55px;
-  left: 60px;
-  width: 60px;
-  height: 120px;
-  background: linear-gradient(to bottom, #f9c74f 40%, #577590 40%);
-  border-radius: 20px;
-  transition: all 0.8s ease;
-}
-.fille::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 15px;
-  width: 30px;
-  height: 30px;
-  background: #f9844a;
-  border-radius: 50%;
-}
-/* Amélioration du zoom au survol pour la section Pro (Power BI) */
-.image-zoom-final {
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease !important;
-  cursor: pointer;
-}
-
-.image-zoom-final:hover {
-  transform: scale(1.08); /* Agrandissement de 8% */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
-  position: relative;
-  z-index: 5; /* Passe au-dessus des autres éléments */
-}
-
-/* Empêche Bootstrap de couper l'image qui s'agrandit */
-#projet-pro .col-12.col-sm-6.col-lg-4 {
-  overflow: visible !important;
 }
