@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style-projets.css">
 </head>
 <body>
+
   <header class="text-center py-4 bg-gradient-top">
     <h1 class="fw-bold">📚 Projets de la troisième année</h1>
     <div class="d-flex justify-content-center gap-3 mt-3">
@@ -17,154 +18,187 @@
     </div>
   </header>
 
-<main>
+  <main>
 
-<!-- SAE 5.03 - Analyse des biais récidive -->
-<section class="container my-5 sae-bloc-1">
-  <div class="row g-5 p-4 rounded shadow-lg sae-background"
-       style="display: flex; flex-wrap: wrap; align-items: start; justify-content: space-between;">
+    <!-- ══════════════════════════════════════════
+         SAE 5.03 — Analyse des biais récidive
+         (BLOC 1 — entonnoir étroit)
+    ══════════════════════════════════════════ -->
+    <section class="container my-5 sae-bloc-1">
+      <div class="row g-5 p-4 rounded shadow-lg sae-background"
+           style="align-items: start; position: relative;">
 
-    <div class="fond-emoji-anime">
-      <div class="emoji-flottant" style="left: 5%;">⚖️</div>
-      <div class="emoji-flottant" style="left: 15%;">📊</div>
-      <div class="emoji-flottant" style="left: 25%;">🔍</div>
-      <div class="emoji-flottant" style="left: 35%;">🧮</div>
-      <div class="emoji-flottant" style="left: 45%;">📈</div>
-      <div class="emoji-flottant" style="left: 55%;">🧠</div>
-      <div class="emoji-flottant" style="left: 65%;">⚙️</div>
-      <div class="emoji-flottant" style="left: 75%;">📋</div>
-      <div class="emoji-flottant" style="left: 85%;">🔎</div>
+        <div class="fond-emoji-anime">
+          <div class="emoji-flottant" style="left: 5%;">⚖️</div>
+          <div class="emoji-flottant" style="left: 15%;">📊</div>
+          <div class="emoji-flottant" style="left: 25%;">🔍</div>
+          <div class="emoji-flottant" style="left: 35%;">🧮</div>
+          <div class="emoji-flottant" style="left: 45%;">📈</div>
+          <div class="emoji-flottant" style="left: 55%;">🧠</div>
+          <div class="emoji-flottant" style="left: 65%;">⚙️</div>
+          <div class="emoji-flottant" style="left: 75%;">📋</div>
+          <div class="emoji-flottant" style="left: 85%;">🔎</div>
+        </div>
+
+        <div class="col-12" style="position: relative; z-index: 1;">
+          <h2 class="fw-bold">⚖️ SAE 5.03 – Analyse des biais dans la prédiction de la récidive</h2>
+
+          <p style="font-size: 1.1rem; text-align: justify;">
+            Cette SAE est l'un des projets qui m'a le plus marquée durant ma formation. Avec mon équipe, nous avons étudié les biais présents dans les données judiciaires utilisées pour prédire la récidive à partir du <strong>Wisconsin Circuit Large Dataset</strong>, qui contient plus d'un million de dossiers criminels.
+          </p>
+          <p style="font-size: 1.1rem; text-align: justify;">
+            Ce projet nous a amenés à réaliser l'ensemble des étapes d'un projet de data science : nettoyage des données, création de variables, analyses statistiques, visualisations et réflexion sur les enjeux éthiques liés aux modèles prédictifs.
+          </p>
+          <p style="font-size: 1.1rem; text-align: justify;">
+            Cette SAE a particulièrement contribué au développement des compétences <strong>Traiter</strong>, <strong>Analyser</strong> et <strong>Modéliser</strong>. J'y ai appris qu'une bonne analyse ne consiste pas uniquement à construire un modèle performant, mais également à comprendre l'origine des données et les biais qu'elles peuvent contenir. Elle m'a aussi sensibilisée aux questions d'équité algorithmique, aujourd'hui essentielles dans les métiers de la donnée.
+          </p>
+
+          <h4 class="fw-bold mt-5">📊 Évaluation des compétences</h4>
+          <div class="mb-3">
+            <label class="form-label">🧮 Traiter les données</label>
+            <div class="progress mb-1"><div class="progress-bar bg-info" style="width: 90%">4.5 / 5</div></div>
+            <small class="text-muted">Nettoyage rigoureux d'un dataset de plus d'un million de dossiers.</small>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">🔍 Analyser les données</label>
+            <div class="progress mb-1"><div class="progress-bar bg-success" style="width: 85%">4.25 / 5</div></div>
+            <small class="text-muted">Identification et interprétation des biais dans les données judiciaires.</small>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">🧠 Modéliser les données</label>
+            <div class="progress mb-1"><div class="progress-bar bg-danger" style="width: 80%">4 / 5</div></div>
+            <small class="text-muted">Construction de modèles prédictifs et réflexion sur l'équité algorithmique.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Importer mes travaux – SAE 1 -->
+        <div class="import-section-1">
+      <h3>📂 Importer mes travaux</h3>
+      <div class="import-btns">
+        <a href="#" class="import-btn"><span class="btn-icon">📁</span> Importer les travaux</a>
+        <a href="#" class="import-btn secondary"><span class="btn-icon">🎞️</span> Importer la diapo</a>
+      </div>
     </div>
 
-    <div class="col-12" style="position: relative; z-index: 1;">
-      <h2 class="fw-bold">⚖️ SAE 5.03 – Analyse des biais dans la prédiction de la récidive</h2>
 
-      <p style="font-size: 1.1rem; text-align: justify;">
-        Cette SAE est l'un des projets qui m'a le plus marquée durant ma formation. Avec mon équipe, nous avons étudié les biais présents dans les données judiciaires utilisées pour prédire la récidive à partir du <strong>Wisconsin Circuit Large Dataset</strong>, qui contient plus d'un million de dossiers criminels.
+    <!-- ══════════════════════════════════════════
+         SAE 5 — Bases de données NoSQL
+         (BLOC 2 — entonnoir moyen)
+    ══════════════════════════════════════════ -->
+    <section class="project-block sae-background position-relative sae-bloc-2">
+      <div class="fond-emoji-anime">
+        <div class="emoji-flottant" style="left: 10%;">🗄️</div>
+        <div class="emoji-flottant" style="left: 20%;">🧩</div>
+        <div class="emoji-flottant" style="left: 30%;">📂</div>
+        <div class="emoji-flottant" style="left: 40%;">⚙️</div>
+        <div class="emoji-flottant" style="left: 50%;">🧠</div>
+        <div class="emoji-flottant" style="left: 60%;">📊</div>
+        <div class="emoji-flottant" style="left: 70%;">🔧</div>
+      </div>
+
+      <h2>🗄️ SAE 5 – Bases de données NoSQL</h2>
+
+      <p style="text-align: justify;">
+        La découverte des bases de données NoSQL a constitué un véritable défi pour moi. Contrairement aux bases relationnelles que nous avions étudiées auparavant, cette approche reposait sur de nouveaux concepts que je n'ai pas eu le temps d'assimiler complètement avant la fin de la ressource.
       </p>
-      <p style="font-size: 1.1rem; text-align: justify;">
-        Ce projet nous a amenés à réaliser l'ensemble des étapes d'un projet de data science : nettoyage des données, création de variables, analyses statistiques, visualisations et réflexion sur les enjeux éthiques liés aux modèles prédictifs.
+      <p style="text-align: justify;">
+        J'ai néanmoins réussi à mettre en œuvre les notions essentielles pour réaliser le projet demandé et obtenir une note de <strong>14/20</strong>. Cette expérience m'a appris à travailler dans un contexte d'apprentissage rapide et à gagner en autonomie face à une technologie nouvelle.
       </p>
-      <p style="font-size: 1.1rem; text-align: justify;">
-        Cette SAE a particulièrement contribué au développement des compétences <strong>Traiter</strong>, <strong>Analyser</strong> et <strong>Modéliser</strong>. J'y ai appris qu'une bonne analyse ne consiste pas uniquement à construire un modèle performant, mais également à comprendre l'origine des données et les biais qu'elles peuvent contenir. Elle m'a aussi sensibilisée aux questions d'équité algorithmique, aujourd'hui essentielles dans les métiers de la donnée.
+      <p style="text-align: justify;">
+        Cette SAE a principalement contribué au développement de la compétence <strong>Modéliser</strong>, à travers la conception de structures de données adaptées à des besoins spécifiques, mais également de la compétence <strong>Traiter</strong>, puisque j'ai dû manipuler et organiser des données dans un environnement différent de celui des bases relationnelles classiques.
+      </p>
+      <p style="text-align: justify;">
+        Avec davantage de temps, j'aurais souhaité approfondir les questions d'optimisation et d'architecture des bases NoSQL afin de mieux comprendre les choix de modélisation associés à ce type de technologies.
       </p>
 
       <h4 class="fw-bold mt-5">📊 Évaluation des compétences</h4>
       <div class="mb-3">
-        <label class="form-label">🧮 Traiter les données</label>
-        <div class="progress mb-1"><div class="progress-bar bg-info" style="width: 90%">4.5 / 5</div></div>
-        <small class="text-muted">Nettoyage rigoureux d'un dataset de plus d'un million de dossiers.</small>
+        <label>🧮 Traiter les données</label>
+        <div class="progress"><div class="progress-bar bg-info" style="width: 70%">3.5 / 5</div></div>
+        <p class="text-muted">Manipulation de données dans un environnement non relationnel, encore en progression.</p>
       </div>
       <div class="mb-3">
-        <label class="form-label">🔍 Analyser les données</label>
-        <div class="progress mb-1"><div class="progress-bar bg-success" style="width: 85%">4.25 / 5</div></div>
-        <small class="text-muted">Identification et interprétation des biais dans les données judiciaires.</small>
+        <label>🧠 Modéliser les données</label>
+        <div class="progress"><div class="progress-bar bg-danger" style="width: 70%">3.5 / 5</div></div>
+        <p class="text-muted">Conception de structures adaptées malgré un temps d'apprentissage limité.</p>
       </div>
-      <div class="mb-3">
-        <label class="form-label">🧠 Modéliser les données</label>
-        <div class="progress mb-1"><div class="progress-bar bg-danger" style="width: 80%">4 / 5</div></div>
-        <small class="text-muted">Construction de modèles prédictifs et réflexion sur l'équité algorithmique.</small>
+    </section>
+
+    <!-- Section Importer mes travaux – SAE 2 -->
+        <div class="import-section-2">
+      <h3>📂 Importer mes travaux</h3>
+      <div class="import-btns">
+        <a href="#" class="import-btn"><span class="btn-icon">📁</span> Importer les travaux</a>
+        <a href="#" class="import-btn secondary"><span class="btn-icon">🎞️</span> Importer la diapo</a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- SAE 5 - Bases de données NoSQL -->
-<section class="project-block sae-background position-relative sae-bloc-2">
-  <div class="fond-emoji-anime">
-    <div class="emoji-flottant" style="left: 10%;">🗄️</div>
-    <div class="emoji-flottant" style="left: 20%;">🧩</div>
-    <div class="emoji-flottant" style="left: 30%;">📂</div>
-    <div class="emoji-flottant" style="left: 40%;">⚙️</div>
-    <div class="emoji-flottant" style="left: 50%;">🧠</div>
-    <div class="emoji-flottant" style="left: 60%;">📊</div>
-    <div class="emoji-flottant" style="left: 70%;">🔧</div>
-  </div>
 
-  <h2>🗄️ SAE 5 – Bases de données NoSQL</h2>
+    <!-- ══════════════════════════════════════════
+         SAE 6.01 — Big Data Kaggle
+         (BLOC 3 — pleine largeur)
+    ══════════════════════════════════════════ -->
+    <section class="project-block sae-bloc-3 position-relative">
+      <h2>📈 SAE 6.01 – Modélisation statistique pour les données complexes et le Big Data</h2>
 
-  <p style="text-align: justify;">
-    La découverte des bases de données NoSQL a constitué un véritable défi pour moi. Contrairement aux bases relationnelles que nous avions étudiées auparavant, cette approche reposait sur de nouveaux concepts que je n'ai pas eu le temps d'assimiler complètement avant la fin de la ressource.
-  </p>
-  <p style="text-align: justify;">
-    J'ai néanmoins réussi à mettre en œuvre les notions essentielles pour réaliser le projet demandé et obtenir une note de <strong>14/20</strong>. Cette expérience m'a appris à travailler dans un contexte d'apprentissage rapide et à gagner en autonomie face à une technologie nouvelle.
-  </p>
-  <p style="text-align: justify;">
-    Cette SAE a principalement contribué au développement de la compétence <strong>Modéliser</strong>, à travers la conception de structures de données adaptées à des besoins spécifiques, mais également de la compétence <strong>Traiter</strong>, puisque j'ai dû manipuler et organiser des données dans un environnement différent de celui des bases relationnelles classiques.
-  </p>
-  <p style="text-align: justify;">
-    Avec davantage de temps, j'aurais souhaité approfondir les questions d'optimisation et d'architecture des bases NoSQL afin de mieux comprendre les choix de modélisation associés à ce type de technologies.
-  </p>
+      <p style="text-align: justify;">
+        Cette SAE a constitué l'un des projets les plus complets de ma formation. Elle mobilisait simultanément les quatre compétences du BUT : <strong>traiter</strong>, <strong>analyser</strong>, <strong>modéliser</strong> et <strong>valoriser</strong>.
+      </p>
+      <p style="text-align: justify;">
+        À travers ce projet, j'ai pu approfondir les méthodes statistiques appliquées à des données complexes ainsi que les problématiques liées au Big Data. J'ai également participé à une compétition Kaggle organisée dans le cadre du projet. Avec mon équipe, nous avons obtenu la <strong>deuxième place de la promotion</strong>.
+      </p>
+      <p style="text-align: justify;">
+        Cette expérience m'a permis de découvrir les démarches utilisées dans les compétitions de data science : sélection de variables, comparaison de modèles, optimisation des performances et validation des résultats. Elle a confirmé mon intérêt pour la modélisation statistique et les méthodes quantitatives avancées.
+      </p>
 
-  <h4 class="fw-bold mt-5">📊 Évaluation des compétences</h4>
-  <div class="mb-3">
-    <label>🧮 Traiter les données</label>
-    <div class="progress"><div class="progress-bar bg-info" style="width: 70%">3.5 / 5</div></div>
-    <p class="text-muted">Manipulation de données dans un environnement non relationnel, encore en progression.</p>
-  </div>
-  <div class="mb-3">
-    <label>🧠 Modéliser les données</label>
-    <div class="progress"><div class="progress-bar bg-danger" style="width: 70%">3.5 / 5</div></div>
-    <p class="text-muted">Conception de structures adaptées malgré un temps d'apprentissage limité.</p>
-  </div>
-</section>
+      <h4 class="fw-bold mt-5">📊 Évaluation des compétences</h4>
+      <div class="mb-3">
+        <label>🧮 Traiter les données</label>
+        <div class="progress"><div class="progress-bar bg-info" style="width: 90%">4.5 / 5</div></div>
+      </div>
+      <div class="mb-3">
+        <label>🔍 Analyser les données</label>
+        <div class="progress"><div class="progress-bar bg-success" style="width: 90%">4.5 / 5</div></div>
+      </div>
+      <div class="mb-3">
+        <label>📢 Valoriser les données</label>
+        <div class="progress"><div class="progress-bar bg-warning" style="width: 85%">4.25 / 5</div></div>
+      </div>
+      <div class="mb-3">
+        <label>🧠 Modéliser les données</label>
+        <div class="progress"><div class="progress-bar bg-danger" style="width: 90%">4.5 / 5</div></div>
+      </div>
 
-<!-- SAE 6.01 - Modélisation statistique Big Data -->
-<section class="mb-5 project-block sae-bloc-3 position-relative">
-  <h2>📈 SAE 6.01 – Modélisation statistique pour les données complexes et le Big Data</h2>
+      <div class="text-center mt-4">
+        <span class="badge bg-success" style="font-size: 1.1rem; padding: 10px 20px; border-radius: 30px;">
+          🏆 2ème place de la promotion – Compétition Kaggle
+        </span>
+      </div>
+    </section>
 
-  <p style="text-align: justify;">
-    Cette SAE a constitué l'un des projets les plus complets de ma formation. Elle mobilisait simultanément les quatre compétences du BUT : <strong>traiter</strong>, <strong>analyser</strong>, <strong>modéliser</strong> et <strong>valoriser</strong>.
-  </p>
-  <p style="text-align: justify;">
-    À travers ce projet, j'ai pu approfondir les méthodes statistiques appliquées à des données complexes ainsi que les problématiques liées au Big Data. J'ai également participé à une compétition Kaggle organisée dans le cadre du projet. Avec mon équipe, nous avons obtenu la <strong>deuxième place de la promotion</strong>.
-  </p>
-  <p style="text-align: justify;">
-    Cette expérience m'a permis de découvrir les démarches utilisées dans les compétitions de data science : sélection de variables, comparaison de modèles, optimisation des performances et validation des résultats. Elle a confirmé mon intérêt pour la modélisation statistique et les méthodes quantitatives avancées.
-  </p>
+    <!-- Section Importer mes travaux – SAE 3 -->
+        <div class="import-section-3">
+      <h3>📂 Importer mes travaux</h3>
+      <div class="import-btns">
+        <a href="#" class="import-btn"><span class="btn-icon">📁</span> Importer les travaux</a>
+        <a href="#" class="import-btn secondary"><span class="btn-icon">🎞️</span> Importer la diapo</a>
+      </div>
+    </div>
 
-  <h4 class="fw-bold mt-5">📊 Évaluation des compétences</h4>
-  <div class="mb-3">
-    <label>🧮 Traiter les données</label>
-    <div class="progress"><div class="progress-bar bg-info" style="width: 90%">4.5 / 5</div></div>
-  </div>
-  <div class="mb-3">
-    <label>🔍 Analyser les données</label>
-    <div class="progress"><div class="progress-bar bg-success" style="width: 90%">4.5 / 5</div></div>
-  </div>
-  <div class="mb-3">
-    <label>📢 Valoriser les données</label>
-    <div class="progress"><div class="progress-bar bg-warning" style="width: 85%">4.25 / 5</div></div>
-  </div>
-  <div class="mb-3">
-    <label>🧠 Modéliser les données</label>
-    <div class="progress"><div class="progress-bar bg-danger" style="width: 90%">4.5 / 5</div></div>
-  </div>
+    <!-- Navigation -->
+    <div class="text-center my-5">
+      <a href="page 2.html" class="btn btn-lg btn-outline-dark me-3 shadow">⬅️ Projets de BUT 2</a>
+      <a href="index.html" class="btn btn-lg btn-primary shadow">🏠 Revenir à l'accueil</a>
+      <a href="page1.html" class="btn btn-lg btn-outline-dark shadow">⬅️ Projets de BUT 1</a>
+    </div>
 
-  <div class="text-center mt-4">
-    <span class="badge bg-success" style="font-size: 1.1rem; padding: 10px 20px; border-radius: 30px;">
-      🏆 2ème place de la promotion – Compétition Kaggle
-    </span>
-  </div>
-</section>
+  </main>
 
-<div class="text-center my-5">
-  <a href="page 2.html" class="btn btn-lg btn-outline-dark me-3 shadow">
-    ⬅️ Revenir aux projets de BUT 2
-  </a>
-  <a href="index.html" class="btn btn-lg btn-primary shadow">
-    🏠 Revenir à l'accueil
-  </a>
-  <a href="page1.html" class="btn btn-lg btn-outline-dark shadow">
-    ⬅️ Revenir aux projets de BUT 1
-  </a>
-</div>
-
-</main>
-
-<footer class="text-center py-4 bg-dark text-white">
-  <small>© Grace soukou – Tous droits réservés</small>
-</footer>
+  <footer class="text-center py-4 bg-dark text-white">
+    <small>© Grace Soukou – Tous droits réservés</small>
+  </footer>
 
 </body>
 </html>
