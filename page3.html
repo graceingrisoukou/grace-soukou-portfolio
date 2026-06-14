@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style-projets.css">
 </head>
-<body>
+<body class="but3-page">
 
   <header class="text-center py-4 bg-gradient-top">
     <h1 class="fw-bold">📚 Projets de la troisième année</h1>
@@ -25,8 +25,8 @@
          (BLOC 1 — entonnoir étroit)
     ══════════════════════════════════════════ -->
     <section class="container my-5 sae-bloc-1">
-      <div class="row g-5 p-4 rounded shadow-lg sae-background"
-           style="align-items: start; position: relative;">
+      <div class="row g-5 p-4 rounded shadow-lg"
+           style="background: linear-gradient(120deg, #e3f2fd 30%, #fce4ec 70%); align-items: start; position: relative;">
 
         <div class="fond-emoji-anime">
           <div class="emoji-flottant" style="left: 5%;">⚖️</div>
@@ -40,20 +40,64 @@
           <div class="emoji-flottant" style="left: 85%;">🔎</div>
         </div>
 
-        <div class="col-12" style="position: relative; z-index: 1;">
+        <!-- Colonne texte -->
+        <div class="col-lg-7" style="position: relative; z-index: 1;">
           <h2 class="fw-bold">⚖️ SAE 5.03 – Analyse des biais dans la prédiction de la récidive</h2>
 
-          <p style="font-size: 1.1rem; text-align: justify;">
-            Cette SAE est l'un des projets qui m'a le plus marquée durant ma formation. Avec mon équipe, nous avons étudié les biais présents dans les données judiciaires utilisées pour prédire la récidive à partir du <strong>Wisconsin Circuit Large Dataset</strong>, qui contient plus d'un million de dossiers criminels.
-          </p>
-          <p style="font-size: 1.1rem; text-align: justify;">
-            Ce projet nous a amenés à réaliser l'ensemble des étapes d'un projet de data science : nettoyage des données, création de variables, analyses statistiques, visualisations et réflexion sur les enjeux éthiques liés aux modèles prédictifs.
-          </p>
-          <p style="font-size: 1.1rem; text-align: justify;">
-            Cette SAE a particulièrement contribué au développement des compétences <strong>Traiter</strong>, <strong>Analyser</strong> et <strong>Modéliser</strong>. J'y ai appris qu'une bonne analyse ne consiste pas uniquement à construire un modèle performant, mais également à comprendre l'origine des données et les biais qu'elles peuvent contenir. Elle m'a aussi sensibilisée aux questions d'équité algorithmique, aujourd'hui essentielles dans les métiers de la donnée.
-          </p>
+          <h4>📝 Contexte de la SAE</h4>
+          <p>Cette SAE est probablement celle qui m'a le plus marquée sur les trois années. En équipe, nous avons travaillé sur le Wisconsin Circuit Court Dataset, plus d'un million de dossiers judiciaires, pour étudier les biais présents dans les modèles utilisés en pratique pour prédire la récidive. C'est le projet le plus complet que j'ai mené : nettoyage, création de variables, statistiques, visualisations et, surtout, une vraie réflexion de fond sur l'éthique des modèles prédictifs.</p>
 
-          <h4 class="fw-bold mt-5">📊 Évaluation des compétences</h4>
+          <h4>📌 Niveau au préalable</h4>
+          <p>J'avais déjà manipulé de gros volumes de données en BUT 2, mais jamais sur un sujet où chaque ligne représente un dossier judiciaire réel, avec des conséquences concrètes sur des vies. Sur la partie technique, je me sentais à l'aise ; sur la partie éthique, c'était un terrain nouveau pour moi.</p>
+
+          <h4>💡 Éléments déclencheurs</h4>
+          <p>Le déclic est venu en creusant les données : on voit apparaître des écarts de traitement selon certains profils, sans que ce soit toujours visible au premier abord. Se rendre compte qu'un modèle "neutre" peut reproduire des inégalités, ça change complètement la façon dont on regarde un dataset. À partir de là, je n'ai plus pu analyser une variable sans me demander ce qu'elle représentait vraiment.</p>
+
+          <h4>✅ Compétences mobilisées</h4>
+          <ul>
+            <li>Nettoyage et préparation d'un dataset de plus d'un million de lignes.</li>
+            <li>Création de variables et croisements statistiques pour mettre en évidence des écarts entre groupes.</li>
+            <li>Construction de modèles prédictifs et évaluation de leurs performances.</li>
+            <li>Visualisations pour rendre lisibles des résultats statistiques sensibles.</li>
+            <li>Réflexion critique sur l'équité algorithmique et les limites des modèles.</li>
+          </ul>
+
+          <h4>🧠 Prises de conscience</h4>
+          <ul>
+            <li>Une bonne analyse ne se résume pas à un bon score de modèle : il faut comprendre d'où viennent les données et ce qu'elles encodent.</li>
+            <li>Les biais ne sont pas toujours volontaires, mais ils existent et ont un impact réel sur des personnes.</li>
+            <li>Travailler sur un sujet aussi sensible demande de prendre du recul, même quand on est plongé dans le code.</li>
+          </ul>
+
+          <h4>📈 Bonnes pratiques acquises</h4>
+          <ul>
+            <li>Systématiser une phase d'exploration éthique avant de se lancer dans la modélisation.</li>
+            <li>Documenter chaque choix de traitement pour pouvoir le justifier ensuite.</li>
+            <li>Croiser plusieurs angles d'analyse avant de tirer une conclusion sur un groupe de population.</li>
+          </ul>
+
+          <h4>⚠️ Points de vigilance</h4>
+          <ul>
+            <li>Avec un dataset aussi volumineux, certaines étapes de traitement ont pris beaucoup plus de temps que prévu.</li>
+            <li>Il a fallu rester vigilante pour ne pas tirer de conclusions trop hâtives sur des corrélations.</li>
+            <li>Trouver le bon équilibre entre rigueur statistique et discours accessible pour la soutenance.</li>
+          </ul>
+
+          <h4>🚧 Work in progress</h4>
+          <ul>
+            <li>Approfondir les méthodes de mesure de l'équité algorithmique (fairness metrics).</li>
+            <li>Aller plus loin sur les techniques de correction de biais dans les modèles.</li>
+            <li>Continuer à développer ce regard critique sur les données dans mes futurs projets.</li>
+          </ul>
+
+          <h4>🎯 Conclusion</h4>
+          <p>Cette SAE a changé ma manière de voir la data science : ce n'est pas juste une question de modèles performants, c'est aussi une question de responsabilité. C'est l'un des projets qui a le plus pesé dans mon envie d'aller vers une formation où la rigueur statistique et la réflexion sur les méthodes ont autant de place que les résultats.</p>
+        </div>
+
+        <!-- Colonne évaluation -->
+        <div class="col-lg-5" style="position: relative; z-index: 1;">
+          <h4 class="fw-bold mb-4">📊 Évaluation des compétences</h4>
+
           <div class="mb-3">
             <label class="form-label">🧮 Traiter les données</label>
             <div class="progress mb-1"><div class="progress-bar bg-info" style="width: 90%">4.5 / 5</div></div>
@@ -64,7 +108,7 @@
             <div class="progress mb-1"><div class="progress-bar bg-success" style="width: 85%">4.25 / 5</div></div>
             <small class="text-muted">Identification et interprétation des biais dans les données judiciaires.</small>
           </div>
-          <div class="mb-3">
+          <div class="mb-4">
             <label class="form-label">🧠 Modéliser les données</label>
             <div class="progress mb-1"><div class="progress-bar bg-danger" style="width: 80%">4 / 5</div></div>
             <small class="text-muted">Construction de modèles prédictifs et réflexion sur l'équité algorithmique.</small>
@@ -74,7 +118,7 @@
     </section>
 
     <!-- Section Importer mes travaux – SAE 1 -->
-        <div class="import-section-1">
+    <div class="import-section-1">
       <h3>📂 Importer mes travaux</h3>
       <div class="import-btns">
         <a href="#" class="import-btn"><span class="btn-icon">📁</span> Importer les travaux</a>
@@ -100,18 +144,51 @@
 
       <h2>🗄️ SAE 5 – Bases de données NoSQL</h2>
 
-      <p style="text-align: justify;">
-        La découverte des bases de données NoSQL a constitué un véritable défi pour moi. Contrairement aux bases relationnelles que nous avions étudiées auparavant, cette approche reposait sur de nouveaux concepts que je n'ai pas eu le temps d'assimiler complètement avant la fin de la ressource.
-      </p>
-      <p style="text-align: justify;">
-        J'ai néanmoins réussi à mettre en œuvre les notions essentielles pour réaliser le projet demandé et obtenir une note de <strong>14/20</strong>. Cette expérience m'a appris à travailler dans un contexte d'apprentissage rapide et à gagner en autonomie face à une technologie nouvelle.
-      </p>
-      <p style="text-align: justify;">
-        Cette SAE a principalement contribué au développement de la compétence <strong>Modéliser</strong>, à travers la conception de structures de données adaptées à des besoins spécifiques, mais également de la compétence <strong>Traiter</strong>, puisque j'ai dû manipuler et organiser des données dans un environnement différent de celui des bases relationnelles classiques.
-      </p>
-      <p style="text-align: justify;">
-        Avec davantage de temps, j'aurais souhaité approfondir les questions d'optimisation et d'architecture des bases NoSQL afin de mieux comprendre les choix de modélisation associés à ce type de technologies.
-      </p>
+      <h5>📝 Contexte de la SAE</h5>
+      <p>Cette SAE portait sur la découverte des bases de données NoSQL, en rupture totale avec les bases relationnelles travaillées jusque-là. L'objectif était de concevoir et d'exploiter une base adaptée à des données non structurées, avec une logique de modélisation très différente de celle du SQL classique.</p>
+
+      <h5>📌 Niveau au préalable</h5>
+      <p>J'arrivais avec de bonnes bases en bases relationnelles, mais le NoSQL représentait un univers totalement nouveau : nouveaux concepts, nouveau vocabulaire, nouvelle façon de penser la structure des données. Le temps imparti pour assimiler tout ça était assez court.</p>
+
+      <h5>💡 Éléments déclencheurs</h5>
+      <p>Le vrai déclic a été de réaliser que la modélisation NoSQL ne consiste pas à "traduire" un schéma relationnel, mais à repenser entièrement la structure en fonction des usages. Une fois ce changement de logique compris, les choses se sont débloquées beaucoup plus vite.</p>
+
+      <h5>✅ Compétences mobilisées</h5>
+      <ul>
+        <li>Conception de structures de données adaptées à un environnement non relationnel.</li>
+        <li>Manipulation et organisation de données dans une logique orientée documents.</li>
+        <li>Adaptation rapide à un nouvel outil et à un nouveau paradigme de modélisation.</li>
+      </ul>
+
+      <h5>🧠 Prises de conscience</h5>
+      <ul>
+        <li>Le choix entre relationnel et NoSQL dépend avant tout des usages, pas seulement du volume de données.</li>
+        <li>Apprendre un nouveau paradigme demande d'accepter de "déconstruire" ses réflexes habituels.</li>
+        <li>On peut produire un travail satisfaisant même sans avoir eu le temps de tout maîtriser en profondeur.</li>
+      </ul>
+
+      <h5>📈 Bonnes pratiques acquises</h5>
+      <ul>
+        <li>Partir des cas d'usage avant de concevoir la structure de la base.</li>
+        <li>Accepter de prototyper, tester, puis ajuster la modélisation plutôt que de viser la perfection dès le départ.</li>
+      </ul>
+
+      <h5>⚠️ Points de vigilance</h5>
+      <ul>
+        <li>Le temps d'adaptation au NoSQL a été plus long que prévu, ce qui a réduit la marge pour approfondir certains aspects.</li>
+        <li>Certains choix de modélisation auraient mérité d'être mieux anticipés en amont.</li>
+      </ul>
+
+      <h5>🚧 Work in progress</h5>
+      <ul>
+        <li>Approfondir les questions d'optimisation et d'architecture des bases NoSQL.</li>
+        <li>Explorer davantage les cas où NoSQL et SQL peuvent être combinés dans un même projet.</li>
+      </ul>
+
+      <h5>🎯 Conclusion</h5>
+      <p>Cette SAE m'a obtenu une note de <strong>14/20</strong>, dans un contexte où je découvrais à peu près tout. Plus qu'une note, c'est surtout la preuve que je peux apprendre vite et produire un travail correct même sur un sujet totalement nouveau, ce qui me sera utile pour la suite.</p>
+
+      <hr>
 
       <h4 class="fw-bold mt-5">📊 Évaluation des compétences</h4>
       <div class="mb-3">
@@ -127,7 +204,7 @@
     </section>
 
     <!-- Section Importer mes travaux – SAE 2 -->
-        <div class="import-section-2">
+    <div class="import-section-2">
       <h3>📂 Importer mes travaux</h3>
       <div class="import-btns">
         <a href="#" class="import-btn"><span class="btn-icon">📁</span> Importer les travaux</a>
@@ -143,15 +220,51 @@
     <section class="project-block sae-bloc-3 position-relative" style="overflow:visible;">
       <h2>📈 SAE 6.01 – Modélisation statistique pour les données complexes et le Big Data</h2>
 
-      <p style="text-align: justify;">
-        Cette SAE a constitué l'un des projets les plus complets de ma formation. Elle mobilisait simultanément les quatre compétences du BUT : <strong>traiter</strong>, <strong>analyser</strong>, <strong>modéliser</strong> et <strong>valoriser</strong>.
-      </p>
-      <p style="text-align: justify;">
-        À travers ce projet, j'ai pu approfondir les méthodes statistiques appliquées à des données complexes ainsi que les problématiques liées au Big Data. J'ai également participé à une compétition Kaggle organisée dans le cadre du projet. Avec mon équipe, nous avons obtenu la <strong>deuxième place de la promotion</strong>.
-      </p>
-      <p style="text-align: justify;">
-        Cette expérience m'a permis de découvrir les démarches utilisées dans les compétitions de data science : sélection de variables, comparaison de modèles, optimisation des performances et validation des résultats. Elle a confirmé mon intérêt pour la modélisation statistique et les méthodes quantitatives avancées.
-      </p>
+      <h5>📝 Contexte de la SAE</h5>
+      <p>Cette SAE a été, sur le plan technique, la plus complète de mes trois années : elle mobilisait simultanément les quatre compétences du BUT, traiter, analyser, modéliser et valoriser, autour de problématiques de données complexes et de Big Data. Le projet intégrait également une compétition Kaggle organisée en interne entre les groupes de la promotion.</p>
+
+      <h5>📌 Niveau au préalable</h5>
+      <p>J'arrivais avec des bases solides en statistiques et en modélisation grâce aux SAE précédentes, mais je n'avais jamais travaillé sur un format de compétition avec un classement en temps réel face aux autres groupes. C'était une nouvelle pression, plutôt stimulante.</p>
+
+      <h5>💡 Éléments déclencheurs</h5>
+      <p>Voir le classement évoluer au fil des soumissions a changé notre façon de travailler : on ne se contentait plus de faire "un modèle qui marche", on cherchait à comprendre pourquoi un modèle marchait mieux qu'un autre, et comment optimiser chaque détail. Cette logique de comparaison permanente a clairement fait monter le niveau d'exigence de l'équipe.</p>
+
+      <h5>✅ Compétences mobilisées</h5>
+      <ul>
+        <li>Sélection et création de variables pour améliorer les performances des modèles.</li>
+        <li>Comparaison de plusieurs approches de modélisation statistique.</li>
+        <li>Optimisation des performances et validation rigoureuse des résultats.</li>
+        <li>Travail en équipe sous contrainte de temps, avec un objectif de classement commun.</li>
+      </ul>
+
+      <h5>🧠 Prises de conscience</h5>
+      <ul>
+        <li>La performance d'un modèle dépend autant du travail sur les données que du choix de l'algorithme.</li>
+        <li>Travailler en compétition pousse à itérer plus vite et à mieux prioriser ses efforts.</li>
+        <li>Comparer ses résultats à ceux des autres groupes permet de prendre du recul sur ses propres choix.</li>
+      </ul>
+
+      <h5>📈 Bonnes pratiques acquises</h5>
+      <ul>
+        <li>Mettre en place une démarche itérative : tester, mesurer, ajuster.</li>
+        <li>Garder une trace claire des expériences menées pour ne pas refaire les mêmes erreurs.</li>
+        <li>Toujours valider un modèle sur des données qu'il n'a jamais vues avant de conclure.</li>
+      </ul>
+
+      <h5>⚠️ Points de vigilance</h5>
+      <ul>
+        <li>La dimension "compétition" peut pousser à privilégier la performance au détriment de l'interprétabilité.</li>
+        <li>Le temps passé sur l'optimisation fine peut vite devenir disproportionné par rapport au gain réel.</li>
+      </ul>
+
+      <h5>🚧 Work in progress</h5>
+      <ul>
+        <li>Aller plus loin dans les méthodes de validation croisée et de sélection de modèles.</li>
+        <li>Approfondir les architectures adaptées aux gros volumes de données.</li>
+      </ul>
+
+      <h5>🎯 Conclusion</h5>
+      <p>Avec mon équipe, nous avons terminé <strong>2ᵉ de la promotion</strong> sur cette compétition. Au-delà du classement, cette SAE a confirmé ce que je cherchais déjà à travers mon parcours : la modélisation statistique et les méthodes quantitatives avancées sont vraiment ce qui m'intéresse le plus, ce qui a pesé dans mon choix de poursuivre vers un Master Applied Mathematics and Statistics.</p>
 
       <h4 class="fw-bold mt-5">📊 Évaluation des compétences</h4>
       <div class="mb-3">
@@ -179,7 +292,7 @@
     </section>
 
     <!-- Section Importer mes travaux – SAE 3 -->
-        <div class="import-section-3">
+    <div class="import-section-3">
       <h3>📂 Importer mes travaux</h3>
       <div class="import-btns">
         <a href="#" class="import-btn"><span class="btn-icon">📁</span> Importer les travaux</a>
@@ -189,9 +302,9 @@
 
     <!-- Navigation -->
     <div class="text-center my-5">
-      <a href="page 2.html" class="btn btn-lg btn-outline-dark me-3 shadow">⬅️ Projets de BUT 2</a>
-      <a href="index.html" class="btn btn-lg btn-primary shadow">🏠 Revenir à l'accueil</a>
-      <a href="page1.html" class="btn btn-lg btn-outline-dark shadow">⬅️ Projets de BUT 1</a>
+      <a href="index.html" class="btn btn-lg btn-primary me-3 shadow">🏠 Revenir à l'accueil</a>
+      <a href="page1.html" class="btn btn-lg btn-outline-dark me-3 shadow">⬅️ Projets de BUT 1</a>
+      <a href="page 2.html" class="btn btn-lg btn-outline-dark shadow">⬅️ Projets de BUT 2</a>
     </div>
 
   </main>
