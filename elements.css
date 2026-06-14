@@ -67,7 +67,7 @@ nav a:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* PHOTO PROFIL (Reste fixe, sans zoom) */
+/* PHOTO PROFIL (Reste fixe sur l'accueil) */
 .photo-profil {
   width: 180px;
   height: 180px;
@@ -363,8 +363,6 @@ nav a:hover {
   position:absolute; top:-40px; left:-40px; width:200px; height:200px;
   background: radial-gradient(circle, rgba(255,213,79,0.15) 0%, transparent 70%);
   border-radius:50%;
-  animation: glowRotate 6s linear infinite;
-  pointer-events:none;
 }
 .sommet-inner {
   position:relative; display:flex; align-items:center; gap:18px;
@@ -375,7 +373,6 @@ nav a:hover {
   background: linear-gradient(135deg, #ffd54f, #ff8f00);
   border-radius:50%; display:flex; align-items:center; justify-content:center;
   font-size:1.7rem; box-shadow: 0 4px 15px rgba(255,143,0,0.5);
-  animation: iconBounce 2.5s ease-in-out infinite;
 }
 .sommet-text { display:flex; flex-direction:column; text-align:left; gap:3px; }
 .sommet-eyebrow { font-size:0.72rem; text-transform:uppercase; letter-spacing:1.5px; color:#ffd54f; font-weight:600; }
@@ -384,8 +381,9 @@ nav a:hover {
 .sommet-arrow   { margin-left:auto; flex-shrink:0; font-size:1.5rem; color:#ffd54f; font-weight:bold; transition:transform 0.3s ease; }
 .sommet-card:hover .sommet-arrow { transform: translateX(6px); }
 
+
 /* ===================================================
-   EFFET DE ZOOM DES IMAGES (IDENTIQUE PAGE 3)
+   EFFET DE ZOOM DES IMAGES (COPIÉ DE LA PAGE 3)
    =================================================== */
 .image-zoom-final, .image-illustree, .image-full {
   width: 100%;
@@ -394,24 +392,44 @@ nav a:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   display: block;
   margin: 0 auto;
-  cursor: pointer;
+  cursor: zoom-in;
   position: relative;
   z-index: 1;
-  /* Courbe de transition fluide de la page 3 */
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+  /* Utilisation de la courbe fluide cubic-bezier exacte de votre page 3 */
+  transition: 
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.45s ease,
+    border-radius 0.45s ease,
+    filter 0.45s ease !important;
+  will-change: transform;
 }
 
-/* Activation de l'effet au survol */
+/* Effet au survol strict de la page 3 */
 .image-zoom-final:hover, .image-illustree:hover, .image-full:hover {
-  transform: scale(1.08) translateY(-10px) !important;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35) !important;
-  z-index: 100 !important;
+  transform: scale(1.35) !important; /* Même facteur d'agrandissement puissant (35%) */
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.22),
+    0 0 0 4px rgba(0, 123, 255, 0.18) !important;
+  border-radius: 18px;
+  filter: brightness(1.04) saturate(1.08);
+  z-index: 999 !important; /* Passe au-dessus de tout le contenu sans exception */
 }
 
-/* Sécurité conteneurs Bootstrap pour ne pas couper le zoom */
-#projet-pro .col-12, #evolution-fierte .text-center {
+/* ===================================================
+   SÉCURITÉ ANTI-COUPURE DE GRILLE (ESSENTIEL !)
+   =================================================== */
+/* On force tous les parents de l'index à laisser déborder l'image agrandie */
+#projet-pro, 
+#evolution-fierte, 
+#projet-pro .row, 
+#evolution-fierte .row,
+#projet-pro .col-12,
+#projet-pro .col-sm-6,
+#projet-pro .col-lg-4,
+#evolution-fierte .text-center {
   overflow: visible !important;
 }
+
 
 /* ===================================================
    MODAL PROJET PROFESSIONNEL
